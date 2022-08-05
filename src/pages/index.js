@@ -18,3 +18,6 @@ export {default as MemberCreate} from './MemberCreate';
 export {default as MemberUpdate} from './MemberUpdate';
 export {default as NotFound} from './NotFound';
 export {default as Weather} from './Weather';
+export {default as CurrentTrips} from './CurrentTrips';
+export {default as Settings} from './Settings';
+export {default as Messaging} from './Messaging';
