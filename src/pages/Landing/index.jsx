@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Form } from "react-bootstrap";
-//import Logo from "../../assets/images/artemis-colour-cutout.png";
+import Logo from "../../assets/images/artemis-colour-cutout.png";
 import "./Landing.css";
 
 export default function Landing() {
@@ -12,6 +12,7 @@ export default function Landing() {
             <Container className="landing-container">
                 <h1>Welcome!</h1>
                 <div className="logo-container">
+                    <img className="logo" src={Logo} alt="brand logo for Artemis Camping"></img>
                 </div>
                 <h3>To get started, please login below</h3>
                 
