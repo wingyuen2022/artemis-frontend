@@ -8,10 +8,15 @@ function App() {
     return (
         <>
             <div className="App">
-                <Layout />
+                {/* <Layout /> */}
                 <Routes>
-                    <Route path="/" element={<Pages.Home />} />
-                    <Route path="*" element={<Pages.NotFound />} />
+                    <Route path='/' element={<Layout/>}>
+                        <Route path="/" element={<Pages.Home />} />
+                        <Route path="*" element={<Pages.NotFound />} />
+                        <Route path="/CurrentTrips" element={<Pages.CurrentTrips />} />
+                        <Route path="/Messaging" element={<Pages.Messaging />} />
+                        <Route path="/Settings" element={<Pages.Settings />} />
+                    </Route>
                 </Routes>
                 <div className="align-center"><br></br>Artemis Camping 2022</div>
             </div>
