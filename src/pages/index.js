@@ -9,6 +9,7 @@ export {default as DurationCreate} from './DurationCreate';
 export {default as DurationUpdate} from './DurationUpdate';
 export {default as Home} from './Home';
 export {default as Itinerary} from './Itinerary';
+export {default as Landing} from './Landing';
 export {default as Map} from './Map';
 export {default as MapCreate} from './MapCreate';
 export {default as MapUpdate} from './MapUpdate';
