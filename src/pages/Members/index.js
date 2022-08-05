@@ -3,22 +3,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import BudgetComponent from '../../components/BudgetComponent';
+import MemberComponent from '../../components/MemberComponent';
 
-const Budget = () => {
+const Members = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
-    
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Budget"));
+    dispatch(setTitle("Members"));
 
     const handleBack = () => {
 		navigate('-1');
 	};
 
     const handleEdit = () => {
-		navigate('/edit/budget');
+		navigate('/edit/member');
 	};
 
     useEffect(()=>{
@@ -30,7 +30,7 @@ const Budget = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <BudgetComponent />
+                        <MemberComponent />
                     </div>
                     <div className="col">
                         <Button onClick={handleBack}>Back</Button>
@@ -43,4 +43,4 @@ const Budget = () => {
 
     return renderHTML();
 };
-export default Budget;
+export default Members;
