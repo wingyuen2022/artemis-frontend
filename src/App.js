@@ -8,9 +8,8 @@ function App() {
     return (
         <>
             <div className="App">
-                <Layout />
-                <Routes>
-                    <Route path="/" element={<Pages.Home />} />
+                <Route index element={<Layout />}>
+                    <Route index path="/" element={<Pages.Landing />} />
                     <Route path="/view/budget" element={<Pages.Budget />} />
                     <Route path="/new/budget" element={<Pages.BudgetCreate />} />
                     <Route path="/edit/budget" element={<Pages.BudgetUpdate />} />
@@ -29,8 +28,7 @@ function App() {
                     <Route path="/edit/member" element={<Pages.MemberUpdate />} />
                     <Route path="/view/weather" element={<Pages.Weather />} />
                     <Route path="*" element={<Pages.NotFound />} />
-                </Routes>
-                <div className="align-center"><br></br>Artemis Camping 2022</div>
+                </Route>
             </div>
         </>
     );
