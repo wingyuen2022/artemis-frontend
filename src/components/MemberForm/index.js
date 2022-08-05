@@ -3,7 +3,7 @@ import { wait } from '../../util/util.js';
 import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const BudgetComponent = () => {
+const MemberForm = () => {
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const chat = useSelector(state => state.chatReducer);
@@ -15,7 +15,7 @@ const BudgetComponent = () => {
     const renderHTML = () => {
     return (
         <>
-            <h1>Budget Component</h1>
+            <h1>Member Form</h1>
         </>
         );
     };
@@ -23,4 +23,4 @@ const BudgetComponent = () => {
     return renderHTML();
 }
 
-export default BudgetComponent;
+export default MemberForm;

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import ChecklistComponent from '../../components/ChecklistComponent';
+import ChecklistForm from '../../components/ChecklistForm';
 
 const Checklist = () => {
     //const { xxx } = useParams();
@@ -31,7 +31,7 @@ const Checklist = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <ChecklistComponent />
+                        <ChecklistForm />
                     </div>
                     <div className="col">
                         <Button onClick={handleBack}>Back</Button>
