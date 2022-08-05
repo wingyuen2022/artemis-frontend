@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Container, Form } from "react-bootstrap";
 import Logo from "../../assets/images/artemis-colour-cutout.png";
 import "./Landing.css";
 
 export default function Landing() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <>
             <Container className="landing-container">
@@ -16,12 +20,12 @@ export default function Landing() {
                     <Form className="auth-form">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             {/* <Form.Label className="auth-label">Email:</Form.Label> */}
-                            <Form.Control className="auth-input" type="email" placeholder="Enter email" />                       
+                            <Form.Control className="auth-input" type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required />                       
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         {/* <Form.Label className="auth-label">Password:</Form.Label> */}
-                        <Form.Control className="auth-input" type="password" placeholder="Password" />
+                        <Form.Control className="auth-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </Form.Group>
                     
                         {/* <Form.Label className="auth-label">Login</Form.Label> */}
