@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import MapComponent from '../../components/MapComponent';
 
@@ -8,6 +10,8 @@ const Map = () => {
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Map"));
 
     const handleBack = () => {
 		navigate('-1');
@@ -25,9 +29,6 @@ const Map = () => {
         return (
             <>
                 <div className="row">
-                    <div className="col">
-                        <h1>View map</h1>
-                    </div>
                     <div className="col">
                         <MapComponent />
                     </div>

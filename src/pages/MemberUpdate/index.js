@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import MemberComponent from '../../components/MemberComponent';
 
@@ -8,6 +10,8 @@ const Member = () => {
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Edit Member"));
 
     const handleBack = () => {
 		navigate('-1');
@@ -26,9 +30,6 @@ const Member = () => {
         return (
             <>
                 <div className="row">
-                    <div className="col">
-                        <h1>Edit member</h1>
-                    </div>
                     <div className="col">
                         <MemberComponent />
                     </div>

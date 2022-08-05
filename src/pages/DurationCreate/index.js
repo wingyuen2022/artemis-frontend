@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import DurationComponent from '../../components/DurationComponent';
 
@@ -8,6 +10,8 @@ const Duration = () => {
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("New Duration"));
 
     const handleBack = () => {
 		navigate('/new/member');
@@ -25,9 +29,6 @@ const Duration = () => {
         return (
             <>
                 <div className="row">
-                    <div className="col">
-                        <h1>Add duration</h1>
-                    </div>
                     <div className="col">
                         <DurationComponent />
                     </div>

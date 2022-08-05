@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import ItineraryComponent from '../../components/ItineraryComponent';
 
@@ -8,6 +10,8 @@ const Itinerary = () => {
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Itinerary"));
 
     const handleBack = () => {
 		navigate('-1');
@@ -21,9 +25,6 @@ const Itinerary = () => {
         return (
             <>
                 <div className="row">
-                    <div className="col">
-                        <h1>View Itinerary</h1>
-                    </div>
                     <div className="col">
                         <ItineraryComponent />
                     </div>

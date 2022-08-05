@@ -5,4 +5,5 @@ export {default as HomeComponent} from './HomeComponent';
 export {default as ItineraryComponent} from './ItineraryComponent';
 export {default as MapComponent} from './MapComponent';
 export {default as MemberComponent} from './MemberComponent';
+export {default as TripForm} from './TripForm';
 export {default as WeatherComponent} from './WeatherComponent';
