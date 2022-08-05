@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import DurationComponent from '../../components/DurationComponent';
+import DurationForm from '../../components/DurationForm';
 
 const Duration = () => {
     //const { xxx } = useParams();
@@ -30,7 +30,7 @@ const Duration = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <DurationComponent />
+                        <DurationForm />
                     </div>
                     <div className="col">
                         <Button onClick={handleBack}>Back</Button>

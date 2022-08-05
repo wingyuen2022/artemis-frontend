@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MemberComponent from '../../components/MemberComponent';
+import MemberForm from '../../components/MemberForm';
 
 const Members = () => {
     //const { xxx } = useParams();
@@ -30,7 +30,7 @@ const Members = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <MemberComponent />
+                        <MemberForm />
                     </div>
                     <div className="col">
                         <Button onClick={handleBack}>Back</Button>

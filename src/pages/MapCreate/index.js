@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import MapComponent from '../../components/MapComponent';
+import MapForm from '../../components/MapForm';
 
 const Map = () => {
     //const { xxx } = useParams();
@@ -31,6 +32,9 @@ const Map = () => {
                 <div className="row">
                     <div className="col">
                         <MapComponent />
+                    </div>
+                    <div className="col">
+                        <MapForm />
                     </div>
                     <div className="col">
                         <Button onClick={handleBack}>Back</Button>
