@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 import ChecklistComponent from '../../components/ChecklistComponent';
 
 const Checklist = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
+
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+		navigate('-1');
+	};
+
+    const handleEdit = () => {
+		navigate('/edit/checklist');
+	};
 
     useEffect(()=>{
         
@@ -13,8 +24,18 @@ const Checklist = () => {
     const renderHTML = () => {
         return (
             <>
-                <h1>Checklist</h1>
-                <ChecklistComponent />
+                <div className="row">
+                    <div className="col">
+                        <h1>View checklist</h1>
+                    </div>
+                    <div className="col">
+                        <ChecklistComponent />
+                    </div>
+                    <div className="col">
+                        <Button onClick={handleBack}>Back</Button>
+                        <Button onClick={handleEdit}>Edit</Button>
+                    </div>
+                </div>
             </>
         )
     };
