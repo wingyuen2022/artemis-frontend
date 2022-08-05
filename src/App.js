@@ -7,7 +7,7 @@ export default function App() {
         <>
             <div className="App">
 
-            <Routes>
+            <Routes> 
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Pages.Landing />} />
                     <Route path="/view/budget" element={<Pages.Budget />} />
