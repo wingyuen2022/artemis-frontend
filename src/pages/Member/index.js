@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 import MemberComponent from '../../components/MemberComponent';
 
 const Member = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
+
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+		navigate('-1');
+	};
+
+    const handleEdit = () => {
+		navigate('/edit/member');
+	};
 
     useEffect(()=>{
         
@@ -13,8 +24,18 @@ const Member = () => {
     const renderHTML = () => {
         return (
             <>
-                <h1>Member</h1>
-                <MemberComponent />
+                <div className="row">
+                    <div className="col">
+                        <h1>View member</h1>
+                    </div>
+                    <div className="col">
+                        <MemberComponent />
+                    </div>
+                    <div className="col">
+                        <Button onClick={handleBack}>Back</Button>
+                        <Button onClick={handleEdit}>Edit</Button>
+                    </div>
+                </div>
             </>
         )
     };
