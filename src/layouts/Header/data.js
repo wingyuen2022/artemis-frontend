@@ -1,6 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { FaBars, FaMapMarkedAlt } from "react-icons/fa";
+import { FaMapMarkedAlt } from "react-icons/fa";
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import { RiMessage2Fill } from "react-icons/ri";
 
