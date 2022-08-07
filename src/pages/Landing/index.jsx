@@ -6,7 +6,7 @@ import "./Landing.css";
 export default function Landing() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+  
     return (
         <>
             <Container className="landing-container">
@@ -14,7 +14,7 @@ export default function Landing() {
                 <div className="logo-container">
                     <img className="logo" src={Logo} alt="brand logo for Artemis Camping"></img>
                 </div>
-                <h3>To get started, please login below</h3>
+                {/* <h3>To start, please login below...</h3> */}
                 
                 <div className="auth-container">
                     <Form className="auth-form">
@@ -30,13 +30,13 @@ export default function Landing() {
                     
                         {/* <Form.Label className="auth-label">Login</Form.Label> */}
                         <Form.Control className="auth-btn" id="login" type="submit" value="Login" />
-                        <p>or</p>
+                        <p>OR</p>
                         {/* <Form.Label className="auth-label">Register</Form.Label> */}
                         <Form.Control className="auth-btn" id="register" type="submit" value="Register" />
                     </Form>
 
-                        
-                </div>
+                    </div> 
+                    
             </Container>
         </>
     )
