@@ -1,4 +1,5 @@
 import { FaMapMarkedAlt } from "react-icons/fa";
+import { FcCheckmark } from "react-icons/fc";
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import { RiMessage2Fill } from "react-icons/ri";
 
@@ -14,6 +15,12 @@ export const SidebarData = [
         title: 'Current Trips',
         path: '/CurrentTrips',
         icon: <FaMapMarkedAlt />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Checklist',
+        path: '/Checklist',
+        icon: <FcCheckmark />,
         cName: 'nav-text'
     },
     {
