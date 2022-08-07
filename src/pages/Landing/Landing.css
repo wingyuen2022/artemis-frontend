@@ -1,8 +1,18 @@
 .landing-container, .auth-container {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: auto;
-    background-color: inherit;
+    /* background-color: #efddb7; */
+    background-image: url("../../assets/animations/101541-circle-day.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    padding: 10px 0;
+}
+.auth-container {
+    background: transparent;
 }
 
 .landing-container > h1, h3 {
@@ -11,12 +21,12 @@
 
 .logo-container {
     max-height: 300px;
-    padding: 10px;
     margin: auto;
+    /* background-color: #2090a4; */
 }
 
 .logo {
-    max-height: 300px;
+    max-height: 280px;
     width: auto;
     margin: auto;
 }
@@ -27,11 +37,13 @@
     max-width: 90%;
     margin: auto;
     /* border: 2px darkgreen solid; */
+    /* box-shadow: 2px 2px 3px darkgreen; */
     border-radius: 20px;
     padding: 10px;
 }
 
-.auth-label {
+.auth-label, p {
+    color: #fff;
     padding: 5px;
     font-family: '', serif;
 }
@@ -61,3 +73,19 @@
     color: #000;
 }
 
+.logo {
+    animation: jello-vertical .9s both;
+    /* animation-delay: 1s; */
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes jello-vertical{
+    0%{transform:scale3d(1,1,1)}
+    30%{transform:scale3d(.75,1.25,1)}
+    40%{transform:scale3d(1.25,.75,1)}
+    50%{transform:scale3d(.85,1.15,1)}
+    65%{transform:scale3d(1.05,.95,1)}
+    75%{transform:scale3d(.95,1.05,1)}
+    100%{transform:scale3d(1,1,1)}
+}
