@@ -28,7 +28,7 @@ const Checklist = () => {
                 <div className="row">
                     <div className="col">
                         <Button onClick={()=>{
-                            navigate('/view/trip');
+                            navigate('/view/trip/1');
                         }}>Back</Button>
                     </div>
                 </div>

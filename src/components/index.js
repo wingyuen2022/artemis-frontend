@@ -10,4 +10,5 @@ export {default as MemberComponent} from './MemberComponent';
 export {default as MemberForm} from './MemberForm';
 export {default as TripComponent} from './TripComponent';
 export {default as TripForm} from './TripForm';
+export {default as TripTable} from './TripTable';
 export {default as WeatherComponent} from './WeatherComponent';

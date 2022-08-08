@@ -68,15 +68,20 @@ const TripForm = () => {
             <div className="row">
                 <div className="col">
                     <input id="id" type="number" name="id" hidden/><br />
+                    <Button onClick={()=>{
+                        if (window.confirm("Confirm without saving?")) {
+                            navigate('/view/home');
+                        }
+                    }}>Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');
-                            navigate('/view/trip');
+                            navigate('/view/home');
                         }
                     }}>Delete</Button>
                     <Button onClick={()=>{
                         alert('saved');
-                        navigate('/view/trip');
+                        navigate('/view/trip/1');
                     }}>Save</Button>
                 </div>
             </div>

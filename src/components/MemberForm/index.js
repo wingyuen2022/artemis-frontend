@@ -22,6 +22,11 @@ const MemberForm = () => {
                 <div className="col">
                     <input id="id" type="number" name="id" hidden/><br />
                     <input id="name" type="text" name="name" maxlength="20" placeholder="Name"/><br />
+                    <Button onClick={()=>{
+                        if (window.confirm("Confirm without saving?")) {
+                            navigate('/view/member');
+                        }
+                    }}>Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');
