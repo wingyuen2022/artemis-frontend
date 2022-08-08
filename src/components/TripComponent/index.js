@@ -91,7 +91,7 @@ const TripComponent = () => {
             <div className="row">
                 <div className="col">
                     <Button onClick={()=>{
-                        navigate('/edit/trip');
+                        navigate('/edit/trip/1');
                     }}>Edit</Button>
                 </div>
             </div>

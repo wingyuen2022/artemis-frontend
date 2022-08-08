@@ -20,10 +20,7 @@ const MemberComponent = () => {
         <>
             <div className="row">
                 <div className="col">
-                    <b>Member Header 1</b>
-                </div>
-                <div className="col">
-                    <b>Member Header 2</b>
+                    <b>Name</b>
                 </div>
                 <div className="col">
                     <b>Action</b>
@@ -31,14 +28,51 @@ const MemberComponent = () => {
             </div>
             <div className="row">
                 <div className="col">
-                    Member Data 1
-                </div>
-                <div className="col">
-                    Member Data 2
+                    Wing
                 </div>
                 <div className="col">
                     <Button onClick={()=>{
-                        navigate('/edit/member');
+                        navigate('/edit/member/1');
+                    }}>Edit</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Edgar
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/member/2');
+                    }}>Edit</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Sam
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/member/3');
+                    }}>Edit</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Nathan
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/member/4');
+                    }}>Edit</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Summira
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/member/5');
                     }}>Edit</Button>
                 </div>
             </div>

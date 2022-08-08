@@ -14,7 +14,7 @@ const Trip = () => {
     dispatch(setTitle("Trip"));
 
     useEffect(()=>{
-        console.log('id: ' + id);
+        
     }, []);
 
     const renderHTML = () => {
