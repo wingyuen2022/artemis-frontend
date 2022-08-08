@@ -33,10 +33,6 @@ const Checklist = () => {
                     <div className="col">
                         <ChecklistForm />
                     </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
-                    </div>
                 </div>
             </>
         )

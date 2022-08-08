@@ -5,14 +5,14 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const TripForm = () => {
+const TripComponent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const chat = useSelector(state => state.chatReducer);
 
     useEffect(()=>{
-        
+
     }, []);
 
     const renderHTML = () => {
@@ -23,7 +23,7 @@ const TripForm = () => {
                     <b>Trip name:</b>
                 </div>
                 <div className="col">
-                    <input id="name" type="text" name="name" maxlength="20" placeholder="Name"/><br />
+                    Peak District Trip
                 </div>
             </div>
             <div className="row">
@@ -31,14 +31,7 @@ const TripForm = () => {
                     <b>Public:</b>
                 </div>
                 <div className="col">
-                    <div className="row">
-                        <div className="col">
-                            <input type="radio" id="public" name="public" value="true" default></input><label for="public">Public</label>
-                        </div>
-                        <div className="col">
-                            <input type="radio" id="private" name="public" value="false"></input><label for="private">Private</label>
-                        </div>
-                    </div>
+                    public
                 </div>
             </div>
             <div className="row">
@@ -46,7 +39,7 @@ const TripForm = () => {
                     <b>Location:</b>
                 </div>
                 <div className="col">
-                    <input id="location" type="text" name="location" maxlength="20" placeholder="Location"/><br />
+                    Peak district
                 </div>
             </div>
             <div className="row">
@@ -54,7 +47,7 @@ const TripForm = () => {
                     <b>Start Date:</b>
                 </div>
                 <div className="col">
-                    <input id="startDate" class="inputs" name="startDate" type="date" required />
+                    2022-08-15
                 </div>
             </div>
             <div className="row">
@@ -62,22 +55,44 @@ const TripForm = () => {
                     <b>End Date:</b>
                 </div>
                 <div className="col">
-                    <input id="endDate" class="inputs" name="endDate" type="date" required />
+                    2022-08-21
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    <input id="id" type="number" name="id" hidden/><br />
-                    <Button variant="danger" onClick={()=>{
-                        if (window.confirm("Confirm to delete?")) {
-                            alert('deleted');
-                            navigate('/view/trip');
-                        }
-                    }}>Delete</Button>
+                    <b>Member:</b>
+                </div>
+                <div className="col">
                     <Button onClick={()=>{
-                        alert('saved');
-                        navigate('/view/trip');
-                    }}>Save</Button>
+                        navigate('/view/member');
+                    }}>View Member</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Budget:</b>
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/view/budget');
+                    }}>View Budget</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Checklist:</b>
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/view/checklist');
+                    }}>View Checklist</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/trip');
+                    }}>Edit</Button>
                 </div>
             </div>
         </>
@@ -87,4 +102,4 @@ const TripForm = () => {
     return renderHTML();
 }
 
-export default TripForm;
+export default TripComponent;

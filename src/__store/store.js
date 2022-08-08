@@ -26,8 +26,6 @@ const chatSlice = createSlice({
 const initialTripState = {
     tripName: "",
     members: [],
-    duration: null,
-    map: null,
     budget: [],
     checkList: []
 };
@@ -44,12 +42,6 @@ const tripSlice = createSlice({
         },
         setMembers(state, action) {
             state.members = action.payload;
-        },
-        setDuration(state, action) {
-            state.duration = action.payload;
-        },
-        setMap(state, action) {
-            state.map = action.payload;
         },
         setBudget(state, action) {
             state.budget = action.payload;

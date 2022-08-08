@@ -13,10 +13,6 @@ const Member = () => {
     const dispatch = useDispatch();
     dispatch(setTitle("New Member"));
 
-	const handleNext = () => {
-		navigate('/new/duration');
-	};
-
     useEffect(()=>{
         
     }, []);
@@ -27,9 +23,6 @@ const Member = () => {
                 <div className="row">
                     <div className="col">
                         <MemberForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleNext}>Next</Button>
                     </div>
                 </div>
             </>

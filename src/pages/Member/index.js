@@ -3,25 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MapComponent from '../../components/MapComponent';
-import MapForm from '../../components/MapForm';
+import MemberComponent from '../../components/MemberComponent';
 
-const Map = () => {
+const Members = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Edit Map"));
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/map');
-	};
+    dispatch(setTitle("Members"));
 
     useEffect(()=>{
         
@@ -32,14 +22,14 @@ const Map = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <MapComponent />
+                        <MemberComponent />
                     </div>
+                </div>
+                <div className="row">
                     <div className="col">
-                        <MapForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
+                        <Button onClick={()=>{
+                            navigate('/view/trip');
+                        }}>Back</Button>
                     </div>
                 </div>
             </>
@@ -48,4 +38,4 @@ const Map = () => {
 
     return renderHTML();
 };
-export default Map;
+export default Members;
