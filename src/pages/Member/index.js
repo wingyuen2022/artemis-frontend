@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import MemberComponent from '../../components/MemberComponent';
 
-const Members = () => {
+const Member = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
@@ -13,9 +13,7 @@ const Members = () => {
     const dispatch = useDispatch();
     dispatch(setTitle("Members"));
 
-    useEffect(()=>{
-        
-    }, []);
+  useEffect(() => {}, []);
 
     const renderHTML = () => {
         return (
@@ -26,7 +24,7 @@ const Members = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col">z
                         <Button onClick={()=>{
                             navigate('/view/trip');
                         }}>Back</Button>
@@ -36,6 +34,6 @@ const Members = () => {
         )
     };
 
-    return renderHTML();
+  return renderHTML();
 };
-export default Members;
+export default Member;
