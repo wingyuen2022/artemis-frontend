@@ -1,5 +1,5 @@
 import { FaMapMarkedAlt, FaCheckCircle } from "react-icons/fa";
-
+import { TiWeatherPartlySunny } from "react-icons/ti";
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import { RiMessage2Fill } from "react-icons/ri";
 
@@ -21,6 +21,12 @@ export const SidebarData = [
         title: 'Checklist',
         path: '/view/Checklist',
         icon: <FaCheckCircle />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Weather',
+        path: '/view/Weather',
+        icon: <TiWeatherPartlySunny />,
         cName: 'nav-text'
     },
     {

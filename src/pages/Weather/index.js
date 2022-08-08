@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import WeatherComponent from '../../components/WeatherComponent';
+import './weather.css';
+import React, { useEffect, useState, Spinner } from "react";
+import WeatherComponent from "../../components/WeatherComponent";
 
-const Weather = () => {
-    //const { xxx } = useParams();
-    //const [ curXXX, setCurXXX] = useState(null);
+export default function Weather() {
+  
+  const [lat, setLat] = useState([]);
+  const [lon, setLon] = useState([]);
+  const [data, setData] = useState([]);
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLon(position.coords.longitude);
+      });
 
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    useEffect(()=>{
-        
-    }, []);
-
-    const renderHTML = () => {
-        return (
-            <>
-                <div className="row">
-                    <div className="col">
-                        <h1>View weather</h1>
-                    </div>
-                    <div className="col">
-                        <WeatherComponent />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                    </div>
-                </div>
-            </>
-        )
-    };
-
-    return renderHTML();
-};
-export default Weather;
+      await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${lon}&units=metric&q=London&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
+      .then(res => res.json())
+      .then(result => {
+        setData(result)
+        console.log(result);
+      });
+    }
+    fetchData();
+  }, [lat,lon])
+  
+  return (
+    <div className="weather-app">
+        <h1>Weather Forecast</h1>
+      {(typeof data.main != 'undefined') ? (
+        <WeatherComponent weatherData={data}/>
+      ) : (
+        <div><WeatherComponent weatherData={data}/></div>
+      )}
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    </div>
+  );
+}
