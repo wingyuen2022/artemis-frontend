@@ -5,7 +5,7 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const ChecklistForm = () => {
+const ChecklistForm = ({newForm}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
@@ -41,7 +41,7 @@ const ChecklistForm = () => {
                             alert('deleted');
                             navigate('/view/checklist');
                         }
-                    }}>Delete</Button>
+                    }} hidden={newForm}>Delete</Button>
                     <Button onClick={()=>{
                         alert('saved');
                         navigate('/view/checklist');

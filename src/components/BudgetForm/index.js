@@ -5,14 +5,13 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const BudgetForm = () => {
+const BudgetForm = ({newForm}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const chat = useSelector(state => state.chatReducer);
 
     useEffect(()=>{
-        
     }, []);
 
     const renderHTML = () => {
@@ -34,7 +33,7 @@ const BudgetForm = () => {
                             alert('deleted');
                             navigate('/view/budget');
                         }
-                    }}>Delete</Button>
+                    }} hidden={newForm}>Delete</Button>
                     <Button onClick={()=>{
                         alert('saved');
                         navigate('/view/budget');
