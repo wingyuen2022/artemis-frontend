@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import MemberForm from '../../components/MemberForm';
 
 const Member = () => {
-    //const { xxx } = useParams();
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Member = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <MemberForm newForm={false} />
+                        <MemberForm id={id} />
                     </div>
                 </div>
             </>

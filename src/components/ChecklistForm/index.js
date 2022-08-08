@@ -5,7 +5,7 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const ChecklistForm = ({newForm}) => {
+const ChecklistForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
@@ -20,17 +20,20 @@ const ChecklistForm = ({newForm}) => {
         <>
             <div className="row">
                 <div className="col">
-                    <input id="id" type="number" name="id" hidden/><br />
-                    <input id="item" type="text" name="item" maxlength="20" placeholder="Item"/><br />
-                    <input id="remark" type="text" name="remark" maxlength="1024" placeholder="remark"/><br />
-                    <label for="personInCharge"><b>Who-in-charge:</b></label>
-                    <select id="personInCharge" name="personInCharge">
+                    <b>Item:</b><input id="item" type="text" name="item" maxLength="20" placeholder="Item"/><br />
+                    <b>Remark:</b><input id="remark" type="text" name="remark" maxLength="1024" placeholder="Remark"/><br />
+                    <b>Who-in-charge:</b><select id="personInCharge" name="personInCharge">
                         <option value="Wing">Wing</option>
                         <option value="Edgar">Edgar</option>
                         <option value="Sam">Sam</option>
                         <option value="Nathan">Nathan</option>
                         <option value="Summira">Summira</option>
                     </select><br />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <input id="id" type="number" name="id" hidden/><br />
                     <Button onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
                             navigate('/view/checklist');
@@ -41,7 +44,7 @@ const ChecklistForm = ({newForm}) => {
                             alert('deleted');
                             navigate('/view/checklist');
                         }
-                    }} hidden={newForm}>Delete</Button>
+                    }} hidden={id === null}>Delete</Button>
                     <Button onClick={()=>{
                         alert('saved');
                         navigate('/view/checklist');

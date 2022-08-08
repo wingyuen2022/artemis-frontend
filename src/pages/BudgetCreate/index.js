@@ -22,7 +22,7 @@ const Budget = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <BudgetForm newForm={true} />
+                        <BudgetForm id={null} />
                     </div>
                 </div>
             </>

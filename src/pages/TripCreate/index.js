@@ -22,7 +22,7 @@ const Trip = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <TripForm newForm={true} />
+                        <TripForm id={null} />
                     </div>
                 </div>
             </>

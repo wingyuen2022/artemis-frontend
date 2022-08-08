@@ -20,10 +20,13 @@ const BudgetComponent = () => {
         <>
             <div className="row">
                 <div className="col">
-                    <b>Budget Header 1</b>
+                    <b>Item</b>
                 </div>
                 <div className="col">
-                    <b>Budget Header 2</b>
+                    <b>Price</b>
+                </div>
+                <div className="col">
+                    <b>Remark</b>
                 </div>
                 <div className="col">
                     <b>Action</b>
@@ -31,14 +34,17 @@ const BudgetComponent = () => {
             </div>
             <div className="row">
                 <div className="col">
-                    Budget Data 1
+                    Rental Car
                 </div>
                 <div className="col">
-                    Budget Data 2
+                    1000
+                </div>
+                <div className="col">
+                    We booked a SUV
                 </div>
                 <div className="col">
                     <Button onClick={()=>{
-                        navigate('/edit/budget');
+                        navigate('/edit/budget/1');
                     }}>Edit</Button>
                 </div>
             </div>

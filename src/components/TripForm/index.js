@@ -5,7 +5,7 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const TripForm = ({newForm}) => {
+const TripForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
@@ -23,7 +23,7 @@ const TripForm = ({newForm}) => {
                     <b>Trip name:</b>
                 </div>
                 <div className="col">
-                    <input id="name" type="text" name="name" maxlength="20" placeholder="Name"/><br />
+                    <input id="name" type="text" name="name" maxLength="20" placeholder="Name"/><br />
                 </div>
             </div>
             <div className="row">
@@ -33,7 +33,7 @@ const TripForm = ({newForm}) => {
                 <div className="col">
                     <div className="row">
                         <div className="col">
-                            <input type="radio" id="public" name="public" value="true" default></input><label for="public">Public</label>
+                            <input type="radio" id="public" name="public" value="true" checked></input><label for="public">Public</label>
                         </div>
                         <div className="col">
                             <input type="radio" id="private" name="public" value="false"></input><label for="private">Private</label>
@@ -46,7 +46,7 @@ const TripForm = ({newForm}) => {
                     <b>Location:</b>
                 </div>
                 <div className="col">
-                    <input id="location" type="text" name="location" maxlength="20" placeholder="Location"/><br />
+                    <input id="location" type="text" name="location" maxLength="20" placeholder="Location"/><br />
                 </div>
             </div>
             <div className="row">
@@ -78,7 +78,7 @@ const TripForm = ({newForm}) => {
                             alert('deleted');
                             navigate('/view/home');
                         }
-                    }} hidden={newForm}>Delete</Button>
+                    }} hidden={id === null}>Delete</Button>
                     <Button onClick={()=>{
                         alert('saved');
                         navigate('/view/trip/1');

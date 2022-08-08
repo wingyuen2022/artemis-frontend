@@ -14,17 +14,17 @@ export default function App() {
                         <Route path="/view/settings" element={<Pages.Settings />} />
                         <Route path="/view/budget" element={<Pages.Budget />} />
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
-                        <Route path="/edit/budget" element={<Pages.BudgetUpdate />} />
+                        <Route path="/edit/budget/:id" element={<Pages.BudgetUpdate />} />
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
                         <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
-                        <Route path="/edit/checklist" element={<Pages.ChecklistUpdate />} />
+                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
                         <Route path="/view/itinerary" element={<Pages.Itinerary />} />
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
-                        <Route path="/edit/member" element={<Pages.MemberUpdate />} />
+                        <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />
                         <Route path="/view/trip/:id" element={<Pages.Trip />} />
                         <Route path="/new/trip" element={<Pages.TripCreate />} />
-                        <Route path="/edit/trip" element={<Pages.TripUpdate />} />
+                        <Route path="/edit/trip/:id" element={<Pages.TripUpdate />} />
                         <Route path="/view/weather" element={<Pages.Weather />} />
                         <Route path="*" element={<Pages.NotFound />} />
                     </Route>

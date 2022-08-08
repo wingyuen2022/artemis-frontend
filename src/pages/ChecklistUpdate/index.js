@@ -6,21 +6,12 @@ import Button from 'react-bootstrap/Button';
 import ChecklistForm from '../../components/ChecklistForm';
 
 const Checklist = () => {
-    //const { xxx } = useParams();
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     dispatch(setTitle("Edit Check List"));
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/checklist');
-	};
 
     useEffect(()=>{
         
@@ -31,7 +22,7 @@ const Checklist = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <ChecklistForm newForm={false} />
+                        <ChecklistForm id={id} />
                     </div>
                 </div>
             </>

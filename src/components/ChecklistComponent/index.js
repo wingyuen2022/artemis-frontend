@@ -20,10 +20,13 @@ const ChecklistComponent = () => {
         <>
             <div className="row">
                 <div className="col">
-                    <b>Checklist Header 1</b>
+                    <b>Item</b>
                 </div>
                 <div className="col">
-                    <b>Checklist Header 2</b>
+                    <b>Remark</b>
+                </div>
+                <div className="col">
+                    <b>Pseron-in-charge</b>
                 </div>
                 <div className="col">
                     <b>Action</b>
@@ -31,14 +34,17 @@ const ChecklistComponent = () => {
             </div>
             <div className="row">
                 <div className="col">
-                    Checklist Data 1
+                    Prepare and bring the tents
                 </div>
                 <div className="col">
-                    Checklist Data 2
+                    3 tents in total
+                </div>
+                <div className="col">
+                    Wing
                 </div>
                 <div className="col">
                     <Button onClick={()=>{
-                        navigate('/edit/checklist');
+                        navigate('/edit/checklist/1');
                     }}>Edit</Button>
                 </div>
             </div>
