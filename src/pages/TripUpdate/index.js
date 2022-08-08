@@ -3,25 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MapComponent from '../../components/MapComponent';
-import MapForm from '../../components/MapForm';
+import TripForm from '../../components/TripForm';
 
-const Map = () => {
+const Trip = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Edit Map"));
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/map');
-	};
+    dispatch(setTitle("Edit Trip"));
 
     useEffect(()=>{
         
@@ -32,14 +22,7 @@ const Map = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <MapComponent />
-                    </div>
-                    <div className="col">
-                        <MapForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
+                        <TripForm />
                     </div>
                 </div>
             </>
@@ -48,4 +31,4 @@ const Map = () => {
 
     return renderHTML();
 };
-export default Map;
+export default Trip;

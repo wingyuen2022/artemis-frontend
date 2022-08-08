@@ -33,10 +33,6 @@ const Budget = () => {
                     <div className="col">
                         <BudgetForm />
                     </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
-                    </div>
                 </div>
             </>
         )

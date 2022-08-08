@@ -13,15 +13,6 @@ const Member = () => {
     const dispatch = useDispatch();
     dispatch(setTitle("Edit Member"));
 
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/member');
-	};
-
     useEffect(()=>{
         
     }, []);
@@ -32,10 +23,6 @@ const Member = () => {
                 <div className="row">
                     <div className="col">
                         <MemberForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
                     </div>
                 </div>
             </>

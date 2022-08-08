@@ -1,46 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MapComponent from '../../components/MapComponent';
+import MemberComponent from '../../components/MemberComponent';
 
-const Map = () => {
+const Member = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Map"));
+    dispatch(setTitle("Members"));
 
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleEdit = () => {
-        navigate('/edit/map');
-	};
-
-    useEffect(()=>{
-        
-    }, []);
+  useEffect(() => {}, []);
 
     const renderHTML = () => {
         return (
             <>
                 <div className="row">
                     <div className="col">
-                        <MapComponent />
+                        <MemberComponent />
                     </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleEdit}>Edit</Button>
+                </div>
+                <div className="row">
+                    <div className="col">z
+                        <Button onClick={()=>{
+                            navigate('/view/trip');
+                        }}>Back</Button>
                     </div>
                 </div>
             </>
         )
     };
 
-    return renderHTML();
+  return renderHTML();
 };
-export default Map;
+export default Member;

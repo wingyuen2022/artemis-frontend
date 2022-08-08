@@ -13,15 +13,6 @@ const Checklist = () => {
     const dispatch = useDispatch();
     dispatch(setTitle("New Check List"));
 
-    const handleBack = () => {
-		navigate('/new/budget');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/');
-	};
-
     useEffect(()=>{
         
     }, []);
@@ -32,10 +23,6 @@ const Checklist = () => {
                 <div className="row">
                     <div className="col">
                         <ChecklistForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
                     </div>
                 </div>
             </>

@@ -3,24 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import DurationForm from '../../components/DurationForm';
+import TripForm from '../../components/TripForm';
 
-const Duration = () => {
+const Trip = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Edit Duration"));
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/duration');
-	};
+    dispatch(setTitle("New Trip"));
 
     useEffect(()=>{
         
@@ -31,11 +22,7 @@ const Duration = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <DurationForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
+                        <TripForm />
                     </div>
                 </div>
             </>
@@ -44,4 +31,4 @@ const Duration = () => {
 
     return renderHTML();
 };
-export default Duration;
+export default Trip;
