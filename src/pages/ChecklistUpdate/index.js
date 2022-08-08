@@ -31,7 +31,7 @@ const Checklist = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <ChecklistForm />
+                        <ChecklistForm newForm={false} />
                     </div>
                 </div>
             </>

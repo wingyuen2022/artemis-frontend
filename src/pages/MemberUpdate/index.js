@@ -22,7 +22,7 @@ const Member = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <MemberForm />
+                        <MemberForm newForm={false} />
                     </div>
                 </div>
             </>

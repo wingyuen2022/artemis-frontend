@@ -31,7 +31,7 @@ const Budget = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <BudgetForm />
+                        <BudgetForm newForm={false} />
                     </div>
                 </div>
             </>

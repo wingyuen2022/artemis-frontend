@@ -5,7 +5,7 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const TripForm = () => {
+const TripForm = ({newForm}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
@@ -78,7 +78,7 @@ const TripForm = () => {
                             alert('deleted');
                             navigate('/view/home');
                         }
-                    }}>Delete</Button>
+                    }} hidden={newForm}>Delete</Button>
                     <Button onClick={()=>{
                         alert('saved');
                         navigate('/view/trip/1');
