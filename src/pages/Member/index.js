@@ -24,9 +24,9 @@ const Member = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">z
+                    <div className="col">
                         <Button onClick={()=>{
-                            navigate('/view/trip');
+                            navigate('/view/trip/1');
                         }}>Back</Button>
                     </div>
                 </div>

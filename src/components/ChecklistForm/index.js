@@ -31,6 +31,11 @@ const ChecklistForm = () => {
                         <option value="Nathan">Nathan</option>
                         <option value="Summira">Summira</option>
                     </select><br />
+                    <Button onClick={()=>{
+                        if (window.confirm("Confirm without saving?")) {
+                            navigate('/view/checklist');
+                        }
+                    }}>Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');

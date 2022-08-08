@@ -24,6 +24,11 @@ const BudgetForm = () => {
                     <input id="item" type="text" name="item" maxlength="20" placeholder="Item"/><br />
                     <input id="price" type="number" name="price" default="0" placeholder="Price"/><br />
                     <input id="remark" type="text" name="remark" maxlength="1024" placeholder="remark"/><br />
+                    <Button onClick={()=>{
+                        if (window.confirm("Confirm without saving?")) {
+                            navigate('/view/budget');
+                        }
+                    }}>Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');

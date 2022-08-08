@@ -28,7 +28,7 @@ const Trip = () => {
                 <div className="row">
                     <div className="col">
                         <Button onClick={()=>{
-                            navigate('/view/trip');
+                            navigate('/view/home');
                         }}>Back</Button>
                     </div>
                 </div>
