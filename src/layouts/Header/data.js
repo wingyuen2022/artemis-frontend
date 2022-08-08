@@ -1,5 +1,5 @@
-import { FaMapMarkedAlt } from "react-icons/fa";
-import { FcCheckmark } from "react-icons/fc";
+import { FaMapMarkedAlt, FaCheckCircle } from "react-icons/fa";
+
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import { RiMessage2Fill } from "react-icons/ri";
 
@@ -19,8 +19,8 @@ export const SidebarData = [
     },
     {
         title: 'Checklist',
-        path: '/Checklist',
-        icon: <FcCheckmark />,
+        path: '/view/Checklist',
+        icon: <FaCheckCircle />,
         cName: 'nav-text'
     },
     {

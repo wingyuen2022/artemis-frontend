@@ -1,45 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import ChecklistComponent from '../../components/ChecklistComponent';
+import { ChecklistEditItemBtn, BackBtn } from "../../components/Buttons";
+import "./Checklist.css";
 
 const Checklist = () => {
-    //const { xxx } = useParams();
-    //const [ curXXX, setCurXXX] = useState(null);
 
-    const navigate = useNavigate();
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleEdit = () => {
-		navigate('/edit/checklist');
-	};
-
-    useEffect(()=>{
-        
-    }, []);
-
-    const renderHTML = () => {
         return (
             <>
-                <div className="row">
-                    <div className="col">
-                        <h1>View checklist</h1>
+                <div className="col">
+                    <div className="header">
+                        <h1>Checklist</h1>
                     </div>
-                    <div className="col">
+                    <div className="component-container">
                         <ChecklistComponent />
                     </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleEdit}>Edit</Button>
+                    <div className="checklist-btns">
+                        <BackBtn />
+                        <ChecklistEditItemBtn />
                     </div>
                 </div>
             </>
         )
     };
 
-    return renderHTML();
-};
 export default Checklist;
