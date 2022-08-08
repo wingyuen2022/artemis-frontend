@@ -17,8 +17,8 @@ export default function App() {
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
                         <Route path="/edit/budget" element={<Pages.BudgetUpdate />} />
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
-                        <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
-                        <Route path="/edit/checklist" element={<Pages.ChecklistUpdate />} />
+                        {/* <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
+                        <Route path="/edit/checklist" element={<Pages.ChecklistUpdate />} /> */}
                         <Route path="/view/duration" element={<Pages.Duration />} />
                         <Route path="/new/duration" element={<Pages.DurationCreate />} />
                         <Route path="/update/duration" element={<Pages.DurationUpdate />} />
