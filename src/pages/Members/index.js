@@ -5,21 +5,20 @@ import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import MemberForm from '../../components/MemberForm';
 
-const Member = () => {
+const Members = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Edit Member"));
+    dispatch(setTitle("Members"));
 
     const handleBack = () => {
 		navigate('-1');
 	};
 
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/member');
+    const handleEdit = () => {
+		navigate('/edit/member');
 	};
 
     useEffect(()=>{
@@ -35,7 +34,7 @@ const Member = () => {
                     </div>
                     <div className="col">
                         <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
+                        <Button onClick={handleEdit}>Edit</Button>
                     </div>
                 </div>
             </>
@@ -44,4 +43,4 @@ const Member = () => {
 
     return renderHTML();
 };
-export default Member;
+export default Members;

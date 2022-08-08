@@ -13,7 +13,7 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'My Current Trips',
+        title: 'Current Trips',
         path: '/CurrentTrips',
         icon: <FaMapMarkedAlt />,
         cName: 'nav-text'

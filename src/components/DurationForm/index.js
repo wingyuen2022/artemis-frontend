@@ -3,7 +3,7 @@ import { wait } from '../../util/util.js';
 import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const MemberComponent = () => {
+const DurationForm = () => {
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const chat = useSelector(state => state.chatReducer);
@@ -15,7 +15,7 @@ const MemberComponent = () => {
     const renderHTML = () => {
     return (
         <>
-            <h1>Member Component</h1>
+            <h1>Duration Form</h1>
         </>
         );
     };
@@ -23,4 +23,4 @@ const MemberComponent = () => {
     return renderHTML();
 }
 
-export default MemberComponent;
+export default DurationForm;

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MemberComponent from '../../components/MemberComponent';
+import MemberForm from '../../components/MemberForm';
 
 const Member = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("New Member"));
 
 	const handleNext = () => {
 		navigate('/new/duration');
@@ -22,10 +26,7 @@ const Member = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <h1>Add member</h1>
-                    </div>
-                    <div className="col">
-                        <MemberComponent />
+                        <MemberForm />
                     </div>
                     <div className="col">
                         <Button onClick={handleNext}>Next</Button>

@@ -3,7 +3,7 @@ import { wait } from '../../util/util.js';
 import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 
-const ChecklistComponent = () => {
+const BudgetForm = () => {
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const chat = useSelector(state => state.chatReducer);
@@ -15,7 +15,7 @@ const ChecklistComponent = () => {
     const renderHTML = () => {
     return (
         <>
-            <h1>Checklist Component</h1>
+            <h1>Budget Form</h1>
         </>
         );
     };
@@ -23,4 +23,4 @@ const ChecklistComponent = () => {
     return renderHTML();
 }
 
-export default ChecklistComponent;
+export default BudgetForm;
