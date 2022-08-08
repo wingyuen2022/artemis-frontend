@@ -1,3 +1,17 @@
+export const setChat = (chat) => {
+    return {
+        type: "SET_CHAT",
+        payload: chat
+    }
+};
+
+export const setTitle = (title) => {
+    return {
+        type: "SET_TITLE",
+        payload: title
+    }
+};
+
 export const setTrip = (trip) => {
     return {
         type: "SET_TRIP",
@@ -5,9 +19,9 @@ export const setTrip = (trip) => {
     }
 };
 
-export const setChat = (chat) => {
+export const setUser = (user) => {
     return {
-        type: "SET_CHAT",
-        payload: chat
+        type: "SET_USER",
+        payload: user
     }
 };

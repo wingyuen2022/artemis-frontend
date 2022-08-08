@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
+import Button from 'react-bootstrap/Button';
 import WeatherComponent from '../../components/WeatherComponent';
 
 const Weather = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Weather"));
+
+    const handleBack = () => {
+		navigate('-1');
+	};
 
     useEffect(()=>{
         
@@ -13,8 +24,14 @@ const Weather = () => {
     const renderHTML = () => {
         return (
             <>
-                <h1>Weather</h1>
-                <WeatherComponent />
+                <div className="row">
+                    <div className="col">
+                        <WeatherComponent />
+                    </div>
+                    <div className="col">
+                        <Button onClick={handleBack}>Back</Button>
+                    </div>
+                </div>
             </>
         )
     };

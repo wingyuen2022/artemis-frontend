@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import BudgetComponent from '../../components/BudgetComponent';
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
+import Button from 'react-bootstrap/Button';
+import BudgetForm from '../../components/BudgetForm';
 
 const Budget = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Edit Budget"));
+
+    const handleBack = () => {
+		navigate('-1');
+	};
+
+    const handleSave = () => {
+		alert('save');
+        navigate('/view/budget');
+	};
 
     useEffect(()=>{
         
@@ -13,8 +29,11 @@ const Budget = () => {
     const renderHTML = () => {
         return (
             <>
-                <h1>Budget</h1>
-                <BudgetComponent />
+                <div className="row">
+                    <div className="col">
+                        <BudgetForm />
+                    </div>
+                </div>
             </>
         )
     };

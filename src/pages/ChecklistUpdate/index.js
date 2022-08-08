@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import ChecklistComponent from '../../components/ChecklistComponent';
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
+import Button from 'react-bootstrap/Button';
+import ChecklistForm from '../../components/ChecklistForm';
 
 const Checklist = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Edit Check List"));
+
+    const handleBack = () => {
+		navigate('-1');
+	};
+
+    const handleSave = () => {
+		alert('save');
+        navigate('/view/checklist');
+	};
 
     useEffect(()=>{
         
@@ -13,8 +29,11 @@ const Checklist = () => {
     const renderHTML = () => {
         return (
             <>
-                <h1>Checklist</h1>
-                <ChecklistComponent />
+                <div className="row">
+                    <div className="col">
+                        <ChecklistForm />
+                    </div>
+                </div>
             </>
         )
     };
