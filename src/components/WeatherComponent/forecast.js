@@ -1,71 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import './weather.css';
-/*import {
-  WiCloud,
-  WiThunderstorm,
-  WiRain,
-  WiShowers,
-  WiSnowflakeCold,
-  WiDaySunny,
-  WiSmog,
-} from 'react-icons/wi';
-import styled from 'styled-components';*/
 
+export default function Forecast({lat, long}) {
+    const [forecast, setForecast] = useState(null);
+    const [display, setDisplay] = useState(null);
 
-export default function Forecast({forecast}) {
+    useEffect(()=>{
+        let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
+        //let domain = `http://127.0.0.1:8000/api/`;
+        let url = domain + `forecast/lat=${lat}&long=${long}`;
+        fetch(url)
+        .then(res => res.json())
+        .then((res) => {
+            setForecast(res);
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, []);
 
-  /*const WeatherIcon = styled.div`
-  color: whitesmoke;
-`;
-
-  const { forecast } = props;
-
-  console.log("Forecast", forecast);*/
-
-  const results = forecast.map((item, index) => {
-
-    /*let weatherIcon = null;
-
-    if (item.description === 'Thunderstorm') {
-      weatherIcon = {WiThunderstorm} ;
-    }else if (item.description === 'Drizzle') {
-      weatherIcon = {WiShowers} ;
-    } else if (item.description === 'Rain') {
-      weatherIcon = {WiRain} ;
-    } else if (item.description === 'Snow') {
-      weatherIcon = {WiSnowflakeCold};
-    } else if (item.description === 'Clear') {
-      weatherIcon = {WiDaySunny} ;
-    } else if (item.description === 'Clouds') {
-      weatherIcon = {WiCloud};
-    } else {
-      weatherIcon = {WiSmog} ;
-    }*/
-
+    useEffect(()=>{
+        if (forecast !== null) {
+            setDisplay(forecast.list.map((item, index) => {
+                if (index < 15) {
+                return (
+                    <div key={index} className="forecast">
+                        <Row>
+                            <Col>{moment(item.dt_txt).format("DD/MM")}</Col>
+                            <Col>{moment(item.dt_txt).format("ddd")}</Col>
+                            <Col>{moment(item.dt_txt).format("HH:mm")}</Col>
+                            <Col><img src ={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt="wthr img" /></Col>
+                            <Col>{item.main.temp}</Col>
+                            <Col>{item.main.humidity} %</Col>
+                        </Row>
+                    </div>
+                )}
+            }));
+        }
+    }, [forecast]);
+  
     return (
-      <div key={index} className="forecast">
-        <div className="flex-forecast">
-        <p>{moment(item.dt_txt).format("dddd")}</p>
-        <img src ={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt="wthr img" />
-        <p>
-          {item.main.temp} &deg;C
-        </p>
-        <p>
-          {item.main.humidity} %
-        </p>
-        </div>
-      </div>
-    )
-  })
-  
-  return(
-    <div>
-      <ul aria-label="forecast data">
-        <li>{results}</li>
-      </ul>
-    </div>
-  );
-  
+        <>
+            {(display !== null) ? (
+                <div>
+                    <ul aria-label="forecast data">
+                        <li>
+                            <div key='-1' className="forecast">
+                                <Row>
+                                    <Col>Date</Col>
+                                    <Col></Col>
+                                    <Col>Hour</Col>
+                                    <Col>Weather</Col>
+                                    <Col>&deg;C</Col>
+                                    <Col>%</Col>
+                                </Row>
+                            </div>
+                        </li>
+                        <li>{display}</li>
+                    </ul>
+                </div>
+            ):(<p></p>)}
+        </>
+    );  
 }
-// <WeatherIcon style={{fontSize:25,marginTop:4}}>{weatherIcon}</WeatherIcon>
