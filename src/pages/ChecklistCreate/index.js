@@ -22,7 +22,7 @@ const Checklist = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <ChecklistForm />
+                        <ChecklistForm id={null} />
                     </div>
                 </div>
             </>

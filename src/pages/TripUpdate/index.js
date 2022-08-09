@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import TripForm from '../../components/TripForm';
 
 const Trip = () => {
-    //const { xxx } = useParams();
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Trip = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <TripForm />
+                        <TripForm id={id} />
                     </div>
                 </div>
             </>

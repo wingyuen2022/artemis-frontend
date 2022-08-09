@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import TripComponent from '../../components/TripComponent';
 
 const Trip = () => {
-    //const { xxx } = useParams();
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
     
     const navigate = useNavigate();
