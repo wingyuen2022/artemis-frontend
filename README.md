@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ffd3b538-e8b3-48bc-9d4b-86c0dee84a33/deploy-status)](https://app.netlify.com/sites/artemis-camping/deploys)
+
+
+# Artemis Camping App - Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
