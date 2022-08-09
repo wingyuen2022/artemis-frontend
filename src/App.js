@@ -29,7 +29,7 @@ export default function App() {
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
                         <Route path="/edit/member" element={<Pages.MemberUpdate />} />
-                        <Route path="/view/weather" element={<Pages.Weather />} />
+                        <Route path="/view/weatherapp" element={<Pages.WeatherApp />}></Route>
                         <Route path="*" element={<Pages.NotFound />} />
                     </Route>
                 </Routes>

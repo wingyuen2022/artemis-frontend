@@ -25,7 +25,7 @@ export const SidebarData = [
     },
     {
         title: 'Weather',
-        path: '/view/Weather',
+        path: '/view/WeatherApp',
         icon: <TiWeatherPartlySunny />,
         cName: 'nav-text'
     },

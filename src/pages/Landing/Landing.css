@@ -1,15 +1,17 @@
 .landing-container, .auth-container {
+    box-sizing: content-box;
     position: relative;
     display: flex;
     flex-direction: column;
     margin: auto;
-    /* background-color: #efddb7; */
     background-image: url("../../assets/animations/101541-circle-day.gif");
+    background-color: #efddb7;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100%;
+    height: 100vh;
     padding: 10px 0;
+    font-family: 'Nanum Pen Script', cursive;
 }
 .auth-container {
     background: transparent;
@@ -17,6 +19,8 @@
 
 .landing-container > h1, h3 {
     color: darkgreen;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .logo-container {
@@ -32,35 +36,45 @@
 }
 
 .auth-form {
+    font-family: 'Nanum Pen Script', cursive;
     display: flex;
     flex-direction: column;
-    max-width: 90%;
-    margin: auto;
-    /* border: 2px darkgreen solid; */
-    /* box-shadow: 2px 2px 3px darkgreen; */
+    width: 20rem;
+    margin: 0 auto;
+    background-color: #9ab4a9;
+    opacity: 0.9;
+    border: 2px darkgreen solid;
     border-radius: 20px;
     padding: 10px;
 }
 
 .auth-label, p {
-    color: #fff;
-    padding: 5px;
-    font-family: '', serif;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    color: #008037;
+    text-shadow: 1px 1px black;
+    background-color: inherit;
+    letter-spacing: 1.5px;
 }
 
 .auth-btn {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    text-transform: uppercase;
+    height: auto;
+    width: 90%;
     margin: auto;
     background-color: #008037;
     color: #fff;
-    padding: 10px;
     border-radius: 30px;
     border: none;
-    text-transform: uppercase;
-    width: 90%;
+    
 }
 
 .auth-input {
+    font-family: 'Lato', sans-serif;
     margin: 5px auto;
+    height: auto;
     padding: 10px;
     border-radius: 30px;
     border: 1px darkgreen solid;    
@@ -75,7 +89,6 @@
 
 .logo {
     animation: jello-vertical .9s both;
-    /* animation-delay: 1s; */
     animation-timing-function: ease;
     animation-iteration-count: 1;
   }

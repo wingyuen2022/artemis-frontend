@@ -7,10 +7,10 @@ const Checklist = () => {
         return (
             <>
                 <div className="col">
-                    <div className="header">
-                        <h1>Checklist</h1>
+                    <div>
+                        <h1 className="checklist-header">Checklist</h1>
                     </div>
-                    <div className="component-container">
+                    <div className="checklist-container">
                         <ChecklistComponent />
                     </div>
                     <div className="checklist-btns">

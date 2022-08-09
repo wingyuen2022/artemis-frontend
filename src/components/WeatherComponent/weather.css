@@ -1,23 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 
-.weather-card {
-    max-width: 700px;
-    border-radius: 15px;
+.main{
+    width: 700px;
+    border-radius: 20px;
     background-color: #01579b;
+}
+
+.top{
+    height: 60px;
+    background-color: #424242;
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Recursive', sans-serif;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header{
     background-color: #424242;
     color: whitesmoke;
-    padding: 10px;
-    font-size: 28px;
-    border-radius: 15px;
+    margin: 10px 0px 0px 10px;
+    font-size: 25px;
+    border-radius: 20px 20px 0 0;
     font-family: 'Recursive', sans-serif;
-}
-
-.button{
-    width: 35px;
-    height: 35px;
 }
 
 .day{
@@ -53,4 +59,24 @@
     font-family: 'Recursive', sans-serif;
     font-size: 24px;
     font-weight: 600;
+}
+
+.button{
+    width: 35px;
+    height: 35px;
+}
+
+.forecast{
+    border-radius: 20px;
+    background-color: #01579b;
+    color: whitesmoke;
+    padding: 10px;
+    margin: 10px;
+    font-family: 'Recursive', sans-serif;
+    font-size: 19px;
+}
+
+.flex-forecast{
+    display: flex;
+    justify-content: space-between;
 }

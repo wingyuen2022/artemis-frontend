@@ -1,5 +1,15 @@
-.header {
+.checklist-header {
     text-transform: uppercase;
-    color: brown;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+    letter-spacing: 1.5px;
+    color: #a56953;
     font-family: 'Nanum Pen Script', cursive;
+}
+
+.checklist-container {
+    position: relative;
+    height: 100%;
+    opacity: 0.9;
 }
