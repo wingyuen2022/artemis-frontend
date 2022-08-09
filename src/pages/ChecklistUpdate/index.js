@@ -3,15 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import BudgetComponent from '../../components/BudgetComponent';
+import ChecklistForm from '../../components/ChecklistForm';
 
-const Budget = () => {
-    //const { xxx } = useParams();
+const Checklist = () => {
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
-    
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Budget"));
+    dispatch(setTitle("Edit Check List"));
 
     useEffect(()=>{
         
@@ -22,14 +22,7 @@ const Budget = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <BudgetComponent />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <Button onClick={()=>{
-                            navigate('/view/trip/1');
-                        }}>Back</Button>
+                        <ChecklistForm id={id} />
                     </div>
                 </div>
             </>
@@ -38,4 +31,4 @@ const Budget = () => {
 
     return renderHTML();
 };
-export default Budget;
+export default Checklist;

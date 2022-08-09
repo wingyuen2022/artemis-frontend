@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MemberComponent from '../../components/MemberComponent';
+import MemberForm from '../../components/MemberForm';
 
 const Member = () => {
-    //const { xxx } = useParams();
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleSave = () => {
-		alert('save');
-        navigate('/view/member');
-	};
+    const dispatch = useDispatch();
+    dispatch(setTitle("Edit Member"));
 
     useEffect(()=>{
         
@@ -27,14 +22,7 @@ const Member = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <h1>Edit member</h1>
-                    </div>
-                    <div className="col">
-                        <MemberComponent />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleSave}>Save</Button>
+                        <MemberForm id={id} />
                     </div>
                 </div>
             </>

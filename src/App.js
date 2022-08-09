@@ -9,26 +9,28 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Pages.Landing />} />
-                        <Route path="/Home" element={<Pages.Home />} />
-                        <Route path="/CurrentTrips" element={<Pages.CurrentTrips />} />
-                        <Route path="/Messaging" element={<Pages.Messaging />} />
-                        <Route path="/Settings" element={<Pages.Settings />} />
+                        <Route path="/view/home" element={<Pages.Home />} />
+                        <Route path="/view/messaging" element={<Pages.Messaging />} />
+                        <Route path="/view/settings" element={<Pages.Settings />} />
                         <Route path="/view/budget" element={<Pages.Budget />} />
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
-                        <Route path="/edit/budget" element={<Pages.BudgetUpdate />} />
+                        <Route path="/edit/budget/:id" element={<Pages.BudgetUpdate />} />
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
-                        {/* <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
-                        <Route path="/edit/checklist" element={<Pages.ChecklistUpdate />} /> */}
-                        <Route path="/view/duration" element={<Pages.Duration />} />
+                        <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
+                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
+                        {/* <Route path="/view/duration" element={<Pages.Duration />} />
                         <Route path="/new/duration" element={<Pages.DurationCreate />} />
-                        <Route path="/update/duration" element={<Pages.DurationUpdate />} />
+                        <Route path="/update/duration" element={<Pages.DurationUpdate />} /> */}
                         <Route path="/view/litnerary" element={<Pages.Itinerary />} />
-                        <Route path="/view/map" element={<Pages.Map />} />
+                        {/* <Route path="/view/map" element={<Pages.Map />} />
                         <Route path="/new/map" element={<Pages.MapCreate />} />
-                        <Route path="/edit/map" element={<Pages.MapUpdate />} />
+                        <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
-                        <Route path="/edit/member" element={<Pages.MemberUpdate />} />
+                        <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />
+                        <Route path="/view/trip/:id" element={<Pages.Trip />} />
+                        <Route path="/new/trip" element={<Pages.TripCreate />} />
+                        <Route path="/edit/trip/:id" element={<Pages.TripUpdate />} />
                         <Route path="/view/weatherapp" element={<Pages.WeatherApp />}></Route>
                         <Route path="*" element={<Pages.NotFound />} />
                     </Route>

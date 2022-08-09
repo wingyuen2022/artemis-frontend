@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import MapComponent from '../../components/MapComponent';
+import ChecklistForm from '../../components/ChecklistForm';
 
-const Map = () => {
+const Checklist = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleEdit = () => {
-        navigate('/edit/map');
-	};
+    const dispatch = useDispatch();
+    dispatch(setTitle("New Check List"));
 
     useEffect(()=>{
         
@@ -26,14 +22,7 @@ const Map = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <h1>View map</h1>
-                    </div>
-                    <div className="col">
-                        <MapComponent />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleEdit}>Edit</Button>
+                        <ChecklistForm id={null} />
                     </div>
                 </div>
             </>
@@ -42,4 +31,4 @@ const Map = () => {
 
     return renderHTML();
 };
-export default Map;
+export default Checklist;

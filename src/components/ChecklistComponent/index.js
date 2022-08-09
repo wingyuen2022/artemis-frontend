@@ -1,16 +1,18 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import CheckListItem from './CheckListItem';
 import ChecklistForm from './ChecklistForm';
 import * as camp from "../../assets/images/camping";
 import "./Checklist.css";
 
 
-const tasks = [{ name: "task1", done: false}]
+const tasks = [{ name: "tent, tent pegs & mallet", done: false}]
 
 const ChecklistComponent = () => {
     const [ items, setItems ] = useState(tasks);
     const [inputValue, setInputValue] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
     let count = 0;
@@ -64,6 +66,44 @@ const ChecklistComponent = () => {
                     </Row>
                 </Fragment>
             </Container>
+
+            <div className="row">
+                <div className="col">
+                    <b>Item</b>
+                </div>
+                <div className="col">
+                    <b>Remark</b>
+                </div>
+                <div className="col">
+                    <b>Person-in-charge</b>
+                </div>
+                <div className="col">
+                    <b>Action</b>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    Prepare and bring the tents
+                </div>
+                <div className="col">
+                    3 tents in total
+                </div>
+                <div className="col">
+                    Wing
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/checklist/1');
+                    }}>Edit</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/new/checklist');
+                    }}>New Checklist</Button>
+                </div>
+            </div>
         </>
         );
     };

@@ -7,7 +7,7 @@ import { RiMessage2Fill } from "react-icons/ri";
 export const SidebarData = [
     {
         title: 'Home',
-        path: '/Home',
+        path: '/view/home',
         icon: <AiFillHome />,
         cName: 'nav-text'
     },
@@ -31,13 +31,13 @@ export const SidebarData = [
     },
     {
         title: 'Messaging',
-        path: '/Messaging',
+        path: '/view/messaging',
         icon: <RiMessage2Fill />,
         cName: 'nav-text'
     },
     {
         title: 'Settings',
-        path: '/Settings',
+        path: '/view/settings',
         icon: <AiFillSetting />,
         cName: 'nav-text'
     },

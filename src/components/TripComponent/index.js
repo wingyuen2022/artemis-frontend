@@ -5,7 +5,7 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const MemberComponent = () => {
+const TripComponent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
@@ -20,67 +20,79 @@ const MemberComponent = () => {
         <>
             <div className="row">
                 <div className="col">
-                    <b>Name</b>
+                    <b>Trip name:</b>
                 </div>
                 <div className="col">
-                    <b>Action</b>
+                    Peak District Trip
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    Wing
+                    <b>Public:</b>
+                </div>
+                <div className="col">
+                    public
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Location:</b>
+                </div>
+                <div className="col">
+                    Peak district
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Start Date:</b>
+                </div>
+                <div className="col">
+                    2022-08-15
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>End Date:</b>
+                </div>
+                <div className="col">
+                    2022-08-21
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Member:</b>
                 </div>
                 <div className="col">
                     <Button onClick={()=>{
-                        navigate('/edit/member/1');
+                        navigate('/view/member');
+                    }}>View Member</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Budget:</b>
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/view/budget');
+                    }}>View Budget</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <b>Checklist:</b>
+                </div>
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/view/checklist');
+                    }}>View Checklist</Button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <Button onClick={()=>{
+                        navigate('/edit/trip/1');
                     }}>Edit</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    Edgar
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/edit/member/2');
-                    }}>Edit</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    Sam
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/edit/member/3');
-                    }}>Edit</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    Nathan
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/edit/member/4');
-                    }}>Edit</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    Summira
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/edit/member/5');
-                    }}>Edit</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/new/member');
-                    }}>New Member</Button>
                 </div>
             </div>
         </>
@@ -90,4 +102,4 @@ const MemberComponent = () => {
     return renderHTML();
 }
 
-export default MemberComponent;
+export default TripComponent;

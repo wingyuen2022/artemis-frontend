@@ -5,7 +5,7 @@ import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
-const HomeCoponent = () => {
+const MemberForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
@@ -20,33 +20,27 @@ const HomeCoponent = () => {
         <>
             <div className="row">
                 <div className="col">
-                    <b>Trip Name</b>
-                </div>
-                <div className="col">
-                    <b>Location</b>
-                </div>
-                <div className="col">
-                    <b>Action</b>
+                    <b>Name:</b><input id="name" type="text" name="name" maxLength="20" placeholder="Name"/><br />
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    Peak District Trip
-                </div>
-                <div className="col">
-                    Peak District
-                </div>
-                <div className="col">
+                    <input id="id" type="number" name="id" hidden/><br />
                     <Button onClick={()=>{
-                        navigate('/view/trip/1');
-                    }}>View</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
+                        if (window.confirm("Confirm without saving?")) {
+                            navigate('/view/member');
+                        }
+                    }}>Back</Button>
+                    <Button variant="danger" onClick={()=>{
+                        if (window.confirm("Confirm to delete?")) {
+                            alert('deleted');
+                            navigate('/view/member');
+                        }
+                    }} hidden={id === null}>Delete</Button>
                     <Button onClick={()=>{
-                        navigate('/new/trip');
-                    }}>New Trip</Button>
+                        alert('saved');
+                        navigate('/view/member');
+                    }}>Save</Button>
                 </div>
             </div>
         </>
@@ -56,4 +50,4 @@ const HomeCoponent = () => {
     return renderHTML();
 }
 
-export default HomeCoponent;
+export default MemberForm;

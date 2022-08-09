@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from './data';
-import './index.css' ;
-
-
+import "./index.css";
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
-  
     const showSidebar = () => setSidebar(!sidebar);
-  
+    const title = useSelector(state => state.titleReducer);
+
     return (
       <>
           <div className='navbar'>
@@ -19,6 +18,9 @@ function Navbar() {
               <FaBars onClick={showSidebar} />
             </Link>
             <h1 id="navbrand"><a className="nav-brand" href="/">Artemis Camping</a></h1>
+
+            <h1 className='menu-title'>{ title }</h1>
+
           </div>
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
             <ul className='nav-menu-items' onClick={showSidebar}>

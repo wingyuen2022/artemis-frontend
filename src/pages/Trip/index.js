@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import DurationComponent from '../../components/DurationComponent';
+import TripComponent from '../../components/TripComponent';
 
-const Duration = () => {
-    //const { xxx } = useParams();
+const Trip = () => {
+    const { id } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
-
+    
     const navigate = useNavigate();
-
-    const handleBack = () => {
-		navigate('/new/member');
-	};
-
-    const handleNext = () => {
-		navigate('/new/map');
-	};
+    const dispatch = useDispatch();
+    dispatch(setTitle("Trip"));
 
     useEffect(()=>{
         
@@ -26,14 +22,14 @@ const Duration = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <h1>Add duration</h1>
+                        <TripComponent />
                     </div>
+                </div>
+                <div className="row">
                     <div className="col">
-                        <DurationComponent />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleNext}>Next</Button>
+                        <Button onClick={()=>{
+                            navigate('/view/home');
+                        }}>Back</Button>
                     </div>
                 </div>
             </>
@@ -42,4 +38,4 @@ const Duration = () => {
 
     return renderHTML();
 };
-export default Duration;
+export default Trip;

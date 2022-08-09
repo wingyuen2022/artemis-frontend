@@ -12,6 +12,7 @@ export default function WeatherApp() {
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState(null);
 
+
   useEffect(() => {
       navigator.geolocation.getCurrentPosition(function(position) {
         setLat(position.coords.latitude);
@@ -27,6 +28,7 @@ export default function WeatherApp() {
         setError(err.message);
       });
 
+
       getForecast(lat, long)
         .then(data => {
           setForecast(data);
@@ -37,6 +39,7 @@ export default function WeatherApp() {
         });
 
   }, [lat,long,error])
+
 
   function handleResponse(response) {
     if (response.ok) {
@@ -81,6 +84,7 @@ export default function WeatherApp() {
       date: data.dt * 1000, // convert from seconds to milliseconds
       description: data.weather[0].main,
       temperature: Math.round(data.main.temp),
+
     };
   
     // Add extra properties for the five day forecast: dt_txt, icon, min, max

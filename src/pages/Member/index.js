@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
 import MemberComponent from '../../components/MemberComponent';
 
@@ -8,38 +10,30 @@ const Member = () => {
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    dispatch(setTitle("Members"));
 
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleEdit = () => {
-		navigate('/edit/member');
-	};
-
-    useEffect(()=>{
-        
-    }, []);
+  useEffect(() => {}, []);
 
     const renderHTML = () => {
         return (
             <>
                 <div className="row">
                     <div className="col">
-                        <h1>View member</h1>
-                    </div>
-                    <div className="col">
                         <MemberComponent />
                     </div>
+                </div>
+                <div className="row">
                     <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleEdit}>Edit</Button>
+                        <Button onClick={()=>{
+                            navigate('/view/trip/1');
+                        }}>Back</Button>
                     </div>
                 </div>
             </>
         )
     };
 
-    return renderHTML();
+  return renderHTML();
 };
 export default Member;

@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import DurationComponent from '../../components/DurationComponent';
+import TripForm from '../../components/TripForm';
 
-const Duration = () => {
+const Checklist = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
-
-    const handleBack = () => {
-		navigate('-1');
-	};
-
-    const handleEdit = () => {
-		navigate('/edit/duration');
-	};
+    const dispatch = useDispatch();
+    dispatch(setTitle("Trip Details"));
 
     useEffect(()=>{
         
@@ -26,14 +22,10 @@ const Duration = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <h1>View duration</h1>
+                        <TripForm />
                     </div>
                     <div className="col">
-                        <DurationComponent />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleEdit}>Edit</Button>
+                        
                     </div>
                 </div>
             </>
@@ -42,4 +34,4 @@ const Duration = () => {
 
     return renderHTML();
 };
-export default Duration;
+export default Checklist;

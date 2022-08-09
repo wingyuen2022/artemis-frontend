@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import { Container, Form } from "react-bootstrap";
 import Logo from "../../assets/images/artemis-colour-cutout.png";
 import "./Landing.css";
 
 export default function Landing() {
+    const dispatch = useDispatch();
+    dispatch(setTitle("Artemis Camping"));
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
