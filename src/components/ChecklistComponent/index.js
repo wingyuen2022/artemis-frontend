@@ -1,23 +1,72 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect, Fragment } from 'react';
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+import CheckListItem from './CheckListItem';
+import ChecklistForm from './ChecklistForm';
+import * as camp from "../../assets/images/camping";
+import "./Checklist.css";
+
+
+const tasks = [{ name: "tent, tent pegs & mallet", done: false}]
 
 const ChecklistComponent = () => {
+    const [ items, setItems ] = useState(tasks);
+    const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
 
-    useEffect(()=>{
+    useEffect(() => {
+    let count = 0;
+    items.map(item => (!item.done ? count++ : null));
+    document.title = `${count} task${count > 1 ? "s" : ""} item`;
+  });
 
-    }, []);
+  const _handleSubmit = e => {
+    e.preventDefault();
+    if (inputValue === "") return alert("Task name is required");
+
+  const newArr = items.slice();
+    newArr.splice(0, 0, { name: inputValue, done: false });
+    setItems(newArr);
+    setInputValue("");
+  };
+
+  const _handleBntClick = ({ type, index }) => {
+    const newArr = items.slice();
+    // if (type === "remove") newArr.splice(index, 1);
+    if (type === "completed") newArr[index].done = true;
+
+    return setItems(newArr);
+  };
 
     const renderHTML = () => {
     return (
         <>
+            <Container className="camping-checklist">
+                <img className="caravan" src={camp.caravan} alt="caravan"></img>
+               
+                       
+                <Fragment className="checklistform-container">
+                <ChecklistForm
+                    id="checklist-form"
+                    onSubmit={_handleSubmit}
+                    value={inputValue}
+                    onChange={e => setInputValue(e.target.value)}
+                    />
+                    <Row className="check-list">
+                      <Col>
+                        {items.map((item, index) => (
+                        <CheckListItem
+                            key={index}
+                            item={item}
+                            completed={() => _handleBntClick({ type: "completed", index })}
+                            className="checklist-item"
+                            />
+                          ))}
+                        </Col>
+                    </Row>
+                </Fragment>
+            </Container>
+
             <div className="row">
                 <div className="col">
                     <b>Item</b>
@@ -26,7 +75,7 @@ const ChecklistComponent = () => {
                     <b>Remark</b>
                 </div>
                 <div className="col">
-                    <b>Pseron-in-charge</b>
+                    <b>Person-in-charge</b>
                 </div>
                 <div className="col">
                     <b>Action</b>

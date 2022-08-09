@@ -1,54 +1,80 @@
 .landing-container, .auth-container {
+    box-sizing: content-box;
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: auto;
-    background-color: inherit;
+    background-image: url("../../assets/animations/101541-circle-day.gif");
+    background-color: #efddb7;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    padding: 10px 0;
+    font-family: 'Nanum Pen Script', cursive;
+}
+.auth-container {
+    background: transparent;
 }
 
 .landing-container > h1, h3 {
     color: darkgreen;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .logo-container {
     max-height: 300px;
-    padding: 10px;
     margin: auto;
+    /* background-color: #2090a4; */
 }
 
 .logo {
-    max-height: 300px;
+    max-height: 280px;
     width: auto;
     margin: auto;
 }
 
 .auth-form {
+    font-family: 'Nanum Pen Script', cursive;
     display: flex;
     flex-direction: column;
-    max-width: 90%;
-    margin: auto;
-    /* border: 2px darkgreen solid; */
+    width: 20rem;
+    margin: 0 auto;
+    background-color: #9ab4a9;
+    opacity: 0.9;
+    border: 2px darkgreen solid;
     border-radius: 20px;
     padding: 10px;
 }
 
-.auth-label {
-    padding: 5px;
-    font-family: '', serif;
+.auth-label, p {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    color: #008037;
+    text-shadow: 1px 1px black;
+    background-color: inherit;
+    letter-spacing: 1.5px;
 }
 
 .auth-btn {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    text-transform: uppercase;
+    height: auto;
+    width: 90%;
     margin: auto;
     background-color: #008037;
     color: #fff;
-    padding: 10px;
     border-radius: 30px;
     border: none;
-    text-transform: uppercase;
-    width: 90%;
+    
 }
 
 .auth-input {
+    font-family: 'Lato', sans-serif;
     margin: 5px auto;
+    height: auto;
     padding: 10px;
     border-radius: 30px;
     border: 1px darkgreen solid;    
@@ -61,3 +87,18 @@
     color: #000;
 }
 
+.logo {
+    animation: jello-vertical .9s both;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes jello-vertical{
+    0%{transform:scale3d(1,1,1)}
+    30%{transform:scale3d(.75,1.25,1)}
+    40%{transform:scale3d(1.25,.75,1)}
+    50%{transform:scale3d(.85,1.15,1)}
+    65%{transform:scale3d(1.05,.95,1)}
+    75%{transform:scale3d(.95,1.05,1)}
+    100%{transform:scale3d(1,1,1)}
+}

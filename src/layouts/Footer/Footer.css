@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #9ab4a9;
+    background-color: #2090A4;
     height: auto;
     margin: auto;
     padding: 10px;
@@ -12,7 +12,7 @@
 .footer-info {
     display: block;
     margin: auto;
-    color: rgb(42, 53, 23);
+    color: #fff;
 }
 
 .github-links {
