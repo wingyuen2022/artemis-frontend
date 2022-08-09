@@ -9,7 +9,8 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Pages.Landing />} />
-                        <Route path="/view/home" element={<Pages.Home />} />
+                        <Route path='view/register' element={<Pages.Register/>} />
+                        {/* <Route path="/view/home" element={<Pages.Home />} />
                         <Route path="/view/messaging" element={<Pages.Messaging />} />
                         <Route path="/view/settings" element={<Pages.Settings />} />
                         <Route path="/view/budget" element={<Pages.Budget />} />
@@ -17,11 +18,11 @@ export default function App() {
                         <Route path="/edit/budget/:id" element={<Pages.BudgetUpdate />} />
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
                         <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
-                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
+                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} /> */}
                         {/* <Route path="/view/duration" element={<Pages.Duration />} />
                         <Route path="/new/duration" element={<Pages.DurationCreate />} />
                         <Route path="/update/duration" element={<Pages.DurationUpdate />} /> */}
-                        <Route path="/view/litnerary" element={<Pages.Itinerary />} />
+                        {/* <Route path="/view/litnerary" element={<Pages.Itinerary />} /> */}
                         {/* <Route path="/view/map" element={<Pages.Map />} />
                         <Route path="/new/map" element={<Pages.MapCreate />} />
                         <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
@@ -35,6 +36,8 @@ export default function App() {
                         <Route path="*" element={<Pages.NotFound />} />
                     </Route>
                 </Routes>
+
+                {/* {isAuthenticated ? authLinks : guestLinks} */}
             </div>
         </>
     );

@@ -11,8 +11,13 @@ export default function Landing() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    
+   
+    
   
     return (
+
         <>
             <Container className="landing-container">
                 <h1>Welcome!</h1>
@@ -34,7 +39,7 @@ export default function Landing() {
                     </Form.Group>
                         <Form.Control className="auth-btn" id="login" type="submit" value="Login" />
                         <p>OR</p>
-                        <Form.Control className="auth-btn" id="register" type="submit" value="Register" />
+                        <Form.Control className="auth-btn" id="register" type="submit" value="Register"/>
                     </Form>
 
                     </div> 
