@@ -11,21 +11,21 @@ export const SidebarData = [
         icon: <AiFillHome />,
         cName: 'nav-text'
     },
-    {
+    /*{
         title: 'Current Trips',
         path: '/CurrentTrips',
         icon: <FaMapMarkedAlt />,
         cName: 'nav-text'
-    },
-    {
+    },*/
+    /*{
         title: 'Checklist',
         path: '/view/Checklist',
         icon: <FaCheckCircle />,
         cName: 'nav-text'
-    },
+    },*/
     {
         title: 'Weather',
-        path: '/view/WeatherApp',
+        path: '/view/weather',
         icon: <TiWeatherPartlySunny />,
         cName: 'nav-text'
     },

@@ -3,18 +3,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from "react-bootstrap/Button";
+import MapComponent from "../../components/MapComponent";
 
-const Settings = () => {
+const Map = () => {
   //const { xxx } = useParams();
   //const [ curXXX, setCurXXX] = useState(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  dispatch(setTitle("Settings"));
+  dispatch(setTitle("Map"));
 
-  const handleSave = () => {
-    alert("saved");
+  const handleBack = () => {
     navigate("-1");
+  };
+
+  const handleEdit = () => {
+    navigate("/edit/map");
   };
 
   useEffect(() => {}, []);
@@ -23,9 +27,12 @@ const Settings = () => {
     return (
       <>
         <div className="row">
-          <div className="col"></div>
           <div className="col">
-            <Button onClick={handleSave}>Save</Button>
+            <MapComponent />
+          </div>
+          <div className="col">
+            <Button onClick={handleBack}>Back</Button>
+            <Button onClick={handleEdit}>Edit</Button>
           </div>
         </div>
       </>
@@ -34,4 +41,4 @@ const Settings = () => {
 
   return renderHTML();
 };
-export default Settings;
+export default Map;
