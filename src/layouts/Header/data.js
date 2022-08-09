@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { FaBars, FaMapMarkedAlt } from "react-icons/fa";
+import { FaMapMarkedAlt, FaCheckCircle } from "react-icons/fa";
+import { TiWeatherPartlySunny } from "react-icons/ti";
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
 import { RiMessage2Fill } from "react-icons/ri";
 
@@ -8,7 +7,7 @@ import { RiMessage2Fill } from "react-icons/ri";
 export const SidebarData = [
     {
         title: 'Home',
-        path: '/Home',
+        path: '/view/home',
         icon: <AiFillHome />,
         cName: 'nav-text'
     },
@@ -19,14 +18,26 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
+        title: 'Checklist',
+        path: '/view/Checklist',
+        icon: <FaCheckCircle />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Weather',
+        path: '/view/WeatherApp',
+        icon: <TiWeatherPartlySunny />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Messaging',
-        path: '/Messaging',
+        path: '/view/messaging',
         icon: <RiMessage2Fill />,
         cName: 'nav-text'
     },
     {
         title: 'Settings',
-        path: '/Settings',
+        path: '/view/settings',
         icon: <AiFillSetting />,
         cName: 'nav-text'
     },

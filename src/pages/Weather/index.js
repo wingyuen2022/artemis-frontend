@@ -1,41 +1,114 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setTitle } from "../../actions";
-import Button from 'react-bootstrap/Button';
-import WeatherComponent from '../../components/WeatherComponent';
+import './weather.css';
+import React, { useEffect, useState } from "react";
+import Weather from '../../components/WeatherComponent';
+import Forecast from '../../components/WeatherComponent/forecast';
+import { Spinner } from 'react-bootstrap';
 
-const Weather = () => {
-    //const { xxx } = useParams();
-    //const [ curXXX, setCurXXX] = useState(null);
+export default function WeatherApp() {
+    
+  const [lat, setLat] = useState([51.8156]);
+  const [long, setLong] = useState([0.8084]);
+  const [weatherData, setWeatherData] = useState([""]);
+  const [forecast, setForecast] = useState([]);
+  const [error, setError] = useState(null);
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    dispatch(setTitle("Weather"));
 
-    const handleBack = () => {
-		navigate('-1');
-	};
+  useEffect(() => {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+    
+      getWeather(lat, long)
+      .then(weather => {
+        setWeatherData(weather);
+        setError(null);
+      })
+      .catch(err => {
+        setError(err.message);
+      });
 
-    useEffect(()=>{
-        
-    }, []);
 
-    const renderHTML = () => {
-        return (
-            <>
-                <div className="row">
-                    <div className="col">
-                        <WeatherComponent />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                    </div>
-                </div>
-            </>
-        )
+      getForecast(lat, long)
+        .then(data => {
+          setForecast(data);
+          setError(null);
+        })
+        .catch(err => {
+          setError(err.message);
+        });
+
+  }, [lat,long,error])
+
+
+  function handleResponse(response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Please Enable your Location in your browser!");
+    }
+  }
+
+  function getWeather(lat, long) {
+    return fetch(
+      `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+    )
+      .then(res => handleResponse(res))
+      .then(weather => {
+        if (Object.entries(weather).length) {
+          const mappedData = mapDataToWeatherInterface(weather);
+          return mappedData;
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+  
+  function getForecast(lat, long) {
+    return fetch(
+      `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+    )
+      .then(res => handleResponse(res))
+      .then(forecastData => {
+        if (Object.entries(forecastData).length) {
+          return forecastData.list
+            .filter(forecast => forecast.dt_txt.match(/09:00:00/))
+            .map(mapDataToWeatherInterface);
+        }
+      });
+  }
+
+  function mapDataToWeatherInterface(data) {
+    const mapped = {
+      date: data.dt * 1000, // convert from seconds to milliseconds
+      description: data.weather[0].main,
+      temperature: Math.round(data.main.temp),
+
     };
-
-    return renderHTML();
-};
-export default Weather;
+  
+    // Add extra properties for the five day forecast: dt_txt, icon, min, max
+    if (data.dt_txt) {
+      mapped.dt_txt = data.dt_txt;
+    }
+  
+    return mapped;
+  }
+  
+  return (
+    <div className="weather-app">
+      {(typeof weatherData.main != 'undefined') ? (
+        <div>
+          <Weather weatherData={weatherData}/>
+          <Forecast forecast={forecast} weatherData={weatherData}/>
+        </div>
+      ): (
+                <div>
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading..</span>
+                  </Spinner>
+                </div>
+              )}
+            </div>
+        );
+    }

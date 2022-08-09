@@ -13,14 +13,6 @@ const Budget = () => {
     const dispatch = useDispatch();
     dispatch(setTitle("New Budget"));
 
-    const handleBack = () => {
-		navigate('/new/map');
-	};
-
-    const handleNext = () => {
-		navigate('/new/checklist');
-	};
-
     useEffect(()=>{
         
     }, []);
@@ -30,11 +22,7 @@ const Budget = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <BudgetForm />
-                    </div>
-                    <div className="col">
-                        <Button onClick={handleBack}>Back</Button>
-                        <Button onClick={handleNext}>Next</Button>
+                        <BudgetForm id={null} />
                     </div>
                 </div>
             </>
