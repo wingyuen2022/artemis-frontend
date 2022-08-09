@@ -18,13 +18,10 @@ export default function App() {
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
                         <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
                         <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
-                        {/* <Route path="/view/duration" element={<Pages.Duration />} />
-                        <Route path="/new/duration" element={<Pages.DurationCreate />} />
-                        <Route path="/update/duration" element={<Pages.DurationUpdate />} /> */}
                         <Route path="/view/litnerary" element={<Pages.Itinerary />} />
-                        {/* <Route path="/view/map" element={<Pages.Map />} />
-                        <Route path="/new/map" element={<Pages.MapCreate />} />
-                        <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
+                        <Route path="/view/map" element={<Pages.Map />} />
+                        {/* <Route path="/new/map" element={<Pages.MapCreate />} /> */}
+                        {/* <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
                         <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />

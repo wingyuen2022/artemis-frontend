@@ -6,13 +6,11 @@ export {default as Checklist} from './Checklist';
 export {default as ChecklistCreate} from './ChecklistCreate';
 export {default as ChecklistUpdate} from './ChecklistUpdate';
 
-// export {default as Duration} from './Duration';
-// export {default as DurationCreate} from './DurationCreate';
-// export {default as DurationUpdate} from './DurationUpdate';
-
 export {default as Home} from './Home';
 export {default as Itinerary} from './Itinerary';
 export {default as Landing} from './Landing';
+
+export {default as Map} from './Map';
 
 export {default as Member} from './Member';
 export {default as MemberCreate} from './MemberCreate';
