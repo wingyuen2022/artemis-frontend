@@ -1,7 +1,7 @@
 import React from "react";
 import moment from 'moment';
 import './weather.css';
-import {
+/*import {
   WiCloud,
   WiThunderstorm,
   WiRain,
@@ -10,22 +10,22 @@ import {
   WiDaySunny,
   WiSmog,
 } from 'react-icons/wi';
-import styled from 'styled-components';
+import styled from 'styled-components';*/
 
 
-export default function Forecast(props, {weatherData}) {
+export default function Forecast({forecast}) {
 
-  const WeatherIcon = styled.div`
+  /*const WeatherIcon = styled.div`
   color: whitesmoke;
 `;
 
   const { forecast } = props;
 
-  console.log("Forecast", forecast);
+  console.log("Forecast", forecast);*/
 
   const results = forecast.map((item, index) => {
 
-    let weatherIcon = null;
+    /*let weatherIcon = null;
 
     if (item.description === 'Thunderstorm') {
       weatherIcon = {WiThunderstorm} ;
@@ -41,17 +41,18 @@ export default function Forecast(props, {weatherData}) {
       weatherIcon = {WiCloud};
     } else {
       weatherIcon = {WiSmog} ;
-    }
+    }*/
 
     return (
       <div key={index} className="forecast">
         <div className="flex-forecast">
         <p>{moment(item.dt_txt).format("dddd")}</p>
-      
-        <WeatherIcon style={{fontSize:25,marginTop:4}}>{weatherIcon}</WeatherIcon>
-
+        <img src ={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} alt="wthr img" />
         <p>
-          {item.temperature} &deg;C
+          {item.main.temp} &deg;C
+        </p>
+        <p>
+          {item.main.humidity} %
         </p>
         </div>
       </div>
@@ -67,3 +68,4 @@ export default function Forecast(props, {weatherData}) {
   );
   
 }
+// <WeatherIcon style={{fontSize:25,marginTop:4}}>{weatherIcon}</WeatherIcon>

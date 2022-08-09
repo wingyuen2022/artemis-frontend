@@ -1,15 +1,20 @@
-import './weather.css';
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Weather from '../../components/WeatherComponent';
 import Forecast from '../../components/WeatherComponent/forecast';
 import { Spinner } from 'react-bootstrap';
+import './weather.css';
 
 export default function WeatherApp() {
+  const dispatch = useDispatch();
+  dispatch(setTitle("Weather"));
     
   const [lat, setLat] = useState([51.8156]);
   const [long, setLong] = useState([0.8084]);
-  const [weatherData, setWeatherData] = useState([""]);
-  const [forecast, setForecast] = useState([]);
+  const [weatherData, setWeatherData] = useState(null);
+  const [forecast, setForecast] = useState(null);
   const [error, setError] = useState(null);
 
 
@@ -51,14 +56,15 @@ export default function WeatherApp() {
 
   function getWeather(lat, long) {
     return fetch(
-      `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_WEATHER_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
       .then(res => handleResponse(res))
       .then(weather => {
-        if (Object.entries(weather).length) {
+        return weather;
+        /*if (Object.entries(weather).length) {
           const mappedData = mapDataToWeatherInterface(weather);
           return mappedData;
-        }
+        }*/
       })
       .catch((error) => {
         console.log(error)
@@ -67,19 +73,19 @@ export default function WeatherApp() {
   
   function getForecast(lat, long) {
     return fetch(
-      `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_WEATHER_URL}/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
       .then(res => handleResponse(res))
       .then(forecastData => {
         if (Object.entries(forecastData).length) {
           return forecastData.list
-            .filter(forecast => forecast.dt_txt.match(/09:00:00/))
-            .map(mapDataToWeatherInterface);
+            .filter(forecast => forecast.dt_txt.match(/09:00:00/));
+            //.map(mapDataToWeatherInterface);
         }
       });
   }
 
-  function mapDataToWeatherInterface(data) {
+  /*function mapDataToWeatherInterface(data) {
     const mapped = {
       date: data.dt * 1000, // convert from seconds to milliseconds
       description: data.weather[0].main,
@@ -93,14 +99,14 @@ export default function WeatherApp() {
     }
   
     return mapped;
-  }
+  }*/
   
   return (
     <div className="weather-app">
-      {(typeof weatherData.main != 'undefined') ? (
+      {(weatherData !== null && forecast !== null) ? (
         <div>
-          <Weather weatherData={weatherData}/>
-          <Forecast forecast={forecast} weatherData={weatherData}/>
+          <Weather weatherData={weatherData} />
+          <Forecast forecast={forecast} />
         </div>
       ): (
                 <div>

@@ -26,4 +26,4 @@ export {default as Trip} from './Trip';
 export {default as TripCreate} from './TripCreate';
 export {default as TripUpdate} from './TripUpdate';
 
-export {default as WeatherApp} from './Weather';
+export {default as Weather} from './Weather';
