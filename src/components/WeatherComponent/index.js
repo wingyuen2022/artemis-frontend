@@ -1,73 +1,48 @@
-import React from 'react';
-import './weather.css';
-//import { Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-/*import {
-    WiCloud,
-    WiThunderstorm,
-    WiRain,
-    WiShowers,
-    WiSnowflakeCold,
-    WiDaySunny,
-    WiSmog,
-} from 'react-icons/wi';
-  import styled from 'styled-components';*/
- 
+import './weather.css';
 
-export default function Weather({weatherData}) {
+export default function Weather({lat, long}) {
+    const [weather, setWeather] = useState(null);
 
-  /*const WeatherIcon = styled.div`
-        color: whitesmoke;
-    `;
+    useEffect(()=>{
+        let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
+        //let domain = `http://127.0.0.1:8000/api/`;
+        let url = domain + `weather/lat=${lat}&long=${long}`;
+        fetch(url)
+        .then(res => res.json())
+        .then((res) => {
+            setWeather(res);
+        }).catch((err) => {
+            console.log(err)
+        });
+    }, []);
 
-  const refresh = () => {
-    window.location.reload();
-  }
+    return (
+        <>
+            {(weather !== null) ? (
+                <div className="main">
+                <div className="top">
+                    <p className="header">{weather.name}</p>
+                </div>
+                <div className="flex">
+                    <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
+                    <div className="flex">
+                        <img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" />
+                        <p className="description">{weather.weather[0].main}</p>
+                    </div>
+                </div>
 
-  let weatherIcon = null;
-  if (weatherData.weather[0].main === 'Thunderstorm') {
-    weatherIcon = {WiThunderstorm};
-  } else if (weatherData.weather[0].main === 'Drizzle') {
-    weatherIcon = {WiShowers} ;
-  } else if (weatherData.weather[0].main === 'Rain') {
-    weatherIcon = {WiRain} ;
-  } else if (weatherData.weather[0].main === 'Snow') {
-    weatherIcon = {WiSnowflakeCold};
-  } else if (weatherData.weather[0].main === 'Clear') {
-    weatherIcon = {WiDaySunny};
-  } else if (weatherData.weather[0].main === 'Clouds') {
-    weatherIcon = {WiCloud};
-  } else {
-    weatherIcon = {WiSmog};
-  }*/
+                <div className="flex">
+                    <p className="temp">Temperature: {weather.main.temp} &deg;C</p>
+                    <p className="temp">Humidity: {weather.main.humidity} %</p>
+                </div>
 
-  return (
-    <>
-    <div className="main">
-    <div className="top">
-      <p className="header">{weatherData.name}</p>
-    </div>
-    <div className="flex">
-      <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
-      <div className="flex">
-        <img src ={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt="wthr img" />
-        <p className="description">{weatherData.weather[0].main}</p>
-      </div>
-    </div>
-
-    <div className="flex">
-      <p className="temp">Temperature: {weatherData.main.temp} &deg;C</p>
-      <p className="temp">Humidity: {weatherData.main.humidity} %</p>
-    </div>
-
-    <div className="flex">
-      <p className="sunrise-sunset">Sunrise: {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString('en-GB')}</p>
-      <p className="sunrise-sunset">Sunset: {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString('en-GB')}</p>
-    </div>  
-    </div>
-    </>
-  )
+                <div className="flex">
+                    <p className="sunrise-sunset">Sunrise: {new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-GB')}</p>
+                    <p className="sunrise-sunset">Sunset: {new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-GB')}</p>
+                </div>  
+            </div>):(<p></p>)}
+        </>
+    )
 }
-
-//<Button className="button" inverted color='blue' circular icon='refresh' onClick={refresh} />
-//<WeatherIcon style={{fontSize:30,marginTop:15}}>{weatherIcon}</WeatherIcon>
