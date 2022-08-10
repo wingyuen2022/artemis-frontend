@@ -17,9 +17,9 @@ function Navbar() {
             <Link to='#' className='menu-bars'>
               <FaBars onClick={showSidebar} />
             </Link>
-            <h1 id="navbrand"><a className="nav-brand" href="/">Artemis Camping</a></h1>
+            <h1><a id="navbrand" href="/">Artemis Camping | </a></h1>
 
-            <h1 className='menu-title'>{ title }</h1>
+            <h3 className='menu-title'>{ title }</h3>
 
           </div>
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
