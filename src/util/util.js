@@ -49,3 +49,23 @@ export const postMethodBackendAPI = async(path, jsonObject) => {
         });
     });
 };
+
+export const putMethodBackendAPI = async(path, jsonObject) => {
+    return new Promise((resolve, reject) => {
+        let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
+        //let domain = `http://127.0.0.1:8000/api/`;
+        let url = domain + `trip/` + path;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(jsonObject)}
+        ).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err)
+        });
+    });
+};

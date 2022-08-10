@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { postMethodBackendAPI } from '../../util/util.js';
+import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI } from '../../util/util.js';
 import { setOrigin, setDestination } from "../../actions";
 import { Container, Form, FormLabel, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,46 @@ const TripForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const route = useSelector(state => state.routeReducer);
+    const [trip, setTrip] = useState(null);
+
+    useEffect(()=>{
+        if (id !== undefined && id !== null) {
+            getMethodBackendAPI(id).then((ret)=>{
+                if (ret.ok) {
+                    ret.json().then((res)=>{
+                        setTrip(res[0]);
+                    });
+                }
+            }).catch((err)=>{
+            });
+        }
+    }, []);
+
+    useEffect(()=>{
+        if (trip !== null) {
+            const obj = trip.fields;
+            const name = document.getElementById("name");
+            if (name !== undefined && name !== null) {
+                name.value = obj.name;
+            }
+            const origin = document.getElementById("origin");
+            if (origin !== undefined && origin !== null) {
+                origin.value = obj.origin;
+            }
+            const destination = document.getElementById("destination");
+            if (destination !== undefined && destination !== null) {
+                destination.value = obj.destination;
+            }
+            const startDate = document.getElementById("startDate");
+            if (startDate !== undefined && startDate !== null) {
+                startDate.value = obj.start_date;
+            }
+            const endDate = document.getElementById("endDate");
+            if (endDate !== undefined && endDate !== null) {
+                endDate.value = obj.end_date;
+            }
+        }
+    }, [trip]);
 
     const renderHTML = () => {
     return (
@@ -23,24 +63,6 @@ const TripForm = ({id}) => {
                 </FormLabel>
                 <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
                 <br />
-               
-        
-            
-                <FormLabel className="col">
-                    <b>Public or Private:</b>
-                </FormLabel>
-                <div className="col">
-                    <div className="row">
-                        <div className="col">
-                            <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
-                            <label className="form-label"  for="public">Public</label>
-                        </div>
-                        <div className="col">
-                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><label className="form-label" for="private">Private</label>
-                        </div>
-                    </div>
-                </div>
-           
                 <div className="form-label">
                     <b>Origin:</b>
                 </div>
@@ -133,11 +155,20 @@ const TripForm = ({id}) => {
                             'start_date': startDate.value,
                             'end_date': endDate.value
                         };
-                        postMethodBackendAPI('', obj).then(()=>{
-                            alert('saved');
-                            navigate('/view/trip/all');
-                        }).catch((err)=>{
-                        });
+                        if (id !== undefined && id !== null) {
+                            const path = id + '/';
+                            putMethodBackendAPI(path, obj).then(()=>{
+                                alert('saved');
+                                navigate('/view/trip/all');
+                            }).catch((err)=>{
+                            });
+                        } else {
+                            postMethodBackendAPI('', obj).then(()=>{
+                                alert('saved');
+                                navigate('/view/trip/all');
+                            }).catch((err)=>{
+                            });
+                        }
                     }}>Save</Button>
                 </Row>
             </Form>
@@ -148,5 +179,23 @@ const TripForm = ({id}) => {
 
     return renderHTML();
 }
-// <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/>
+
 export default TripForm;
+
+// <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/>
+/*
+<FormLabel className="col">
+                    <b>Public or Private:</b>
+                </FormLabel>
+                <div className="col">
+                    <div className="row">
+                        <div className="col">
+                            <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
+                            <label className="form-label"  for="public">Public</label>
+                        </div>
+                        <div className="col">
+                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><label className="form-label" for="private">Private</label>
+                        </div>
+                    </div>
+                </div>
+*/
