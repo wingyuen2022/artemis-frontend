@@ -1,22 +1,10 @@
-import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
-import { Col, Container, Form, FormLabel, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
+import { Button,  Container, Form, FormLabel, Row } from "react-bootstrap";
 import "./TripForm.css";
 
 const TripForm = ({id}) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
-
-    useEffect(()=>{
-        
-    }, []);
-
+    
     const renderHTML = () => {
     return (
         <>
@@ -30,38 +18,38 @@ const TripForm = ({id}) => {
                
         
             
-                <FormLabel className="col">
+                <FormLabel className="form-label">
                     <b>Public or Private:</b>
                 </FormLabel>
                 <div className="col">
                     <div className="row">
                         <div className="col">
                             <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
-                            <label className="form-label"  for="public">Public</label>
+                            <FormLabel className="form-label"  for="public">Public</FormLabel>
                         </div>
                         <div className="col">
-                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><label className="form-label" for="private">Private</label>
+                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><FormLabel className="form-label" for="private">Private</FormLabel>
                         </div>
                     </div>
                 </div>
            
-                <div className="form-label">
+                <FormLabel className="form-label">
                     <b>Location:</b>
-                </div>
+                </FormLabel>
                 <div className="col">
                     <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/><br />
                 </div>
             
-                <div className="form-label">
+                <FormLabel className="form-label">
                     <b>Start Date:</b>
-                </div>
+                </FormLabel>
                 <div className="col">
                     <input className="form-item-input" id="startDate" class="inputs" name="startDate" type="date" required />
                 </div>
             
-                <div className="form-label">
+                <FormLabel className="form-label">
                     <b>End Date:</b>
-                </div>
+                </FormLabel>
                 <div className="col">
                     <input className="form-item-input" id="endDate" class="inputs" name="endDate" type="date" required />
                 </div>

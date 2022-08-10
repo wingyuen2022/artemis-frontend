@@ -19,7 +19,7 @@ export default function Forecast({lat, long}) {
         }).catch((err) => {
             console.log(err)
         });
-    }, []);
+    }, [lat, long]);
 
     useEffect(()=>{
         if (forecast !== null) {

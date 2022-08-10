@@ -14,7 +14,7 @@
     width: 100%;
     text-align: center;
     background-color: #efddb7;
-    padding: 10px 10px 30px 10px;
+    padding: 10px;
     border: 2px solid green;
     border-radius: 20px;
     opacity: 0.9;
@@ -27,6 +27,11 @@
     color: #055c6b;
 }
 
+.form-p {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+
 .form-item-input {
     font-family: 'Nanum Pen Script', cursive;
     text-align: center;
@@ -35,7 +40,7 @@
     font-size: 2rem;
 }
 
-#back-button, #save-button {
+#member-btn, #budget-btn, #checklist-btn, #edit-btn {
     background-color: #008037;
     border: none;
     font-family: 'Nanum Pen Script', cursive;

@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
 const BudgetComponent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
-
+    
     useEffect(()=>{
 
     }, []);
