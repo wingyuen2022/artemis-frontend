@@ -1,0 +1,32 @@
+.weather-app {
+    background-image: url("../../assets/images/camping/weather.png");
+    margin: auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: auto;
+    border: 2px solid #2090a4;
+    background-color: #2090a4;
+}
+
+.weather-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+label {
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: #fff;
+    opacity: 0.8;
+    color: #000;
+    font-weight: bold;
+}
+input {
+    height: 30px;
+    text-align: center;
+}

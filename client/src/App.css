@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+/* colours */
+/* teal #2090a4 */
+/* sage #9ab4a9 */
+/* sand #efddb7 */
+/* coffee #d0947c */
+/* brown #a56953 */
+/* green #008037 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.App {
+  margin-top: 0;
+}
