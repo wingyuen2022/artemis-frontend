@@ -16,3 +16,36 @@ export const openWeatherAPI = async(type, lat, long) => {
         });
     });
 };
+
+export const getMethodBackendAPI = async(path, id) => {
+    return new Promise((resolve, reject) => {
+        let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
+        //let domain = `http://127.0.0.1:8000/api/`;
+        let url = domain + `trip/` + path + id;
+        fetch(url).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err)
+        });
+    });
+};
+
+export const postMethodBackendAPI = async(path, jsonObject) => {
+    return new Promise((resolve, reject) => {
+        let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
+        //let domain = `http://127.0.0.1:8000/api/`;
+        let url = domain + `trip/` + path;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(jsonObject)}
+        ).then((res) => {
+            resolve(res);
+        }).catch((err) => {
+            reject(err)
+        });
+    });
+};
