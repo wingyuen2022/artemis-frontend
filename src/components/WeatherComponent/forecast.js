@@ -58,7 +58,7 @@ export default function Forecast({lat, long}) {
                                 </Row>
                             </div>
                         </li>
-                        <li>{display}</li>
+                        <li className="forecast-list">{display}</li>
                     </ul>
                 </div>
             ):(<p></p>)}

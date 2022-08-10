@@ -90,6 +90,10 @@
     font-size: 24px;
 }
 
+.forecast-list {
+    list-style-type: none;
+}
+
 .flex-forecast{
     display: flex;
     justify-content: space-between;
