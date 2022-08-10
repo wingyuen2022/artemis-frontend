@@ -1,5 +1,5 @@
 const express = require('express');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 
@@ -8,15 +8,19 @@ require('dotenv').config();
 
 const registerRoute = require('./routes/auth/register');
 // const verifyRoute = require('./routes/auth/verify');
+const meRoute = require('./routes/auth/me');
+const loginRoute = require('./routes/auth/login');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-// app.use(cookieParser());
+app.use(cookieParser());
 
 app.use(registerRoute);
+app.use(loginRoute);
+app.use(meRoute);
 
 
 app.use(express.static('client/build'));
