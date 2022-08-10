@@ -10,7 +10,7 @@ const TripsComponent = () => {
     const [display, setDisplay] = useState(null);
 
     useEffect(()=>{
-        getMethodBackendAPI('', '').then((ret)=>{
+        getMethodBackendAPI('').then((ret)=>{
             if (ret.ok) {
                 ret.json().then((res)=>{
                     setTrips(res);
@@ -58,7 +58,7 @@ const TripsComponent = () => {
                 { (trips !== null) ? (
                 <>
                     {display}
-                </>) : (<></>) }
+                </>) : (<h1>No data</h1>) }
                 
             </>
             );
