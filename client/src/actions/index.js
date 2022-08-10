@@ -19,9 +19,23 @@ export const setTrip = (trip) => {
     }
 };
 
-// export const setUser = (user) => {
-//     return {
-//         type: "SET_USER",
-//         payload: user
-//     }
-// };
+export const setUser = (user) => {
+    return {
+        type: "SET_USER",
+        payload: user
+    }
+};
+
+export const setOrigin = (origin) => {
+    return {
+        type: "SET_ORIGIN",
+        payload: origin
+    }
+};
+
+export const setDestination = (destination) => {
+    return {
+        type: "SET_DESTINATION",
+        payload: destination
+    }
+};

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import { openWeatherAPI } from '../../util/util.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './weather.css';
@@ -9,15 +10,12 @@ export default function Forecast({lat, long}) {
     const [display, setDisplay] = useState(null);
 
     useEffect(()=>{
-        let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
-        //let domain = `http://127.0.0.1:8000/api/`;
-        let url = domain + `forecast/lat=${lat}&long=${long}`;
-        fetch(url)
-        .then(res => res.json())
+        openWeatherAPI('forecast', lat, long)
+        .then((res) => res.json())
         .then((res) => {
             setForecast(res);
         }).catch((err) => {
-            console.log(err)
+            console.log(err);
         });
     }, []);
 
