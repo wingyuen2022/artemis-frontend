@@ -10,7 +10,7 @@ export default function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Pages.Landing />} />
                         <Route path="/view/home" element={<Pages.Home />} />
-                        <Route path="/view/messaging" element={<Pages.Messaging />} />
+                        <Route path="/view/message" element={<Pages.Message />} />
                         <Route path="/view/settings" element={<Pages.Settings />} />
                         <Route path="/view/budget" element={<Pages.Budget />} />
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
