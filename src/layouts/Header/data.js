@@ -7,22 +7,22 @@ import { RiMessage2Fill } from "react-icons/ri";
 export const SidebarData = [
     {
         title: 'Home',
-        path: '/view/home',
+        path: '/view/Home',
         icon: <AiFillHome />,
         cName: 'nav-text'
     },
-    /*{
+    {
         title: 'Current Trips',
         path: '/CurrentTrips',
         icon: <FaMapMarkedAlt />,
         cName: 'nav-text'
-    },*/
-    /*{
+    },
+    {
         title: 'Checklist',
         path: '/view/Checklist',
         icon: <FaCheckCircle />,
         cName: 'nav-text'
-    },*/
+    },
     {
         title: 'Weather',
         path: '/view/weather',
