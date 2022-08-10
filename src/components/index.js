@@ -8,7 +8,9 @@ export {default as ChecklistForm} from './ChecklistForm';
 
 export {default as HomeComponent} from './HomeComponent';
 export {default as ItineraryComponent} from './ItineraryComponent';
+
 export {default as MapComponent} from './MapComponent';
+export {default as PlaceComponent} from './PlaceComponent';
 
 export {default as MemberComponent} from './MemberComponent';
 export {default as MemberForm} from './MemberForm';
