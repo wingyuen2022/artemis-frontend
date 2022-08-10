@@ -47,7 +47,7 @@ const Home = () => {
                             <Card.Body className="card-body">View all your previous trips!
                             </Card.Body>
                             <Button id="view-trip-btn" onClick={()=>{
-                                navigate('/view/trip/1');
+                                navigate('/view/trip/all');
                             }}>View Trips</Button>
                         </Card>
                     </CardGroup>
