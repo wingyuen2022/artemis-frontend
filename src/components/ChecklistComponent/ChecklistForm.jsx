@@ -1,17 +1,18 @@
 import "./Checklist.css";
-import ChecklistAddItemBtn from "../Buttons/checklist-add-item";
 
-export default function Form(props) {
+export default function ChecklistForm(props) {
     return (
-      <form onSubmit={props.onSubmit} style={{ paddingLeft: 40, marginTop: 16 }}>
+      <div className="new-item-container">
+      <form id="form-item-input" onSubmit={props.onSubmit} style={{ paddingLeft: 40, marginTop: 16 }}>
+        
         <input
-          className="add-newitem"
-          type="text"
-          value={props.value}
-          onChange={props.onChange}
-          placeholder="Reminder: Trip Checklist!"
-        />
-        <ChecklistAddItemBtn />
+        type="text"
+        value={props.value}
+        onChange={props.onChange}
+        placeholder="Reminder: Trip checklist!"
+      />
+            <button className="add-new-item" type="submit">+</button> 
       </form>
+      </div>
     );
   }

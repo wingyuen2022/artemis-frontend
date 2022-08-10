@@ -10,6 +10,8 @@ export {default as Home} from './Home';
 export {default as Itinerary} from './Itinerary';
 export {default as Landing} from './Landing';
 
+export {default as Map} from './Map';
+
 export {default as Member} from './Member';
 export {default as MemberCreate} from './MemberCreate';
 export {default as MemberUpdate} from './MemberUpdate';
