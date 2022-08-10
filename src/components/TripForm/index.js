@@ -36,53 +36,54 @@ const TripForm = ({id}) => {
                 <div className="col">
                     <div className="row">
                         <div className="col">
-                            <input type="radio" id="public" name="public" value="true" checked></input><label for="public">Public</label>
+                            <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
+                            <label className="form-label"  for="public">Public</label>
                         </div>
                         <div className="col">
-                            <input type="radio" id="private" name="public" value="false"></input><label for="private">Private</label>
+                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><label className="form-label" for="private">Private</label>
                         </div>
                     </div>
                 </div>
            
-                <div className="col">
+                <div className="form-label">
                     <b>Location:</b>
                 </div>
                 <div className="col">
-                    <input id="location" type="text" name="location" maxLength="20" placeholder="Location"/><br />
+                    <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/><br />
                 </div>
             
-                <div className="col">
+                <div className="form-label">
                     <b>Start Date:</b>
                 </div>
                 <div className="col">
-                    <input id="startDate" class="inputs" name="startDate" type="date" required />
+                    <input className="form-item-input" id="startDate" class="inputs" name="startDate" type="date" required />
                 </div>
             
-                <div className="col">
+                <div className="form-label">
                     <b>End Date:</b>
                 </div>
                 <div className="col">
-                    <input id="endDate" class="inputs" name="endDate" type="date" required />
+                    <input className="form-item-input" id="endDate" class="inputs" name="endDate" type="date" required />
                 </div>
             
-                <div className="col">
-                    <input id="id" type="number" name="id" hidden/><br />
-                    <Button onClick={()=>{
+                <Row className="row">
+                    <input className="form-item-input" id="id" type="number" name="id" hidden/><br />
+                    <Button id="back-button" onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
                             navigate('/view/home');
                         }
-                    }}>Back</Button>
+                    }}>Go Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');
                             navigate('/view/home');
                         }
                     }} hidden={id === null}>Delete</Button>
-                    <Button onClick={()=>{
+                    <Button id="save-button" onClick={()=>{
                         alert('saved');
                         navigate('/view/trip/1');
                     }}>Save</Button>
-                </div>
+                </Row>
             </Form>
             </Container>
         </>
