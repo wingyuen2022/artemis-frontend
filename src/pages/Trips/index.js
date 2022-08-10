@@ -1,7 +1,7 @@
 import { CardGroup, Card, CardImg, Container } from "react-bootstrap";
 import "./Trips.css";
 
-const CurrentTrips = () => {
+const Trips = () => {
     return(
         <>
           <Container className="trips-container">
@@ -38,4 +38,4 @@ const CurrentTrips = () => {
         
 
 };
-export default CurrentTrips;
+export default Trips;
