@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
@@ -22,7 +20,7 @@ const ChecklistForm = ({id}) => {
                 <div className="col">
                     <b>Item:</b><input id="item" type="text" name="item" maxLength="20" placeholder="Item"/><br />
                     <b>Remark:</b><input id="remark" type="text" name="remark" maxLength="1024" placeholder="Remark"/><br />
-                    <b>Who-in-charge:</b><select id="personInCharge" name="personInCharge">
+                    <b>Assignee:</b><select id="personInCharge" name="personInCharge">
                         <option value="Wing">Wing</option>
                         <option value="Edgar">Edgar</option>
                         <option value="Sam">Sam</option>

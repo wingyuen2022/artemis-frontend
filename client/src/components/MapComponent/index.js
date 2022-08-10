@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import {
-  Box,
   Button,
   ButtonGroup,
-  Flex,
-  HStack,
-  IconButton,
-  Input,
-  SkeletonText,
-  Text,
-} from "@chakra-ui/react";
+  Container,
+  Form,
+  Modal,
+  Row,
+  Spinner 
+} from "react-bootstrap";
 import { FaLocationArrow, FaTimes } from "react-icons/fa";
 
 import {
@@ -37,24 +35,25 @@ function MapComponent() {
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef();
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const destiantionRef = useRef();
+  const destinationRef = useRef();
 
   if (!isLoaded) {
-    return <SkeletonText />;
+    return <Spinner />;
   }
 
   async function calculateRoute() {
-    if (originRef.current.value === "" || destiantionRef.current.value === "") {
+    if (originRef.current.value === "" || destinationRef.current.value === "") {
       return;
     }
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
       origin: originRef.current.value,
-      destination: destiantionRef.current.value,
+      destination: destinationRef.current.value,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.WALKING,
     });
+    console.log(results)
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
@@ -65,19 +64,12 @@ function MapComponent() {
     setDistance("");
     setDuration("");
     originRef.current.value = "";
-    destiantionRef.current.value = "";
+    destinationRef.current.value = "";
   }
 
   return (
-    <Flex
-      position="relative"
-      flexDirection="column"
-      alignItems="center"
-      h="100vh"
-      w="100vw"
-    >
-      <Box position="absolute" left={0} top={0} h="100%" w="100%">
-        {/* Google Map Box */}
+    <Container className="google-map-container">
+      <div className="google-map-box">
         <GoogleMap
           center={center}
           zoom={15}
@@ -95,8 +87,8 @@ function MapComponent() {
             <DirectionsRenderer directions={directionsResponse} />
           )}
         </GoogleMap>
-      </Box>
-      <Box
+      </div>
+      <Modal
         p={4}
         borderRadius="lg"
         m={4}
@@ -105,37 +97,38 @@ function MapComponent() {
         minW="container.md"
         zIndex="1"
       >
-        <HStack spacing={2} justifyContent="space-between">
-          <Box flexGrow={1}>
+        <Row spacing={2} justifyContent="space-between">
+          <Form id="origin-form">
             <Autocomplete>
-              <Input type="text" placeholder="Origin" ref={originRef} />
+              <input type="text" name="origin-form" placeholder="Origin" ref={originRef} />
             </Autocomplete>
-          </Box>
-          <Box flexGrow={1}>
+          </Form>
+          <Form id="destination-form">
             <Autocomplete>
-              <Input
+              <input
                 type="text"
+                name="destination-form"
                 placeholder="Destination"
-                ref={destiantionRef}
+                ref={destinationRef}
               />
             </Autocomplete>
-          </Box>
+          </Form>
 
           <ButtonGroup>
             <Button colorScheme="pink" type="submit" onClick={calculateRoute}>
               Calculate Route
             </Button>
-            <IconButton
+            <Button
               aria-label="center back"
               icon={<FaTimes />}
               onClick={clearRoute}
             />
           </ButtonGroup>
-        </HStack>
-        <HStack spacing={4} mt={4} justifyContent="space-between">
-          <Text>Distance: {distance} </Text>
-          <Text>Duration: {duration} </Text>
-          <IconButton
+        </Row>
+        <Row spacing={4} mt={4} justifyContent="space-between">
+          <p>Distance: {distance} </p>
+          <p>Duration: {duration} </p>
+          <Button
             aria-label="center back"
             icon={<FaLocationArrow />}
             isRound
@@ -144,9 +137,9 @@ function MapComponent() {
               map.setZoom(15);
             }}
           />
-        </HStack>
-      </Box>
-    </Flex>
+        </Row>
+      </Modal>
+    </Container>
   );
 }
 

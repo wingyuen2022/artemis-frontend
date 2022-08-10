@@ -11,7 +11,7 @@ export default function App() {
                         <Route index element={<Pages.Landing />} />
                         <Route path='view/register' element={<Pages.Register/>} />
                         <Route path="/view/home" element={<Pages.Home />} />
-                        <Route path="/view/messaging" element={<Pages.Messaging />} />
+                        <Route path="/view/message" element={<Pages.Message />} />
                         <Route path="/view/settings" element={<Pages.Settings />} />
                         <Route path="/view/budget" element={<Pages.Budget />} />
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
@@ -28,9 +28,14 @@ export default function App() {
                         <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
                         <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
                         <Route path="/view/litnerary" element={<Pages.Itinerary />} />
+
+                        <Route path="/view/map" element={<Pages.Map />} />
+                        {/* <Route path="/new/map" element={<Pages.MapCreate />} /> */}
+                        {/* <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
                         <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />
+                        <Route path="/view/trip/all" element={<Pages.Trips />} />
                         <Route path="/view/trip/:id" element={<Pages.Trip />} />
                         <Route path="/new/trip" element={<Pages.TripCreate />} />
                         <Route path="/edit/trip/:id" element={<Pages.TripUpdate />} />
