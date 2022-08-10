@@ -1,4 +1,4 @@
-import "./css/ChecklistItem.css";
+// import "./css/ChecklistItem.css";
 
 export default function CheckListItem(props) {
     const { name, done } = props.item;

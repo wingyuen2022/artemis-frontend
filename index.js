@@ -10,6 +10,7 @@ const registerRoute = require('./routes/auth/register');
 // const verifyRoute = require('./routes/auth/verify');
 const meRoute = require('./routes/auth/me');
 const loginRoute = require('./routes/auth/login');
+const logoutRoute = require('./routes/auth/logout');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(cookieParser());
 
 app.use(registerRoute);
+app.use(logoutRoute);
 app.use(loginRoute);
 app.use(meRoute);
 

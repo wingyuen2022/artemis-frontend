@@ -9,7 +9,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Pages.Landing />} />
-                        <Route path='view/register' element={<Pages.Register/>} />
+                        <Route path='/view/register' element={<Pages.Register/>} />
                         <Route path="/view/home" element={<Pages.Home />} />
                         <Route path="/view/message" element={<Pages.Message />} />
                         <Route path="/view/settings" element={<Pages.Settings />} />

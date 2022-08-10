@@ -121,7 +121,7 @@ export const checkAuth = createAsyncThunk(
 
 export const logout = createAsyncThunk('users/logout', async (_, thunkAPI) => {
 	try {
-		const res = await fetch('/api/users/logout', {
+		const res = await fetch('http://localhost:5000/api/users/logout', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
