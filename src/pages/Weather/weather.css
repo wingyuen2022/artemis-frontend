@@ -3,8 +3,8 @@
     margin: auto;
     background-size: contain;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
+    background-repeat: repeat-y;
+    height: auto;
     width: auto;
     border: 2px solid #2090a4;
     background-color: #2090a4;
@@ -29,4 +29,8 @@ label {
 input {
     height: 30px;
     text-align: center;
+}
+
+.forecast {
+
 }

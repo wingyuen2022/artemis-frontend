@@ -128,7 +128,7 @@ export default function Checklist(id) {
                     <input id="id" type="number" name="id" hidden/><br />
                     <Button id="back-btn" onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
-                            navigate('/view/checklist');
+                            navigate('-1');
                         }
                     }}>Back</Button>
                     <Button id="delete-btn" variant="danger" onClick={()=>{
