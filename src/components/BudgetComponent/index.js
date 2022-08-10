@@ -19,21 +19,21 @@ const BudgetComponent = () => {
     return (
         <>
             <div className="row">
-                <div className="col">
+                <div className="col" role='item'>
                     <b>Item</b>
                 </div>
-                <div className="col">
+                <div className="col" role="price">
                     <b>Price</b>
                 </div>
-                <div className="col">
+                <div className="col" role="remark">
                     <b>Remark</b>
                 </div>
-                <div className="col">
+                <div className="col" role="action">
                     <b>Action</b>
                 </div>
             </div>
             <div className="row">
-                <div className="col">
+                <div className="col" role="car">
                     Rental Car
                 </div>
                 <div className="col">
@@ -43,7 +43,7 @@ const BudgetComponent = () => {
                     We booked a SUV
                 </div>
                 <div className="col">
-                    <Button onClick={()=>{
+                    <Button role="edit" onClick={()=>{
                         navigate('/edit/budget/1');
                     }}>Edit</Button>
                 </div>
