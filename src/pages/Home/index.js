@@ -11,11 +11,11 @@ import "./Home.css";
 
 const Home = () => {
     const navigate = useNavigate();
-    const { isAuthenticated, user, loading } = useSelector(state => state.user);
+    /*const { isAuthenticated, user, loading } = useSelector(state => state.user);*/
     const dispatch = useDispatch();
     dispatch(setTitle("Home"));
-    if (!isAuthenticated && !loading && user === null)
-		return <Navigate to='/login' />;
+    /*if (!isAuthenticated && !loading && user === null)
+		return <Navigate to='/login' />;*/
 
     // useEffect(()=>{
         
