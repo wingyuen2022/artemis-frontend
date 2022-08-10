@@ -26,49 +26,6 @@ export const setUser = (user) => {
     }
 };
 
-<<<<<<< HEAD:src/actions/index.js
-export const addItem = (itemToAdd) => {
-    return {
-      type: "cart/addItem",
-      payload: itemToAdd,
-    };
-  };
-  
-  // Create your changeItemQuantity action creator here.
-export const changeItemQuantity = (name, newQuantity) => {
-    return {
-      type: "cart/changeItemQuantity",
-      payload: { name: name, newQuantity: newQuantity },
-    };
-  };
-
-export const setCurrency = (currency) => {
-    return {
-      type: "currencyFilter/setCurrency",
-      payload: currency,
-    };
-  };
-
-// export const loadData = () => {
-//     return {
-//       type: "inventory/loadData",
-//       payload: inventoryData,
-//     };
-//   };
-
-export const setSearchTerm = (term) => {
-    return {
-      type: "searchTerm/setSearchTerm",
-      payload: term,
-    };
-  };
-  
-export const clearSearchTerm = () => {
-    return {
-      type: "searchTerm/clearSearchTerm",
-    };
-  };
-=======
 export const setOrigin = (origin) => {
     return {
         type: "SET_ORIGIN",
@@ -82,4 +39,3 @@ export const setDestination = (destination) => {
         payload: destination
     }
 };
->>>>>>> 92048e0439afce18da89679b9d8d4e095c9df0ba:client/src/actions/index.js
