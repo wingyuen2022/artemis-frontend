@@ -1,77 +1,121 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import { Container } from "react-bootstrap";
-import CheckListItem from "../../components/ChecklistComponent/CheckListItem";
-import ChecklistForm from "../../components/ChecklistComponent/ChecklistForm";
-import {caravan} from "../../assets/images/camping";
+import { caravan } from "../../assets/images/camping";
 import "./Checklist.css";
 
-//Initial tasks
-const stuff = [
-  { name: "item 1", done: false },
-  { name: "item 2", done: false },
-  { name: "item 3", done: true }
-];
 
-function Checklist() {
-  const [items, setItems] = useState(stuff);
-  const [inputValue, setInputValue] = useState("");
 
+export default function Checklist() {
+  
   const dispatch = useDispatch();
-    dispatch(setTitle("Check List"));
+  dispatch(setTitle("Checklist"));
+  
+  //Initial tasks
+  const [items, setItems] = useState([
+    { itemName: 'item 1', quantity: 1, isSelected: false },
+    { itemName: 'item 2', quantity: 3, isSelected: true },
+    { itemName: 'item 3', quantity: 2, isSelected: false },
+  ]);
+  
+  const [inputValue, setInputValue] = useState("");
+  const [totalItemCount, setTotalItemCount] = useState(1);
 
-  useEffect(() => {
-    let count = 0;
-    items.map(item => (!item.done ? count++ : null));
-    document.title = `${count} task${count > 1 ? "s" : ""} item`;
-  });
+    const handleAddButtonClick = () => {
+      const newItem = {
+        itemName: inputValue,
+        quantity: 1,
+        isSelected: false,
+      };
+  
+      const newItems = [...items, newItem];
+  
+      setItems(newItems);
+      setInputValue('');
+      calculateTotal();
 
-  //
-  const _handleSubmit = e => {
-    e.preventDefault();
-    if (inputValue === "") return alert("Item name is required");
+    };
 
-    const newArr = items.slice();
-    newArr.splice(0, 0, { name: inputValue, done: false });
-    setItems(newArr);
-    setInputValue("");
-  };
+      const handleQuantityIncrease = (index) => {
+        const newItems = [...items];
+    
+        newItems[index].quantity++;
+    
+        setItems(newItems);
+        calculateTotal();
+      };
 
-  //
-  const _handleBtnClick = ({ type, index }) => {
-    const newArr = items.slice();
-    if (type === "remove") newArr.splice(index, 1);
-    else if (type === "completed") newArr[index].done = true;
+      const handleQuantityDecrease = (index) => {
+        const newItems = [...items];
+    
+        newItems[index].quantity--;
+    
+        setItems(newItems);
+        calculateTotal();
+      };
 
-    return setItems(newArr);
-  };
+ 
+      const toggleComplete = (index) => {
+        const newItems = [...items];
+    
+        newItems[index].isSelected = !newItems[index].isSelected;
+    
+        setItems(newItems);
+      };
 
-  //
+      const calculateTotal = () => {
+        const totalItemCount = items.reduce((total, item) => {
+          return total + item.quantity;
+        }, 0);
+    
+        setTotalItemCount(totalItemCount);
+      };
+
+ 
   return (
     <>
     <Container className="camping-checklist">
-        <div>
+        <div className="checklist-heading">
             <img className="caravan-icon" src={caravan} alt="caravan"></img>
-            <ChecklistForm  className="checklistform-input"
-                    onSubmit={_handleSubmit}
-                    value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-            />
-      </div>
-      <ul>
+
+            <h4>Make sure you have everything you need with this handy checklist!</h4>
+        </div>
+        <div className="checklist-add-item">
+            <input value={inputValue} onChange={(event) => setInputValue(event.target.value)} className='add-item-input' placeholder='Add an item...' /><FontAwesomeIcon className="add-btn" icon={faPlus} onClick={() => handleAddButtonClick()} />
+        </div>
+        <div className="checklist-list">
         {items.map((item, index) => (
-          <CheckListItem
-            key={index}
-            item={item}
-            remove={() => _handleBtnClick({ type: "remove", index })}
-            completed={() => _handleBtnClick({ type: "completed", index })}
-          />
-        ))}
-      </ul>
+						<div className='item-container'>
+							<div className='item-name' onClick={() => toggleComplete(index)}>
+								{item.isSelected ? (
+									<>
+										<FontAwesomeIcon icon={faCheckCircle} />
+										<span className='completed'>{item.itemName}</span>
+									</>
+								) : (
+									<>
+										<FontAwesomeIcon icon={faCircle} />
+										<span>{item.itemName}</span>
+									</>
+								)}
+							</div>
+							<div className='quantity'>
+								<button>
+									<FontAwesomeIcon icon={faChevronLeft} onClick={() => handleQuantityDecrease(index)} />
+								</button>
+								<span> {item.quantity} </span>
+								<button>
+									<FontAwesomeIcon icon={faChevronRight} onClick={() => handleQuantityIncrease(index)} />
+								</button>
+							</div>
+						</div>
+					))}
+          </div>
+          <div className='total'>Total: {totalItemCount}</div>
     </Container>
     </>
   );
 }
-
-export default Checklist;

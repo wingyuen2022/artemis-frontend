@@ -1,17 +1,18 @@
 .checklist-item-container {
-    border: 3px solid black;
-    margin: auto;
+    margin: 1px auto;
+    padding: 10px;
     width: 100%;
     background-color: #2090A4;
 }
 
 .checklist-item {
-    display: block;
+    display: inline-block;
     list-style-type: none;
     font-family: 'Nanum Pen Script', cursive;
     text-transform: capitalize;
     margin: auto;
     width: 100%;
+    font-size: 2rem;
 }
 
 #completed-item-btn {
@@ -23,4 +24,9 @@
     border: solid 2px #fff;
     border-radius: 50px;
     padding: 10px;
+}
+
+#remove-item-btn {
+    height: 40px;
+    width: 40px;
 }

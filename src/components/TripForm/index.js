@@ -81,8 +81,8 @@ const TripForm = ({id}) => {
                     }} hidden={id === null}>Delete</Button>
                     <Button id="save-button" onClick={()=>{
                         alert('saved');
-                        navigate('/view/trip/1');
-                    }}>Save</Button>
+                        navigate('/view/home');
+                    }}>Save Trip</Button>
                 </Row>
             </Form>
             </Container>
