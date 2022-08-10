@@ -26,7 +26,7 @@ const RegisterPage = () => {
 		dispatch(register({ first_name, last_name, email, password }));
 	};
 
-	if (registered) return <Navigate to='/login' />;
+	if (registered) return <Navigate to='/view/home' />;
 
 	return (
 		<>

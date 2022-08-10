@@ -1,8 +1,8 @@
 import React from 'react';
 import './weather.css';
-import { Button } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
 import moment from 'moment';
-import {
+/*import {
     WiCloud,
     WiThunderstorm,
     WiRain,
@@ -11,12 +11,12 @@ import {
     WiDaySunny,
     WiSmog,
 } from 'react-icons/wi';
-  import styled from 'styled-components';
+  import styled from 'styled-components';*/
  
 
 export default function Weather({weatherData}) {
 
-    const WeatherIcon = styled.div`
+  /*const WeatherIcon = styled.div`
         color: whitesmoke;
     `;
 
@@ -25,7 +25,6 @@ export default function Weather({weatherData}) {
   }
 
   let weatherIcon = null;
-
   if (weatherData.weather[0].main === 'Thunderstorm') {
     weatherIcon = {WiThunderstorm};
   } else if (weatherData.weather[0].main === 'Drizzle') {
@@ -37,22 +36,21 @@ export default function Weather({weatherData}) {
   } else if (weatherData.weather[0].main === 'Clear') {
     weatherIcon = {WiDaySunny};
   } else if (weatherData.weather[0].main === 'Clouds') {
-    weatherIcon = {WiCloud} ;
+    weatherIcon = {WiCloud};
   } else {
     weatherIcon = {WiSmog};
-  }
+  }*/
 
   return (
     <>
     <div className="main">
     <div className="top">
       <p className="header">{weatherData.name}</p>
-      <Button className="button" inverted color='blue' circular icon='refresh' onClick={refresh} />
     </div>
     <div className="flex">
       <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
       <div className="flex">
-        <WeatherIcon style={{fontSize:30,marginTop:15}}>{weatherIcon}</WeatherIcon>
+        <img src ={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt="wthr img" />
         <p className="description">{weatherData.weather[0].main}</p>
       </div>
     </div>
@@ -70,3 +68,6 @@ export default function Weather({weatherData}) {
     </>
   )
 }
+
+//<Button className="button" inverted color='blue' circular icon='refresh' onClick={refresh} />
+//<WeatherIcon style={{fontSize:30,marginTop:15}}>{weatherIcon}</WeatherIcon>

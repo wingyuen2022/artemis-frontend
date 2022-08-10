@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import {store} from './store/store'
 
+
 // const store = configureStore(allReducers, devToolsEnhancer());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/ffd3b538-e8b3-48bc-9d4b-86c0dee84a33/deploy-status)](https://app.netlify.com/sites/artemis-camping/deploys)",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
