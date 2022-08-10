@@ -1,100 +1,113 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { getMethodBackendAPI } from '../../util/util.js';
+import { CardGroup, Card, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
-const TripComponent = () => {
+const TripComponent = ({id}) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
+    const [ trip, setTrip ] = useState(null);
 
     useEffect(()=>{
-
-    }, []);
+        getMethodBackendAPI(id).then((ret)=>{
+            if (ret.ok) {
+                ret.json().then((res)=>{
+                  setTrip(res[0]);
+                });
+            }
+        }).catch((err)=>{
+        });
+      }, []);
 
     const renderHTML = () => {
     return (
         <>
-            <div className="row">
-                <div className="col">
-                    <b>Trip name:</b>
+            { (trip !== null) ? (
+            <>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Trip name:</b></Col>
+                            <Col>{trip.fields.name}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Origin:</b></Col>
+                            <Col>{trip.fields.origin}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Destination:</b></Col>
+                            <Col>{trip.fields.destination}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Start Date:</b></Col>
+                            <Col>{trip.fields.start_date}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>End Date:</b></Col>
+                            <Col>{trip.fields.end_date}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Member:</b></Col>
+                            <Col>
+                                <Button onClick={()=>{
+                                    navigate('/view/member/' + trip.pk);
+                                }}>View Member</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Budget:</b></Col>
+                            <Col>
+                                <Button onClick={()=>{
+                                    navigate('/view/budget/' + trip.pk);
+                                }}>View Budget</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Checklist:</b></Col>
+                            <Col>
+                                <Button onClick={()=>{
+                                    navigate('/view/checklist/' + trip.pk);
+                                }}>View Checklist</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <div className="row">
+                    <div className="col">
+                        <Button onClick={()=>{
+                            navigate('/edit/trip/' + trip.pk);
+                        }}>Edit</Button>
+                    </div>
                 </div>
-                <div className="col">
-                    Peak District Trip
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Public:</b>
-                </div>
-                <div className="col">
-                    public
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Location:</b>
-                </div>
-                <div className="col">
-                    Peak district
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Start Date:</b>
-                </div>
-                <div className="col">
-                    2022-08-15
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>End Date:</b>
-                </div>
-                <div className="col">
-                    2022-08-21
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Member:</b>
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/view/member');
-                    }}>View Member</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Budget:</b>
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/view/budget');
-                    }}>View Budget</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Checklist:</b>
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/view/checklist');
-                    }}>View Checklist</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/edit/trip/1');
-                    }}>Edit</Button>
-                </div>
-            </div>
+            </>) : (<h1>No data</h1>) }
         </>
         );
     };
