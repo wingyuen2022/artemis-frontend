@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -19,33 +20,125 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-
-import { useRef, useState } from "react";
-
+import { useSelector } from "react-redux";
+import { Col, Row } from "react-bootstrap";
+import { openWeatherAPI } from '../../util/util.js';
 
 const center = { lat: 48.8584, lng: 2.2945 };
 
-function MapComponent() {
+const MapComponent = () => {
+  const navigate = useNavigate();
+  const route = useSelector(state => state.routeReducer);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyBa86Y0iLt7O9ShPjbWpMpvD7wJqNS2QVA",
     libraries: ["places"],
   });
 
-  const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+  //const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
+  const [weather, setWeather] = useState(null);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const originRef = useRef();
+  //const originRef = useRef();
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const destiantionRef = useRef();
+  //const destiantionRef = useRef();
+
+  useEffect(()=>{
+    const org = route.origin;
+    const des = route.destination;
+    const directionsService = new window.google.maps.DirectionsService();
+    directionsService.route({
+      origin: org,
+      destination: des,
+      // eslint-disable-next-line no-undef
+      travelMode: google.maps.TravelMode.WALKING,
+    }).then((res)=>{
+      setDirectionsResponse(res);
+      setDistance(res.routes[0].legs[0].distance.text);
+      setDuration(res.routes[0].legs[0].duration.text);
+      const lat = res.routes[0].overview_path[0].lat();
+      const long = res.routes[0].overview_path[0].lng();
+      getWeather(lat, long);
+    });
+  }, []);
+
+  const getWeather = (lat, long) => {
+    openWeatherAPI('weather', lat, long)
+      .then((res) => res.json())
+      .then((res) => {
+          setWeather(res);
+      }).catch((err) => {
+          console.log(err);
+      });
+  };
 
   if (!isLoaded) {
     return <SkeletonText />;
   }
 
-  async function calculateRoute() {
+  return (
+      <Flex
+        position="relative"
+        flexDirection="column"
+        alignItems="center"
+        h="100vh"
+        w="100vw"
+      >
+        <Box position="absolute" left={0} top={0} h="100%" w="100%">
+          {/* Google Map Box */}
+          <GoogleMap
+            center={center}
+            zoom={15}
+            mapContainerStyle={{ width: "100%", height: "100%" }}
+            options={{
+              zoomControl: false,
+              streetViewControl: false,
+              mapTypeControl: false,
+              fullscreenControl: false,
+            }}
+            /*onLoad={(map) => {
+              map.setZoom(100);
+              setMap(map);
+            }}*/
+          >
+            <Marker position={center} />
+            {directionsResponse && (
+              <DirectionsRenderer directions={directionsResponse} />
+            )}
+          </GoogleMap>
+        </Box>
+        <Box
+          p={4}
+          borderRadius="lg"
+          m={4}
+          bgColor="white"
+          shadow="base"
+          minW="container.md"
+          zIndex="1">
+          <Row>
+            <Col>{(weather !== null) ? (<><Text>{weather.name}</Text></>):(<p></p>)}</Col>
+            <Col>{(weather !== null) ? (<><img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" /></>):(<p></p>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.weather[0].main}</Text></>):(<p></p>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C</Text></>):(<p></p>)}</Col>
+          </Row>
+          <Row>
+            <Col><Button onClick={()=>{
+              navigate(-1);
+            }}>Back</Button></Col>
+            <Col><Text>{distance}</Text></Col>
+            <Col><Text>{duration}</Text></Col>
+          </Row>
+        </Box>
+      </Flex>
+  );
+};
+
+export default MapComponent;
+
+
+/*async function calculateRoute() {
     if (originRef.current.value === "" || destiantionRef.current.value === "") {
       return;
     }
@@ -69,45 +162,9 @@ function MapComponent() {
     originRef.current.value = "";
     destiantionRef.current.value = "";
   }
-
-  return (
-      <Flex
-        position="relative"
-        flexDirection="column"
-        alignItems="center"
-        h="100vh"
-        w="100vw"
-      >
-        <Box position="absolute" left={0} top={0} h="100%" w="100%">
-          {/* Google Map Box */}
-          <GoogleMap
-            center={center}
-            zoom={15}
-            mapContainerStyle={{ width: "100%", height: "100%" }}
-            options={{
-              zoomControl: false,
-              streetViewControl: false,
-              mapTypeControl: false,
-              fullscreenControl: false,
-            }}
-            onLoad={(map) => setMap(map)}
-          >
-            <Marker position={center} />
-            {directionsResponse && (
-              <DirectionsRenderer directions={directionsResponse} />
-            )}
-          </GoogleMap>
-        </Box>
-        <Box
-          p={4}
-          borderRadius="lg"
-          m={4}
-          bgColor="white"
-          shadow="base"
-          minW="container.md"
-          zIndex="1"
-        >
-          <HStack spacing={2} justifyContent="space-between">
+*/
+/*
+<HStack spacing={2} justifyContent="space-between">
             <Box flexGrow={1}>
               <Autocomplete>
                 <Input type="text" placeholder="Origin" ref={originRef} />
@@ -134,10 +191,9 @@ function MapComponent() {
               />
             </ButtonGroup>
           </HStack>
-          <HStack spacing={4} mt={4} justifyContent="space-between">
-            <Text>Distance: {distance} </Text>
-            <Text>Duration: {duration} </Text>
-            <IconButton
+*/
+/*
+<IconButton
               aria-label="center back"
               icon={<FaLocationArrow />}
               isRound
@@ -146,10 +202,4 @@ function MapComponent() {
                 map.setZoom(15);
               }}
             />
-          </HStack>
-        </Box>
-      </Flex>
-  );
-}
-
-export default MapComponent;
+*/
