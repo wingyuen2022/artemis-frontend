@@ -118,10 +118,11 @@ const MapComponent = () => {
           minW="container.md"
           zIndex="1">
           <Row>
-            <Col>{(weather !== null) ? (<><Text>{weather.name}</Text></>):(<p></p>)}</Col>
-            <Col>{(weather !== null) ? (<><img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" /></>):(<p></p>)}</Col>
-            <Col>{(weather !== null) ? (<><Text>{weather.weather[0].main}</Text></>):(<p></p>)}</Col>
-            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C</Text></>):(<p></p>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.name}</Text></>):(<></>)}</Col>
+            <Col>{(weather !== null) ? (<><img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" /></>):(<></>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.weather[0].main}</Text></>):(<></>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C</Text></>):(<></>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.main.humidity} %</Text></>):(<></>)}</Col>
           </Row>
           <Row>
             <Col><Button onClick={()=>{
