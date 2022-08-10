@@ -10,7 +10,7 @@ export default function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Pages.Landing />} />
                         <Route path="/view/home" element={<Pages.Home />} />
-                        <Route path="/view/messaging" element={<Pages.Messaging />} />
+                        <Route path="/view/message" element={<Pages.Message />} />
                         <Route path="/view/settings" element={<Pages.Settings />} />
                         <Route path="/view/budget" element={<Pages.Budget />} />
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
@@ -26,7 +26,8 @@ export default function App() {
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
                         <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />
-                        <Route path="/view/trip/" element={<Pages.Trip />} />
+                        <Route path="/view/trip/all" element={<Pages.Trips />} />
+                        <Route path="/view/trip/:id" element={<Pages.Trip />} />
                         <Route path="/new/trip" element={<Pages.TripCreate />} />
                         <Route path="/edit/trip/:id" element={<Pages.TripUpdate />} />
                         <Route path="/view/weather" element={<Pages.Weather />} />
