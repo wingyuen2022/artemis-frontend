@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import MapComponent from "../../components/MapComponent";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 
 const Map = () => {
   //const { xxx } = useParams();
@@ -19,7 +20,9 @@ const Map = () => {
       <>
         <div className="row">
           <div className="col">
-            <MapComponent />
+            <ChakraProvider theme={theme}>
+              <MapComponent />
+            </ChakraProvider>
           </div>
         </div>
       </>
