@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Spinner } from "react-bootstrap";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 
-const PlaceComponent = ({placeholder}) => {
+const PlaceComponent = ({id, value}) => {
     useEffect(()=>{
 
     }, []);
@@ -21,7 +21,7 @@ const PlaceComponent = ({placeholder}) => {
 
     return (
         <Autocomplete>
-            <input id={placeholder.toLowerCase()} type="text" name="origin-form" placeholder={placeholder} ref={ref} />
+            <input id={id} type="text" name="origin-form" value={value} ref={ref} />
         </Autocomplete>
     );
 }
