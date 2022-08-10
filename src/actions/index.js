@@ -25,3 +25,45 @@ export const setUser = (user) => {
         payload: user
     }
 };
+
+export const addItem = (itemToAdd) => {
+    return {
+      type: "cart/addItem",
+      payload: itemToAdd,
+    };
+  };
+  
+  // Create your changeItemQuantity action creator here.
+export const changeItemQuantity = (name, newQuantity) => {
+    return {
+      type: "cart/changeItemQuantity",
+      payload: { name: name, newQuantity: newQuantity },
+    };
+  };
+
+export const setCurrency = (currency) => {
+    return {
+      type: "currencyFilter/setCurrency",
+      payload: currency,
+    };
+  };
+
+// export const loadData = () => {
+//     return {
+//       type: "inventory/loadData",
+//       payload: inventoryData,
+//     };
+//   };
+
+export const setSearchTerm = (term) => {
+    return {
+      type: "searchTerm/setSearchTerm",
+      payload: term,
+    };
+  };
+  
+export const clearSearchTerm = () => {
+    return {
+      type: "searchTerm/clearSearchTerm",
+    };
+  };

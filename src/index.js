@@ -9,7 +9,6 @@ import { legacy_createStore } from "redux";
 import allReducers from "./reducers";
 import { devToolsEnhancer } from "redux-devtools-extension";
 import { Provider } from "react-redux";
-// import { ChakraProvider, theme } from "@chakra-ui/react";
 
 const store = legacy_createStore(allReducers, devToolsEnhancer());
 
@@ -17,9 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <Provider store={store}>
-      {/* <ChakraProvider theme={theme}> */}
         <App />
-      {/* </ChakraProvider> */}
     </Provider>
   </Router>
 );
