@@ -11,11 +11,11 @@ import "./Home.css";
 
 const Home = () => {
     const navigate = useNavigate();
-    const { isAuthenticated, user, loading } = useSelector(state => state.user);
+    /*const { isAuthenticated, user, loading } = useSelector(state => state.user);*/
     const dispatch = useDispatch();
     dispatch(setTitle("Home"));
-    if (!isAuthenticated && !loading && user === null)
-		return <Navigate to='/login' />;
+    /*if (!isAuthenticated && !loading && user === null)
+		return <Navigate to='/login' />;*/
 
     // useEffect(()=>{
         
@@ -47,7 +47,7 @@ const Home = () => {
                             <Card.Body className="card-body">View all your previous trips!
                             </Card.Body>
                             <Button id="view-trip-btn" onClick={()=>{
-                                navigate('/view/trip/1');
+                                navigate('/view/trip/all');
                             }}>View Trips</Button>
                         </Card>
                     </CardGroup>
