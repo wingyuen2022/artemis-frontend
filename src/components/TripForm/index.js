@@ -2,16 +2,17 @@ import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { wait } from '../../util/util.js';
 import { setTrip, setChat } from "../../actions";
+import { setOrigin, setDestination } from "../../actions";
 import { Col, Container, Form, FormLabel, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
+import PlaceComponent from '../PlaceComponent';
 import "./TripForm.css";
 
 const TripForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
+    const route = useSelector(state => state.routeReducer);
 
     useEffect(()=>{
         
@@ -46,11 +47,31 @@ const TripForm = ({id}) => {
                 </div>
            
                 <div className="form-label">
-                    <b>Location:</b>
+                    <b>Origin:</b>
                 </div>
                 <div className="col">
-                    <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/><br />
+                    <PlaceComponent placeholder="Origin" /><br />
                 </div>
+
+                <div className="form-label">
+                    <b>Destination:</b>
+                </div>
+                <div className="col">
+                    <PlaceComponent placeholder="Destination" /><br />
+                </div>
+
+                <Button onClick={()=>{
+                    const origin = document.getElementById("origin");
+                    if (origin !== undefined && origin !== null && origin !== "") {
+                        dispatch(setOrigin(origin.value));
+                    }
+                    const destination = document.getElementById("destination");
+                    if (destination !== undefined && destination !== null && destination !== "") {
+                        dispatch(setDestination(destination.value));
+                    }
+                    navigate('/view/map');
+                }}>View route</Button>
+            
             
                 <div className="form-label">
                     <b>Start Date:</b>
@@ -92,5 +113,5 @@ const TripForm = ({id}) => {
 
     return renderHTML();
 }
-
+// <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/>
 export default TripForm;

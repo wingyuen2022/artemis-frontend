@@ -25,3 +25,17 @@ export const setUser = (user) => {
         payload: user
     }
 };
+
+export const setOrigin = (origin) => {
+    return {
+        type: "SET_ORIGIN",
+        payload: origin
+    }
+};
+
+export const setDestination = (destination) => {
+    return {
+        type: "SET_DESTINATION",
+        payload: destination
+    }
+};
