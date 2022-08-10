@@ -27,7 +27,6 @@ export {default as Trips} from './Trips';
 export {default as Trip} from './Trip';
 export {default as TripCreate} from './TripCreate';
 export {default as TripUpdate} from './TripUpdate';
-export {default as CampingStore } from './CampingStore';
 
 
 export {default as Weather} from './Weather';
