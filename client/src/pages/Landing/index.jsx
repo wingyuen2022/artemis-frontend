@@ -16,6 +16,7 @@ export default function Landing() {
 
 	const [formData, setFormData] = useState({
 		email: '',
+		username: '',
 		password: '',
 	});
 
@@ -23,7 +24,7 @@ export default function Landing() {
 		if (registered) dispatch(resetRegistered());
 	}, [registered]);
 
-	const { email, password } = formData;
+	const { email, username, password } = formData;
 
 	const onChange = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,10 +33,10 @@ export default function Landing() {
 	const onSubmit = e => {
 		e.preventDefault();
 
-		dispatch(login({ email, password }));
+		dispatch(login({ email, username, password }));
 	};
 
-	if (isAuthenticated) return <Navigate to='/dashboard' />;
+	if (isAuthenticated) return <Navigate to='/view/home' />;
 
     const navigate = () => {
 
@@ -56,6 +57,21 @@ export default function Landing() {
                 <div className="auth-container">
 
                     <form className='mt-5' onSubmit={onSubmit}>
+
+					<div className='form-group'>
+					<label className='form-label' htmlFor='email'>
+						username
+					</label>
+					<input
+						className='form-control'
+						type='username'
+						name='username'
+						onChange={onChange}
+						value={username}
+						required
+					/>
+				</div>
+
 				<div className='form-group'>
 					<label className='form-label' htmlFor='email'>
 						Email
