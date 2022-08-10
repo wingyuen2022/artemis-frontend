@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { wait } from '../../util/util.js';
 import { setTrip, setChat } from "../../actions";
+import { Col, Container, Form, FormLabel, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
+import "./TripForm.css";
 
 const TripForm = ({id}) => {
     const navigate = useNavigate();
@@ -18,18 +20,19 @@ const TripForm = ({id}) => {
     const renderHTML = () => {
     return (
         <>
-            <div className="row">
-                <div className="col">
+            <Container className="trip-form-container">
+            <Form className="new-trip-form">
+                <FormLabel className="form-label">
                     <b>Trip name:</b>
-                </div>
-                <div className="col">
-                    <input id="name" type="text" name="name" maxLength="20" placeholder="Name"/><br />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <b>Public:</b>
-                </div>
+                </FormLabel>
+                <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
+                <br />
+               
+        
+            
+                <FormLabel className="col">
+                    <b>Public or Private:</b>
+                </FormLabel>
                 <div className="col">
                     <div className="row">
                         <div className="col">
@@ -40,32 +43,28 @@ const TripForm = ({id}) => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="row">
+           
                 <div className="col">
                     <b>Location:</b>
                 </div>
                 <div className="col">
                     <input id="location" type="text" name="location" maxLength="20" placeholder="Location"/><br />
                 </div>
-            </div>
-            <div className="row">
+            
                 <div className="col">
                     <b>Start Date:</b>
                 </div>
                 <div className="col">
                     <input id="startDate" class="inputs" name="startDate" type="date" required />
                 </div>
-            </div>
-            <div className="row">
+            
                 <div className="col">
                     <b>End Date:</b>
                 </div>
                 <div className="col">
                     <input id="endDate" class="inputs" name="endDate" type="date" required />
                 </div>
-            </div>
-            <div className="row">
+            
                 <div className="col">
                     <input id="id" type="number" name="id" hidden/><br />
                     <Button onClick={()=>{
@@ -84,7 +83,8 @@ const TripForm = ({id}) => {
                         navigate('/view/trip/1');
                     }}>Save</Button>
                 </div>
-            </div>
+            </Form>
+            </Container>
         </>
         );
     };

@@ -26,7 +26,7 @@ export default function App() {
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
                         <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />
-                        <Route path="/view/trip/:id" element={<Pages.Trip />} />
+                        <Route path="/view/trips/" element={<Pages.Trip />} />
                         <Route path="/new/trip" element={<Pages.TripCreate />} />
                         <Route path="/edit/trip/:id" element={<Pages.TripUpdate />} />
                         <Route path="/view/weather" element={<Pages.Weather />} />

@@ -1,0 +1,30 @@
+.trip-form-container {
+    padding: 20px;
+    background-image: url("../../assets/animations/trips.gif");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.new-trip-form {
+    background-color: #efddb7;
+    padding: 10px;
+    margin: auto;
+    border: 2px solid green;
+    border-radius: 20px;
+}
+
+.form-label {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    background-color: inherit;
+    color: #055c6b;
+}
+
+#form-item-input {
+    font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+}
