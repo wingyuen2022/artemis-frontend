@@ -69,8 +69,7 @@ const TripForm = ({id}) => {
                     if (destination !== undefined && destination !== null && destination !== "") {
                         dispatch(setDestination(destination.value));
                     }
-                    console.log(route.origin);
-                    console.log(route.destination);
+                    navigate('/view/map');
                 }}>View route</Button>
             
             
