@@ -3,15 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
-import TripForm from '../../components/TripForm';
+import MessageComponent from '../../components/MessageComponent';
 
-const Checklist = () => {
+const Messaging = () => {
     //const { xxx } = useParams();
     //const [ curXXX, setCurXXX] = useState(null);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Trip Details"));
+    dispatch(setTitle("Message Centre"));
 
     useEffect(()=>{
         
@@ -22,10 +22,7 @@ const Checklist = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        <TripForm />
-                    </div>
-                    <div className="col">
-                        
+                        <MessageComponent />
                     </div>
                 </div>
             </>
@@ -34,4 +31,4 @@ const Checklist = () => {
 
     return renderHTML();
 };
-export default Checklist;
+export default Messaging;

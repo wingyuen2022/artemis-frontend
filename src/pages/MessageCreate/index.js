@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
+import MessageForm from '../../components/MessageForm';
 
 const Messaging = () => {
     //const { xxx } = useParams();
@@ -10,7 +11,7 @@ const Messaging = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Messaging"));
+    dispatch(setTitle("New Message"));
 
     useEffect(()=>{
         
@@ -21,10 +22,7 @@ const Messaging = () => {
             <>
                 <div className="row">
                     <div className="col">
-                        
-                    </div>
-                    <div className="col">
-                        
+                        <MessageForm />
                     </div>
                 </div>
             </>
