@@ -5,6 +5,7 @@ import { setTitle } from "../../actions";
 import Button from "react-bootstrap/Button";
 import MapComponent from "../../components/MapComponent";
 
+
 const Map = () => {
   //const { xxx } = useParams();
   //const [ curXXX, setCurXXX] = useState(null);

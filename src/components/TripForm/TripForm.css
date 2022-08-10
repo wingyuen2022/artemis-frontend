@@ -1,0 +1,44 @@
+.trip-form-container {
+    padding: 20px;
+    background-image: url("../../assets/images/deer-bg.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.new-trip-form {
+    background-color: #efddb7;
+    padding: 10px;
+    margin: auto;
+    border: 2px solid green;
+    border-radius: 20px;
+    opacity: 0.9;
+}
+
+.form-label {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    background-color: inherit;
+    color: #055c6b;
+}
+
+.form-item-input {
+    font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    text-transform: capitalize;
+    color: #000;
+    font-size: 2rem;
+}
+
+#back-button, #save-button {
+    background-color: #008037;
+    border: none;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: block;
+    height: auto;
+    text-align: center;
+    margin: 5px auto;
+}
