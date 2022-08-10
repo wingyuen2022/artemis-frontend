@@ -26,7 +26,7 @@ const MemberForm = ({id}) => {
             <div className="row">
                 <div className="col">
                     <input id="id" type="number" name="id" hidden/><br />
-                    <Button onClick={()=>{
+                    <Button role="back" onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
                             navigate('/view/member');
                         }
