@@ -53,6 +53,7 @@ function MapComponent() {
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.WALKING,
     });
+    console.log(results)
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);

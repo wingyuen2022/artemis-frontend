@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
-import Weather from '../../components/WeatherComponent';
-import Forecast from '../../components/WeatherComponent/forecast';
+import WeatherComponent from '../../components/WeatherComponent';
+import ForecastComponent from '../../components/WeatherComponent/forecast';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './weather.css';
 
-export default function WeatherApp() {
+const Weather = () => {
   const dispatch = useDispatch();
   dispatch(setTitle("Weather"));
     
@@ -25,13 +25,14 @@ export default function WeatherApp() {
         <div className="weather-app">
             <Row>
                 <Col>
-                    <Weather lat={lat} long={long} />
+                    <WeatherComponent lat={lat} long={long} />
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <Forecast lat={lat} long={long} />
+                    <ForecastComponent lat={lat} long={long} />
                 </Col>
             </Row>
         </div>);
-}
+};
+export default Weather;
