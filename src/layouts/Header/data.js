@@ -12,8 +12,8 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Current Trips',
-        path: '/CurrentTrips',
+        title: 'View Trips',
+        path: '/view/trip/all',
         icon: <FaMapMarkedAlt />,
         cName: 'nav-text'
     },
@@ -30,8 +30,8 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Messaging',
-        path: '/view/messaging',
+        title: 'Message Centre',
+        path: '/view/message',
         icon: <RiMessage2Fill />,
         cName: 'nav-text'
     },
