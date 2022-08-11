@@ -41,7 +41,7 @@ const BudgetComponent = () => {
                                     <Col>
                                         <Button onClick={()=>{
                                             navigate('/edit/budget/' + cur.pk);
-                                        }}>Edit</Button>
+                                        }}>View</Button>
                                     </Col>
                                 </Row>
                             </Card>

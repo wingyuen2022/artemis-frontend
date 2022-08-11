@@ -14,10 +14,13 @@ const TripComponent = ({id}) => {
 
     const trip = useSelector(state => state.tripReducer);
     const [ curTrip, setCurTrip ] = useState(null);
+    const [ memberSize, setMemberSize ] = useState(0);
+    const [ budgetSize, setBudgetSize ] = useState(0);
+    const [ checklistSize, setChecklistSize ] = useState(0);
 
     useEffect(()=>{
-        const path = 'trip/' + id;
-        getMethodBackendAPI(path).then((ret)=>{
+        const path1 = 'trip/' + id;
+        getMethodBackendAPI(path1).then((ret)=>{
             if (ret.ok) {
                 ret.json().then((res)=>{
                     const trip = res[0];
@@ -27,7 +30,34 @@ const TripComponent = ({id}) => {
             }
         }).catch((err)=>{
         });
-      }, [dispatch, id]);
+        const path2 = 'trip/' + id + '/members/';
+        getMethodBackendAPI(path2).then((ret)=>{
+            if (ret.ok) {
+                ret.json().then((res)=>{
+                    setMemberSize(res.length);
+                });
+            }
+        }).catch((err)=>{
+        });
+        const path3 = 'trip/' + id + '/budget/';
+        getMethodBackendAPI(path3).then((ret)=>{
+            if (ret.ok) {
+                ret.json().then((res)=>{
+                    setBudgetSize(res.length);
+                });
+            }
+        }).catch((err)=>{
+        });
+        const path4 = 'trip/' + id + '/checklist/';
+        getMethodBackendAPI(path4).then((ret)=>{
+            if (ret.ok) {
+                ret.json().then((res)=>{
+                    setChecklistSize(res.length);
+                });
+            }
+        }).catch((err)=>{
+        });
+      }, []);
 
     const renderHTML = () => {
     return (
@@ -81,7 +111,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="member-btn" onClick={()=>{
                                     navigate('/view/member');
-                                }}>View Member</Button>
+                                }}>View ({memberSize})</Button>
                             </Col>
                         </Row>
                     </Card>
@@ -93,7 +123,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="budget-btn" onClick={()=>{
                                     navigate('/view/budget');
-                                }}>View Budget</Button>
+                                }}>View ({budgetSize})</Button>
                             </Col>
                         </Row>
                     </Card>
@@ -105,7 +135,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="checklist-btn" onClick={()=>{
                                     navigate('/view/checklist');
-                                }}>View Checklist</Button>
+                                }}>View ({checklistSize})</Button>
                             </Col>
                         </Row>
                     </Card>
