@@ -237,6 +237,7 @@ const CalendarComponent = () => {
           selectedDate={new Date(2021, 0, 10)}
           eventSettings={{ dataSource: scheduleData }}
           dragStart={onDragStart}
+          role="schedule"
         >
           <ViewsDirective>
             {["Day", "Week", "WorkWeek", "Month", "Agenda"].map((item) => (

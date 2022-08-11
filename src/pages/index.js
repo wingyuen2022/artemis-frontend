@@ -9,6 +9,7 @@ export {default as ChecklistUpdate} from './ChecklistUpdate';
 export {default as Home} from './Home';
 export {default as Itinerary} from './Itinerary';
 export {default as Landing} from './Landing';
+export { default as Register } from './Register';
 
 export {default as Map} from './Map';
 
@@ -27,4 +28,6 @@ export {default as Trip} from './Trip';
 export {default as TripCreate} from './TripCreate';
 export {default as TripUpdate} from './TripUpdate';
 
+
 export {default as Weather} from './Weather';
+

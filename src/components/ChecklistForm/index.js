@@ -32,18 +32,18 @@ const ChecklistForm = ({id}) => {
             <div className="row">
                 <div className="col">
                     <input id="id" type="number" name="id" hidden/><br />
-                    <Button onClick={()=>{
+                    <Button role="back" onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
                             navigate('/view/checklist');
                         }
                     }}>Back</Button>
-                    <Button variant="danger" onClick={()=>{
+                    <Button role="deleted" variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');
                             navigate('/view/checklist');
                         }
                     }} hidden={id === null}>Delete</Button>
-                    <Button onClick={()=>{
+                    <Button role="save" onClick={()=>{
                         alert('saved');
                         navigate('/view/checklist');
                     }}>Save</Button>

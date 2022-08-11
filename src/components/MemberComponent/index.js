@@ -31,7 +31,7 @@ const MemberComponent = () => {
                     Wing
                 </div>
                 <div className="col">
-                    <Button onClick={()=>{
+                    <Button role="edit" onClick={()=>{
                         navigate('/edit/member/1');
                     }}>Edit</Button>
                 </div>
