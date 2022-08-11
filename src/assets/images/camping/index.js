@@ -11,6 +11,7 @@ export { default as kayak } from "./kayak.png";
 export { default as lantern } from "./lantern.png";
 export { default as lighter } from "./lighter.png";
 export { default as map } from "./map.png";
+export { default as matches } from "./matches.png";
 export { default as picnicbasket } from "./picnic-basket.png";
 export { default as picnictable } from "./picnic-table.png";
 export { default as pillows } from "./pillows.png";

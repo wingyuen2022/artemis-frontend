@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, CardGroup, Card } from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
+import { setTitle } from "../../actions";
+import { Container, Dropdown, Button, Row, Col, CardGroup, Card } from "react-bootstrap";
+
+import "./MemberComponent.css";
 
 const MemberComponent = () => {
     const navigate = useNavigate();
@@ -15,6 +16,8 @@ const MemberComponent = () => {
     const [display, setDisplay] = useState(null);
     const [options, setOptions] = useState(null);
     const [selected, setSelected] = useState(null);
+
+    dispatch(setTitle("Trip Members"));
 
     useEffect(()=>{
         if (trip !== undefined && trip !== null) {
@@ -37,7 +40,7 @@ const MemberComponent = () => {
             }).catch((err)=>{
             });
         }
-    }, []);
+    }, [trip]);
 
     useEffect(()=>{
         if (members !== null) {
@@ -73,7 +76,7 @@ const MemberComponent = () => {
                 );
             }));
         }
-    }, [members]);
+    }, [members, navigate, trip.pk]);
 
     useEffect(()=>{
         if (allMembers !== null) {
@@ -132,7 +135,7 @@ const MemberComponent = () => {
                                 if (selected !== null) {
                                     let exist = false;
                                     if (members !== null) {
-                                        members.map((cur)=>{
+                                        members.map((cur) => {
                                             if (cur.pk === selected.pk) {
                                                 exist = true;
                                             }
@@ -158,6 +161,7 @@ const MemberComponent = () => {
                     </Row>
                 </Card>
             </CardGroup>
+
         </>
         );
     };

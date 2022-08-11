@@ -1,10 +1,10 @@
+export {default as Activities} from './Activities';
+
 export {default as Budget} from './Budget';
 export {default as BudgetCreate} from './BudgetCreate';
 export {default as BudgetUpdate} from './BudgetUpdate';
 
 export {default as Checklist} from './Checklist';
-export {default as ChecklistCreate} from './ChecklistCreate';
-export {default as ChecklistUpdate} from './ChecklistUpdate';
 
 export {default as Home} from './Home';
 export {default as Itinerary} from './Itinerary';

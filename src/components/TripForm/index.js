@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { setOrigin, setDestination } from "../../actions";
-import { Container, Form, FormLabel, Row } from "react-bootstrap";
+import { Button, Container, Form, FormLabel, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
+
 import PlaceComponent from '../PlaceComponent';
+
 import "./TripForm.css";
 
 const TripForm = ({id}) => {
@@ -64,9 +65,30 @@ const TripForm = ({id}) => {
                 </FormLabel>
                 <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
                 <br />
+            
+                <FormLabel className="form-label">
+                    <b>Public or Private:</b>
+                </FormLabel>
+                <div className="col">
+                    <div className="row">
+                        <div className="col">
+                            <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
+                            <FormLabel className="form-label"  for="public">Public</FormLabel>
+                        </div>
+                        <div className="col">
+                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><FormLabel className="form-label" for="private">Private</FormLabel>
+                        </div>
+                    </div>
+                </div>
+           
+                <FormLabel className="form-label">
+                    <b>Location:</b>
+                </FormLabel>
+
                 <div className="form-label">
                     <b>Origin:</b>
                 </div>
+
                 <div className="col">
                     <PlaceComponent id="origin" value={route.origin}/><br />
                 </div>
@@ -96,16 +118,16 @@ const TripForm = ({id}) => {
                 }}>View route</Button>
             
             
-                <div className="form-label">
+                <FormLabel className="form-label">
                     <b>Start Date:</b>
-                </div>
+                </FormLabel>
                 <div className="col">
                     <input className="form-item-input" id="startDate" class="inputs" name="startDate" type="date" required />
                 </div>
             
-                <div className="form-label">
+                <FormLabel className="form-label">
                     <b>End Date:</b>
-                </div>
+                </FormLabel>
                 <div className="col">
                     <input className="form-item-input" id="endDate" class="inputs" name="endDate" type="date" required />
                 </div>
@@ -128,53 +150,10 @@ const TripForm = ({id}) => {
                         }
                     }} hidden={id === null}>Delete</Button>
                     <Button id="save-button" onClick={()=>{
-                        const name = document.getElementById("name");
-                        if (name === undefined || name === null || name.value === '') {
-                            alert('Enter name');
-                            return;
-                        }
-                        const origin = document.getElementById("origin");
-                        if (origin === undefined || origin === null || origin.value === "") {
-                            alert('Enter origin');
-                            return;
-                        }
-                        const destination = document.getElementById("destination");
-                        if (destination === undefined || destination === null || destination.value === "") {
-                            alert('Enter destination');
-                            return;
-                        }
-                        const startDate = document.getElementById("startDate");
-                        if (startDate === undefined || startDate === null || startDate.value === "") {
-                            alert('Enter startDate');
-                            return;
-                        }
-                        const endDate = document.getElementById("endDate");
-                        if (endDate === undefined || endDate === null || endDate.value === "") {
-                            alert('Enter endDate');
-                            return;
-                        }
-                        const obj = {
-                            'name': name.value,
-                            'origin': origin.value,
-                            'destination': destination.value,
-                            'start_date': startDate.value,
-                            'end_date': endDate.value
-                        };
-                        if (id !== undefined && id !== null) {
-                            const path = 'trip/' + id + '/';
-                            putMethodBackendAPI(path, obj).then(()=>{
-                                alert('saved');
-                                navigate('/view/trip/all');
-                            }).catch((err)=>{
-                            });
-                        } else {
-                            postMethodBackendAPI('trip/', obj).then(()=>{
-                                alert('saved');
-                                navigate('/view/trip/all');
-                            }).catch((err)=>{
-                            });
-                        }
-                    }}>Save</Button>
+                        alert('saved');
+                        navigate('/view/home');
+                    }}>Save Trip</Button>                        
+
                 </Row>
             </Form>
             </Container>
@@ -186,21 +165,3 @@ const TripForm = ({id}) => {
 }
 
 export default TripForm;
-
-// <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/>
-/*
-<FormLabel className="col">
-                    <b>Public or Private:</b>
-                </FormLabel>
-                <div className="col">
-                    <div className="row">
-                        <div className="col">
-                            <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
-                            <label className="form-label"  for="public">Public</label>
-                        </div>
-                        <div className="col">
-                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><label className="form-label" for="private">Private</label>
-                        </div>
-                    </div>
-                </div>
-*/

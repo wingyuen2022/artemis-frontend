@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI } from '../../util/util.js';
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, CardGroup, Card } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
+import { Button, Row, Col, CardGroup, Card } from "react-bootstrap";
+
 
 const BudgetComponent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const trip = useSelector(state => state.tripReducer);
     const [budgets, setBudgets] = useState(null);
     const [display, setDisplay] = useState(null);

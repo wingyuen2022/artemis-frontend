@@ -1,35 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 
 .main{
-    width: 700px;
+    max-width: 400px;
     border-radius: 20px;
-    background-color: #01579b;
+    border: 2px solid #9ab4a9;
+    background-color:#2090a4;
+    opacity: 0.9;
+    height: 100%;
 }
 
 .top{
     height: 60px;
-    background-color: #424242;
-    color: whitesmoke;
+    background-color: #9ab4a9;
+    color: #2090a4;
     padding: 10px;
     border-radius: 20px 20px 0 0;
-    font-family: 'Recursive', sans-serif;
+    font-family: 'Nanum Pen Script', cursive;
     display: flex;
     justify-content: space-between;
 }
 
 .header{
-    background-color: #424242;
+    background-color: inherit;
     color: whitesmoke;
-    margin: 10px 0px 0px 10px;
-    font-size: 25px;
+    margin: 10px 5px 0px 10px;
+    font-size: 2rem;
     border-radius: 20px 20px 0 0;
-    font-family: 'Recursive', sans-serif;
+    font-family: 'Nanum Pen Script', cursive;
 }
 
 .day{
     padding: 15px;
     color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
+    font-family: 'Nanum Pen Script', cursive;
     font-size: 24px;
     font-weight: 600;
 }
@@ -37,26 +40,34 @@
 .temp{
     padding: 15px;
     color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
-    font-size: 18px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 24px;
+    font-weight: 600;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
 .flex{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    margin: auto;
 }
 
 .sunrise-sunset{
     padding: 15px;
     color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
-    font-size: 16px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 24px;
 }
 
 .description{
     padding: 15px;
     color: whitesmoke;
-    font-family: 'Recursive', sans-serif;
+    font-family: 'Nanum Pen Script', cursive;
     font-size: 24px;
     font-weight: 600;
 }
@@ -68,12 +79,19 @@
 
 .forecast{
     border-radius: 20px;
-    background-color: #01579b;
+    border: 2px solid #9ab4a9;
+    background-color:#2090a4;
+    opacity: 0.9;
+    height: 100%;
     color: whitesmoke;
     padding: 10px;
     margin: 10px;
-    font-family: 'Recursive', sans-serif;
-    font-size: 19px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 24px;
+}
+
+.forecast-list {
+    list-style-type: none;
 }
 
 .flex-forecast{

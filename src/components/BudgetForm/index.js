@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, CardGroup, Card } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
+import { Button, Row, Col } from "react-bootstrap";
 
 const BudgetForm = ({id}) => {
     const navigate = useNavigate();
@@ -23,7 +22,7 @@ const BudgetForm = ({id}) => {
             }).catch((err)=>{
             });
         }
-    }, []);
+    }, [id, trip.pk]);
 
     useEffect(()=>{
         if (budget !== null) {
