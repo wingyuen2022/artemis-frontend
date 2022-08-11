@@ -30,7 +30,7 @@ const MemberComponent = () => {
                 }
             }).catch((err)=>{
             });
-            const path2 = 'member/all/';
+            const path2 = 'user/all/';
             getMethodBackendAPI(path2).then((ret)=>{
                 if (ret.ok) {
                     ret.json().then((res)=>{

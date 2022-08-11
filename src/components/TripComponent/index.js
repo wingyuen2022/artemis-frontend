@@ -79,7 +79,7 @@ const TripComponent = ({id}) => {
                         <Row>
                             <Col><b>Member:</b></Col>
                             <Col>
-                                <Button onClick={()=>{
+                                <Button id="member-btn" onClick={()=>{
                                     navigate('/view/member');
                                 }}>View Member</Button>
                             </Col>
@@ -91,7 +91,7 @@ const TripComponent = ({id}) => {
                         <Row>
                             <Col><b>Budget:</b></Col>
                             <Col>
-                                <Button onClick={()=>{
+                                <Button id="budget-btn" onClick={()=>{
                                     navigate('/view/budget');
                                 }}>View Budget</Button>
                             </Col>
@@ -103,7 +103,7 @@ const TripComponent = ({id}) => {
                         <Row>
                             <Col><b>Checklist:</b></Col>
                             <Col>
-                                <Button onClick={()=>{
+                                <Button id="checklist-btn" onClick={()=>{
                                     navigate('/view/checklist');
                                 }}>View Checklist</Button>
                             </Col>
@@ -112,7 +112,7 @@ const TripComponent = ({id}) => {
                 </CardGroup>
                 <div className="row">
                     <div className="col">
-                        <Button onClick={()=>{
+                        <Button id="edit-btn" onClick={()=>{
                             navigate('/edit/trip/' + trip.pk);
                         }}>Edit</Button>
                     </div>
