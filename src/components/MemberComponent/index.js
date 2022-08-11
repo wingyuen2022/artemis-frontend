@@ -58,6 +58,7 @@ const MemberComponent = () => {
                                                 };
                                                 deleteMethodBackendAPI(path, obj).then((ret)=>{
                                                     if (ret.ok) {
+                                                        alert('deleted');
                                                         navigate('/view/trip/' + trip.pk);
                                                     }
                                                 }).catch((err)=>{

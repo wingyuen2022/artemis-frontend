@@ -1,32 +1,60 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
+import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { useDispatch, useSelector } from "react-redux";
+import { Row, Col, CardGroup, Card } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
 const BudgetForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
+    const [budget, setBudget] = useState(null);
 
     useEffect(()=>{
+        if (id !== undefined && id !== null) {
+            const path = 'trip/' + trip.pk + '/budget/';
+            getMethodBackendAPI(path).then((ret)=>{
+                if (ret.ok) {
+                    ret.json().then((res)=>{
+                        setBudget(res[0]);
+                    });
+                }
+            }).catch((err)=>{
+            });
+        }
     }, []);
+
+    useEffect(()=>{
+        if (budget !== null) {
+            const obj = budget.fields;
+            const item = document.getElementById("item");
+            if (item !== undefined && item !== null) {
+                item.value = obj.item;
+            }
+            const price = document.getElementById("price");
+            if (price !== undefined && price !== null) {
+                price.value = Number(obj.price);
+            }
+            const remark = document.getElementById("remark");
+            if (remark !== undefined && remark !== null) {
+                remark.value = obj.remark;
+            }
+        }
+    }, [budget]);
 
     const renderHTML = () => {
     return (
         <>
-            <div className="row">
-                <div className="col">
+            <Row>
+                <Col>
                     <b>Item:</b><input id="item" type="text" name="item" maxLength="20" placeholder="Item"/><br />
                     <b>Price:</b><input id="price" type="number" name="price" default="0" placeholder="Price"/><br />
                     <b>Remark:</b><input id="remark" type="text" name="remark" maxLength="1024" placeholder="remark"/><br />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <input id="id" type="number" name="id" hidden/><br />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <Button onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
                             navigate('/view/budget');
@@ -34,16 +62,57 @@ const BudgetForm = ({id}) => {
                     }}>Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
-                            alert('deleted');
-                            navigate('/view/budget');
+                            const path = 'trip/' + trip.pk + '/budget/';
+                            const obj = {
+                                'item_id': Number(id)
+                            };
+                            deleteMethodBackendAPI(path, obj).then((ret)=>{
+                                if (ret.ok) {
+                                    alert('deleted');
+                                    navigate('/view/budget');
+                                }
+                            }).catch((err)=>{
+                            });
                         }
                     }} hidden={id === null}>Delete</Button>
                     <Button onClick={()=>{
-                        alert('saved');
-                        navigate('/view/budget');
+                        const item = document.getElementById("item");
+                        if (item === undefined || item === null || item.value === "") {
+                            alert('Enter item');
+                            return;
+                        }
+                        const price = document.getElementById("price");
+                        if (price === undefined || price === null || price.value === "") {
+                            alert('Enter price');
+                            return;
+                        }
+                        const remark = document.getElementById("remark");
+                        if (remark === undefined || remark === null || remark.value === "") {
+                            alert('Enter remark');
+                            return;
+                        }
+                        const path = 'trip/' + trip.pk + '/budget/';
+                        const obj = {
+                            'item': item.value,
+                            'price': Number(price.value),
+                            'remark': remark.value
+                        };
+                        if (id !== undefined && id !== null) {
+                            putMethodBackendAPI(path, obj).then(()=>{
+                                alert('saved');
+                                navigate('/view/budget');
+                            }).catch((err)=>{
+                            });
+                        } else {
+                            postMethodBackendAPI(path, obj).then(()=>{
+                                alert('saved');
+                                navigate('/view/budget');
+                            }).catch((err)=>{
+                            });
+                        }
                     }}>Save</Button>
-                </div>
-            </div>
+                </Col>
+            </Row>
         </>
         );
     };
