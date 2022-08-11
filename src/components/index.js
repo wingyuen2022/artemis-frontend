@@ -3,9 +3,6 @@ export {default as BudgetForm} from './BudgetForm';
 
 export {default as CalendarComponent} from "./CalendarComponent";
 
-export {default as ChecklistComponent} from './ChecklistComponent';
-export {default as ChecklistForm} from './ChecklistForm';
-
 export {default as HomeComponent} from './HomeComponent';
 export {default as ItineraryComponent} from './ItineraryComponent';
 

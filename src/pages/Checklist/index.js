@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getMethodBackendAPI } from '../../util/util.js';
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -15,10 +14,7 @@ export default function Checklist(id) {
   dispatch(setTitle("Checklist"));
   const [inputValue, setInputValue] = useState("");
   const [totalItemCount, setTotalItemCount] = useState(1);
-  const trip = useSelector(state => state.tripReducer);
-  const [checklists, setChecklists] = useState(null);
-  const [display, setDisplay] = useState(null);
-  
+    
   //Initial tasks
   const [items, setItems] = useState([
     { itemName: 'item 1', quantity: 1, isSelected: false },
@@ -26,72 +22,56 @@ export default function Checklist(id) {
     { itemName: 'item 3', quantity: 2, isSelected: false },
   ]);
   
-  useEffect(()=>{
-    if (trip !== undefined && trip !== null) {
-      const path = 'trip/' + trip.pk + '/checklist/';
-        getMethodBackendAPI(path).then((ret)=>{
-          if (ret.ok) {
-            ret.json().then((res)=>{
-              setChecklists(res);
-            });
-          }
-        }).catch((err)=>{
-            });
-        }
-    }, [trip]);
-    const handleAddButtonClick = () => {
-      const newItem = {
-        itemName: inputValue,
-        quantity: 1,
-        isSelected: false,
-      };
+  const handleAddButtonClick = () => {
+    const newItem = {
+      itemName: inputValue,
+      quantity: 1,
+      isSelected: false,
+    };
   
-      const newItems = [...items, newItem];
+    const newItems = [...items, newItem];
   
-      setItems(newItems);
-      setInputValue('');
-      calculateTotal();
+    setItems(newItems);
+    setInputValue('');
+    calculateTotal();
 
     };
 
-      const handleQuantityIncrease = (index) => {
-        const newItems = [...items];
+    const handleQuantityIncrease = (index) => {
+      const newItems = [...items];
     
-        newItems[index].quantity++;
+      newItems[index].quantity++;
     
-        setItems(newItems);
-        calculateTotal();
-      };
+      setItems(newItems);
+      calculateTotal();
+    };
 
-      const handleQuantityDecrease = (index) => {
-        const newItems = [...items];
+    const handleQuantityDecrease = (index) => {
+      const newItems = [...items];
     
-        newItems[index].quantity--;
+      newItems[index].quantity--;
     
-        setItems(newItems);
-        calculateTotal();
-      };
+      setItems(newItems);
+      calculateTotal();
+    };
 
-      const toggleComplete = (index) => {
-        const newItems = [...items];
+    const toggleComplete = (index) => {
+      const newItems = [...items];
     
-        newItems[index].isSelected = !newItems[index].isSelected;
+      newItems[index].isSelected = !newItems[index].isSelected;
     
-        setItems(newItems);
-      };
+      setItems(newItems);
+    };
 
-      const calculateTotal = () => {
-        const totalItemCount = items.reduce((total, item) => {
-          return total + item.quantity;
-        }, 0);
+    const calculateTotal = () => {
+      const totalItemCount = items.reduce((total, item) => {
+      return total + item.quantity;
+      }, 0);
     
-        setTotalItemCount(totalItemCount);
-      };
+      setTotalItemCount(totalItemCount);
+    };
 
-      useEffect(() => {
-        if (checklists !== null) {
-            setDisplay(checklists.map((cur) => {
- 
+  
   return (
     <>
       <Container className="camping-checklist">
@@ -143,44 +123,31 @@ export default function Checklist(id) {
           
           <div className='total'>Total: {totalItemCount}</div>
         
-          { (checklists !== null) ? (
-            <>
-                {display}
-            </>) : (<></>) }
             <div className="btn-container">
-                <div className="btn-row">
-                    <input id="id" type="number" name="id" hidden/><br />
-                    <Button id="back-btn" onClick={()=>{
-                        if (window.confirm("Confirm without saving?")) {
-                            navigate('-1');
-                        }
-                    }}>Back</Button>
+              <div className="btn-row">
+                <input id="id" type="number" name="id" hidden/><br />
+                  <Button id="back-btn" onClick={()=>{
+                    if (window.confirm("Confirm without saving?")) {
+                        navigate('-1');
+                    }
+                  }}>Back</Button>
 
-                    <Button id="delete-btn" variant="danger" onClick={()=>{
-                        if (window.confirm("Confirm to delete?")) {
-                            alert('deleted');
-                            navigate('/view/checklist');
-                        }
-                    }} hidden={id === null}>Delete</Button>
-
-                    <Button id="save-btn" onClick={()=>{
-                        alert('saved');
+                  <Button id="delete-btn" variant="danger" onClick={()=>{
+                    if (window.confirm("Confirm to delete?")) {
+                        alert('deleted');
                         navigate('/view/checklist');
-                    }}>Save</Button>
+                    }
+                  }} hidden={id === null}>Delete</Button>
 
-                    <Button id="edit-btn" onClick={()=>{
-                        navigate('/edit/checklist/' + cur.pk);
-                    }}>Edit</Button>
+                  <Button id="save-btn" onClick={()=>{
+                    alert('saved');
+                    navigate('/view/checklist');
+                  }}>Save</Button>
 
-                    <Button onClick={()=>{
-                        navigate('/new/checklist/');
-                    }}>Add</Button>
                 </div>
               </div>
             </div>
       </Container>
     </>
-  ), [checklists];
-  }))
- }})
+  )
 }
