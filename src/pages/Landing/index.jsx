@@ -13,6 +13,7 @@ export default function Landing() {
     const dispatch = useDispatch();
     dispatch(setTitle("Welcome"));
     
+    const loading = false;
     /*const { loading, isAuthenticated, registered } = useSelector(
 		state => state.user
 	);*/
@@ -23,9 +24,9 @@ export default function Landing() {
 		password: '',
 	});
 
-	useEffect(() => {
+	/*useEffect(() => {
 		if (registered) dispatch(resetRegistered());
-	}, [registered]);
+	}, [registered]);*/
 
 	const { email, username, password } = formData;
 
@@ -39,7 +40,7 @@ export default function Landing() {
 		dispatch(login({ email, username, password }));
 	};
 
-	if (isAuthenticated) return <Navigate to='/view/home' />;
+	//if (isAuthenticated) return <Navigate to='/view/home' />;
 
     const navigate = () => {
 
