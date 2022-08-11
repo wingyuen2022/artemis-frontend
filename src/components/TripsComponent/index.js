@@ -31,7 +31,7 @@ const TripsComponent = () => {
                                 <Col>{cur.fields.name}</Col>
                                 <Col>{cur.fields.start_date}</Col>
                                 <Col>{cur.fields.destination.substring(0, 20)}...</Col>
-                                <Col><Button onClick={()=>{
+                                <Col><Button id="edit-btn" onClick={()=>{
                                     navigate('/view/trip/' + cur.pk);
                                 }}>View</Button></Col>
                             </Row>
