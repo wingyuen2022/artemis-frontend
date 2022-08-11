@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import Container from "react-bootstrap/container";
 import { openWeatherAPI } from '../../util/util.js';
 import './weather.css';
 
@@ -18,6 +19,7 @@ export default function Weather({lat, long}) {
 
     return (
         <>
+            <Container className="weather-container">
             {(weather !== null) ? (
                 <div className="main">
                 <div className="top">
@@ -41,6 +43,7 @@ export default function Weather({lat, long}) {
                     <p className="sunrise-sunset">Sunset: {new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-GB')}</p>
                 </div>  
             </div>):(<p></p>)}
+            </Container>
         </>
     )
 }
