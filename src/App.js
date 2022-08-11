@@ -17,7 +17,9 @@ export default function App() {
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
                         <Route path="/edit/budget/:id" element={<Pages.BudgetUpdate />} />
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
-                       
+                        <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
+                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
+
                         <Route path="/view/itinerary" element={<Pages.Itinerary />} />                        
                         <Route path="/view/map" element={<Pages.Map />} />
                         <Route path="/view/member" element={<Pages.Member />} />
