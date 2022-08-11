@@ -107,7 +107,7 @@ const TripComponent = ({id}) => {
                         }}>Edit</Button>
                     </div>
                 </div>
-            </>) : (<h1>No data</h1>) }
+            </>) : (<></>) }
         </>
         );
     };

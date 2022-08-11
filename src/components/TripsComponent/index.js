@@ -58,7 +58,7 @@ const TripsComponent = () => {
                 { (trips !== null) ? (
                 <>
                     {display}
-                </>) : (<h1>No data</h1>) }
+                </>) : (<></>) }
                 
             </>
             );
