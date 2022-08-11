@@ -35,17 +35,13 @@ const ChecklistComponent = () => {
                         <CardGroup>
                             <Card>
                                 <Row>
-
-                                    <Col>{cur.fields.assignee}</Col>
-
                                     <Col>{cur.fields.name}</Col>
-
                                     <Col>{cur.fields.item}</Col>
-                                    <Col>{cur.fields.note}</Col>
+                                    <Col>{cur.fields.remark}</Col>
                                     <Col>
                                         <Button id="edit-btn" onClick={()=>{
                                             navigate('/edit/checklist/' + cur.pk);
-                                        }}>Edit</Button>
+                                        }}>View</Button>
                                     </Col>
                                 </Row>
                             </Card>
