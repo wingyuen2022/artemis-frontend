@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setTrip } from "../../actions";
 import { getMethodBackendAPI } from '../../util/util.js';
 import { CardGroup, Card, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
 const TripComponent = ({id}) => {
     const navigate = useNavigate();
-    const [ trip, setTrip ] = useState(null);
+    const dispatch = useDispatch();
+    const trip = useSelector(state => state.tripReducer);
+    const [ curTrip, setCurTrip ] = useState(null);
 
     useEffect(()=>{
-        getMethodBackendAPI(id).then((ret)=>{
+        const path = 'trip/' + id;
+        getMethodBackendAPI(path).then((ret)=>{
             if (ret.ok) {
                 ret.json().then((res)=>{
-                  setTrip(res[0]);
+                    const trip = res[0];
+                    setCurTrip(trip);
+                    dispatch(setTrip(trip));
                 });
             }
         }).catch((err)=>{
@@ -22,13 +29,13 @@ const TripComponent = ({id}) => {
     const renderHTML = () => {
     return (
         <>
-            { (trip !== null) ? (
+            { (curTrip !== null) ? (
             <>
                 <CardGroup>
                     <Card>
                         <Row>
                             <Col><b>Trip name:</b></Col>
-                            <Col>{trip.fields.name}</Col>
+                            <Col>{curTrip.fields.name}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
@@ -36,7 +43,7 @@ const TripComponent = ({id}) => {
                     <Card>
                         <Row>
                             <Col><b>Origin:</b></Col>
-                            <Col>{trip.fields.origin}</Col>
+                            <Col>{curTrip.fields.origin}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
@@ -44,7 +51,7 @@ const TripComponent = ({id}) => {
                     <Card>
                         <Row>
                             <Col><b>Destination:</b></Col>
-                            <Col>{trip.fields.destination}</Col>
+                            <Col>{curTrip.fields.destination}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
@@ -52,7 +59,7 @@ const TripComponent = ({id}) => {
                     <Card>
                         <Row>
                             <Col><b>Start Date:</b></Col>
-                            <Col>{trip.fields.start_date}</Col>
+                            <Col>{curTrip.fields.start_date}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
@@ -60,7 +67,7 @@ const TripComponent = ({id}) => {
                     <Card>
                         <Row>
                             <Col><b>End Date:</b></Col>
-                            <Col>{trip.fields.end_date}</Col>
+                            <Col>{curTrip.fields.end_date}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
@@ -70,7 +77,7 @@ const TripComponent = ({id}) => {
                             <Col><b>Member:</b></Col>
                             <Col>
                                 <Button onClick={()=>{
-                                    navigate('/view/member/' + trip.pk);
+                                    navigate('/view/member');
                                 }}>View Member</Button>
                             </Col>
                         </Row>
@@ -82,7 +89,7 @@ const TripComponent = ({id}) => {
                             <Col><b>Budget:</b></Col>
                             <Col>
                                 <Button onClick={()=>{
-                                    navigate('/view/budget/' + trip.pk);
+                                    navigate('/view/budget');
                                 }}>View Budget</Button>
                             </Col>
                         </Row>
@@ -94,7 +101,7 @@ const TripComponent = ({id}) => {
                             <Col><b>Checklist:</b></Col>
                             <Col>
                                 <Button onClick={()=>{
-                                    navigate('/view/checklist/' + trip.pk);
+                                    navigate('/view/checklist');
                                 }}>View Checklist</Button>
                             </Col>
                         </Row>

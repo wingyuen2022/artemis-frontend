@@ -1,4 +1,4 @@
-const tripReducer = (state = [], action) => {
+const tripReducer = (state = null, action) => {
     switch(action.type) {
         case "SET_TRIP":
             state = action.payload;

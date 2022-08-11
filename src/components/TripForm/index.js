@@ -16,7 +16,8 @@ const TripForm = ({id}) => {
 
     useEffect(()=>{
         if (id !== undefined && id !== null) {
-            getMethodBackendAPI(id).then((ret)=>{
+            const path = 'trip/' + id;
+            getMethodBackendAPI(path).then((ret)=>{
                 if (ret.ok) {
                     ret.json().then((res)=>{
                         setTrip(res[0]);
@@ -119,7 +120,7 @@ const TripForm = ({id}) => {
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             const path = id + '/';
-                            deleteMethodBackendAPI(path).then(()=>{
+                            deleteMethodBackendAPI(path, null).then(()=>{
                                 alert('saved');
                                 navigate('/view/trip/all');
                             }).catch((err)=>{
