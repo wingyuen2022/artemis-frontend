@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setTrip } from "../../actions";
 import { getMethodBackendAPI } from '../../util/util.js';
-import { CardGroup, Card, Row, Col, Text } from "react-bootstrap";
+import { CardGroup, Card, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import "./Trip.css";
 
