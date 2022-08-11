@@ -17,7 +17,7 @@ export default function Forecast({lat, long}) {
         }).catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, [lat, long]);
 
     useEffect(()=>{
         if (forecast !== null) {
@@ -56,7 +56,7 @@ export default function Forecast({lat, long}) {
                                 </Row>
                             </div>
                         </li>
-                        <li>{display}</li>
+                        <li className="forecast-list">{display}</li>
                     </ul>
                 </div>
             ):(<p></p>)}

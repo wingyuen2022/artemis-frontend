@@ -1,0 +1,19 @@
+.activities-container {
+    display: flex;
+    margin: auto;
+    height: 100vh;
+    width: 100%;
+}
+
+.activities-header {
+    text-align: center;
+}
+
+.findme-icons {
+    height: 100px;
+    width: auto;
+}
+
+.activities-list {
+    background-color: #fff;
+}
