@@ -4,6 +4,7 @@ import { openWeatherAPI } from '../../util/util.js';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './weather.css';
+import { Card, Container } from 'react-bootstrap';
 
 export default function Forecast({lat, long}) {
     const [forecast, setForecast] = useState(null);
@@ -41,25 +42,27 @@ export default function Forecast({lat, long}) {
   
     return (
         <>
+            <Container className="forecast-container">
             {(display !== null) ? (
-                <div>
-                    <ul aria-label="forecast data">
-                        <li>
-                            <div key='-1' className="forecast">
-                                <Row>
-                                    <Col>Date</Col>
-                                    <Col></Col>
-                                    <Col>Hour</Col>
-                                    <Col>Weather</Col>
-                                    <Col>&deg;C</Col>
-                                    <Col>%</Col>
-                                </Row>
-                            </div>
-                        </li>
-                        <li className="forecast-list">{display}</li>
-                    </ul>
+                <div aria-label="forecast data">
+                    
+                        <row key='-1' className="forecast"
+                        id="forecast-heading">
+                            <Col>Date</Col>
+                            <Col>Day</Col>
+                            <Col>Hour</Col>
+                            <Col>Weather</Col>
+                            <Col>&deg;C</Col>
+                            <Col>%</Col>
+                        </row>
+                    
+                    <Card className="card">
+                        <Card.Body className="forecast-list">{display}
+                        </Card.Body>
+                    </Card>
                 </div>
             ):(<p></p>)}
+            </Container>
         </>
     );  
 }

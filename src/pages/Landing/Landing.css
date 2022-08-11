@@ -1,5 +1,5 @@
-.landing-container, .auth-container {
-    box-sizing: content-box;
+.landing-container {
+    /* box-sizing: content-box; */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -9,15 +9,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 130vh;
-    padding: 10px 0;
+    height: 100%;
+    /* padding: 10px 0; */
     font-family: 'Nanum Pen Script', cursive;
 }
-.auth-container {
-    background: transparent;
-}
 
-.landing-container > h1, h3 {
+.landing-container > h1, h2, h3 {
     color: darkgreen;
     font-size: 2rem;
     font-weight: bold;
@@ -34,21 +31,7 @@
     margin: auto;
 }
 
-.auth-form {
-    font-family: 'Nanum Pen Script', cursive;
-    display: flex;
-    flex-direction: column;
-    width: 20rem;
-    height: 60vh;
-    margin: 0 auto;
-    background-color: #9ab4a9;
-    opacity: 0.9;
-    border: 2px darkgreen solid;
-    border-radius: 20px;
-    padding: 10px;
-}
-
-.auth-label, p {
+p {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
     color: #008037;
@@ -57,9 +40,11 @@
     letter-spacing: 1.5px;
 }
 
-.auth-btn {
+.auth-btn, .form-control {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     height: 50px;
     width: 90%;
@@ -67,12 +52,12 @@
     background-color: #008037;
     color: #fff;
     border-radius: 30px;
-    border: none;
-    
+    border: none;  
 }
 
-.auth-input {
-    font-family: 'Lato', sans-serif;
+.form-control {
+    background-color: #fff;
+    color: #000;
     margin: 5px auto;
     height: auto;
     padding: 10px;
@@ -80,18 +65,10 @@
     border: 1px darkgreen solid;    
     width: 90%;
     text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
 }
 
-.auth-btn:active {
-    background-color: #9ab4a9;
-    color: #000;
-}
-
-.slogan-container {
-    background-color: #9ab4a9;
-    opacity: 0.9;
-    padding: 10px;
-}
 .slogan {
     font-size: 2rem;
 }

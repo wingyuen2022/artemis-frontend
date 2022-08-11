@@ -30,7 +30,7 @@ const MemberComponent = () => {
                 }
             }).catch((err)=>{
             });
-            const path2 = 'member/all/';
+            const path2 = 'user/all/';
             getMethodBackendAPI(path2).then((ret)=>{
                 if (ret.ok) {
                     ret.json().then((res)=>{
@@ -50,7 +50,6 @@ const MemberComponent = () => {
                         <CardGroup>
                             <Card>
                                 <Row>
-                                <Col>{cur.pk}</Col>
                                     <Col>{cur.fields.name}</Col>
                                     <Col>
                                         <Button variant="danger" onClick={()=>{
@@ -83,7 +82,7 @@ const MemberComponent = () => {
             setOptions(allMembers.map((cur)=>{
                 return (
                     <>
-                        <Dropdown.Item eventKey={cur.pk}>{cur.fields.name}</Dropdown.Item>
+                        <Dropdown.Item eventKey={cur.pk}>{cur.fields.username}</Dropdown.Item>
                     </>
                 );
             }));
@@ -96,7 +95,7 @@ const MemberComponent = () => {
             <CardGroup>
                 <Card>
                     <Row>
-                        <Col><h1>{ trip.fields.name }</h1></Col>
+                        <Col><h1>{ trip.fields.username }</h1></Col>
                     </Row>
                 </Card>
             </CardGroup>
@@ -124,7 +123,7 @@ const MemberComponent = () => {
                                 });
                                 }}>
                                 <Dropdown.Toggle variant="success" id="new-member">
-                                    { (selected !== null) ? (<>{selected.fields.name}</>) : (<></>) }
+                                    { (selected !== null) ? (<>{selected.fields.username}</>) : (<></>) }
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
@@ -136,7 +135,7 @@ const MemberComponent = () => {
                                     let exist = false;
                                     if (members !== null) {
                                         members.map((cur) => {
-                                            if (cur.pk === selected.pk) {
+                                            if (cur.fields.member === selected.pk) {
                                                 exist = true;
                                             }
                                         });
