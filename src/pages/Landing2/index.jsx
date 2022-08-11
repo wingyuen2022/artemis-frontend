@@ -20,9 +20,9 @@ export default function Landing2() {
 		password: '',
 	});
 
-	useEffect(() => {
+	/*useEffect(() => {
 		if (registered) dispatch(resetRegistered());
-	}, [registered]);
+	}, [registered]);*/
 
 	const { email, username, password } = formData;
 
@@ -36,7 +36,7 @@ export default function Landing2() {
 		dispatch(login({ email, username, password }));
 	};
 
-	if (isAuthenticated) return <Navigate to='/view/home' />;
+	//if (isAuthenticated) return <Navigate to='/view/home' />;
 
     const navigate = () => {
 
