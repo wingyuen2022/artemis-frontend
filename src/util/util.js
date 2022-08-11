@@ -21,7 +21,7 @@ export const getMethodBackendAPI = async(path) => {
     return new Promise((resolve, reject) => {
         let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
         //let domain = `http://127.0.0.1:8000/api/`;
-        let url = domain + `trip/` + path;
+        let url = domain + path;
         fetch(url).then((res) => {
             resolve(res);
         }).catch((err) => {
@@ -34,7 +34,7 @@ export const postMethodBackendAPI = async(path, jsonObject) => {
     return new Promise((resolve, reject) => {
         let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
         //let domain = `http://127.0.0.1:8000/api/`;
-        let url = domain + `trip/` + path;
+        let url = domain + path;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -54,7 +54,7 @@ export const putMethodBackendAPI = async(path, jsonObject) => {
     return new Promise((resolve, reject) => {
         let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
         //let domain = `http://127.0.0.1:8000/api/`;
-        let url = domain + `trip/` + path;
+        let url = domain + path;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -70,17 +70,32 @@ export const putMethodBackendAPI = async(path, jsonObject) => {
     });
 };
 
-export const deleteMethodBackendAPI = async(path) => {
+export const deleteMethodBackendAPI = async(path, jsonObject) => {
     return new Promise((resolve, reject) => {
         let domain = `https://artemis-camping-backend.herokuapp.com/api/`;
         //let domain = `http://127.0.0.1:8000/api/`;
-        let url = domain + `trip/` + path;
-        fetch(url, {
-            method: 'DELETE'}
-        ).then((res) => {
-            resolve(res);
-        }).catch((err) => {
-            reject(err)
-        });
+        let url = domain + path;
+        if (jsonObject !== null) {
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(jsonObject)}
+            ).then((res) => {
+                resolve(res);
+            }).catch((err) => {
+                reject(err)
+            });
+        } else {
+            fetch(url, {
+                method: 'DELETE'}
+            ).then((res) => {
+                resolve(res);
+            }).catch((err) => {
+                reject(err)
+            });
+        }
     });
 };
