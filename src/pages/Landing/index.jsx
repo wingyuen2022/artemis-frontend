@@ -7,7 +7,7 @@ import { resetRegistered, login } from '../../features/user';
 import { Bounce, Zoom } from 'react-reveal';
 import Logo from "../../assets/images/artemis-colour-cutout.png";
 
-// import "./Landing.css";
+import "./Landing.css";
 
 export default function Landing() {
     const dispatch = useDispatch();
@@ -56,10 +56,10 @@ export default function Landing() {
                 </Bounce>
                 <div className="slogan-container"><h2 className="slogan">Are you DUE an adventure?</h2>
                     <Zoom className="slogan-block">
-                        <p>DISCOVER, UNWIND, EXPLORE</p>
+                        <p>DISCOVER UNWIND EXPLORE</p>
                     </Zoom>
                 <hr />
-                <h3>To start, please login below...</h3>
+                
                 </div>
                 <div className="auth-container">
 
