@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { setTitle } from "../../actions";
 import { Navigate } from 'react-router-dom';
 import { Container, Form } from "react-bootstrap";
 import { resetRegistered, login } from '../../features/user';
@@ -11,8 +10,7 @@ import "./Landing.css";
 
 export default function Landing() {
     const dispatch = useDispatch();
-    dispatch(setTitle("Welcome"));
-    
+       
     const loading = false;
     /*const { loading, isAuthenticated, registered } = useSelector(
 		state => state.user
@@ -58,50 +56,35 @@ export default function Landing() {
                     <Zoom className="slogan-block">
                         <p>DISCOVER UNWIND EXPLORE</p>
                     </Zoom>
-                <hr />
-                
                 </div>
-                <div className="auth-container">
-
-                     <form className='mt-5' onSubmit={onSubmit}>
+                <form onSubmit={onSubmit}>
 
                     <div className='form-group'>
-                    <label className='form-label' htmlFor='email'>
-                        username
-                    </label>
+                    {/* <label className='form-label' htmlFor='email'>
+                        Username
+                    </label> */}
                     <input
                         className='form-control'
                         type='username'
                         name='username'
                         onChange={onChange}
                         value={username}
+                        placeholder="Enter Username"
                         required
                     />
                     </div>
 
-                    <div className='form-group'>
-                    <label className='form-label' htmlFor='email'>
-                        Email
-                    </label>
-                    <input
-                        className='form-control'
-                        type='email'
-                        name='email'
-                        onChange={onChange}
-                        value={email}
-                        required
-                    />
-                    </div>
                     <div className='form-group mt-3'>
-                    <label className='form-label' htmlFor='password'>
+                    {/* <label className='form-label' htmlFor='password'>
                         Password
-                    </label>
+                    </label> */}
                     <input
                         className='form-control'
                         type='password'
                         name='password'
                         onChange={onChange}
                         value={password}
+                        placeholder="Enter Password"
                         required
                     />
                     </div>
@@ -117,10 +100,7 @@ export default function Landing() {
                         <input className="auth-btn" id="register" type="submit" value="Register" onClick={navigate}/>
 
                     </form>
-
-
-            </div>  
-                    
+                  
             </Container>
             <br />
         </>

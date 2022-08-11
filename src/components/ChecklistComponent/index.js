@@ -1,19 +1,13 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getMethodBackendAPI } from '../../util/util.js';
-import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, CardGroup, Card } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
-//import CheckListItem from './CheckListItem';
-//import ChecklistForm from './ChecklistForm';
-//import * as camp from "../../assets/images/camping";
-//import "./Checklist.css";
+import { useSelector } from "react-redux";
+import { Button, Row, Col, CardGroup, Card } from "react-bootstrap";
 
-//const tasks = [{ name: "tent, tent pegs & mallet", done: false}]
+import "./Checklist.css";
 
 const ChecklistComponent = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const [checklists, setChecklists] = useState(null);
     const [display, setDisplay] = useState(null);
@@ -30,7 +24,7 @@ const ChecklistComponent = () => {
             }).catch((err)=>{
             });
         }
-    }, []);
+    }, [trip]);
 
     useEffect(()=>{
         if (checklists !== null) {
@@ -40,11 +34,11 @@ const ChecklistComponent = () => {
                         <CardGroup>
                             <Card>
                                 <Row>
-                                    <Col>{cur.fields.user_in_charge}</Col>
+                                    <Col>{cur.fields.assignee}</Col>
                                     <Col>{cur.fields.item}</Col>
-                                    <Col>{cur.fields.remark}</Col>
+                                    <Col>{cur.fields.note}</Col>
                                     <Col>
-                                        <Button onClick={()=>{
+                                        <Button id="edit-btn" onClick={()=>{
                                             navigate('/edit/checklist/' + cur.pk);
                                         }}>Edit</Button>
                                     </Col>
@@ -55,34 +49,7 @@ const ChecklistComponent = () => {
                 );
             }));
         }
-    }, [checklists]);
-
-    /*const [ items, setItems ] = useState(tasks);
-    const [inputValue, setInputValue] = useState("");
-
-    useEffect(() => {
-    let count = 0;
-    items.map(item => (!item.done ? count++ : null));
-    document.title = `${count} task${count > 1 ? "s" : ""} item`;
-  });
-
-  const _handleSubmit = e => {
-    e.preventDefault();
-    if (inputValue === "") return alert("Task name is required");
-
-  const newArr = items.slice();
-    newArr.splice(0, 0, { name: inputValue, done: false });
-    setItems(newArr);
-    setInputValue("");
-  };
-
-  const _handleBntClick = ({ type, index }) => {
-    const newArr = items.slice();
-    // if (type === "remove") newArr.splice(index, 1);
-    if (type === "completed") newArr[index].done = true;
-
-    return setItems(newArr);
-  };*/
+    }, [checklists, navigate]);
 
     const renderHTML = () => {
     return (
@@ -97,9 +64,9 @@ const ChecklistComponent = () => {
             <CardGroup>
                 <Card>
                     <Row>
-                        <Col><b>In-charge</b></Col>
+                        <Col><b>Assignee</b></Col>
                         <Col><b>Item</b></Col>
-                        <Col><b>Remark</b></Col>
+                        <Col><b>Note</b></Col>
                         <Col><b>Action</b></Col>
                     </Row>
                 </Card>
@@ -112,9 +79,9 @@ const ChecklistComponent = () => {
                 <Card>
                     <Row>
                         <Col>
-                            <Button onClick={()=>{
+                            <Button id="add-item-btn" onClick={()=>{
                                 navigate('/new/checklist/');
-                            }}>Add</Button>
+                            }}>Add Item</Button>
                         </Col>
                     </Row>
                 </Card>
@@ -129,10 +96,7 @@ const ChecklistComponent = () => {
 export default ChecklistComponent;
 
 /*
-<Container className="camping-checklist">
-                <img className="caravan" src={camp.caravan} alt="caravan"></img>
-               
-                       
+                     
                 <Fragment className="checklistform-container">
                 <ChecklistForm
                     id="checklist-form"

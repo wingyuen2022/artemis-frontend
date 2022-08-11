@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setTitle } from "../../actions";
-import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
+import { Button, Container }from 'react-bootstrap';
 import ChecklistComponent from '../../components/ChecklistComponent';
+import * as camp from "../../assets/images/camping";
+import "./Checklist.css";
 
 function Checklist() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-    dispatch(setTitle("Check List"));
-
-    useEffect(()=>{
-
-    }, []);
-
+  const renderHTML = () => {
   return (
     <>
+    <Container className="camping-checklist">
+        <div>
+            <img className="caravan-icon" src={camp.caravan} alt="caravan"></img>
+            <h4>Make sure you have everything you need with this handy checklist!</h4>
+        </div>
       <div className="row">
             <div className="col">
                 <ChecklistComponent />
@@ -23,13 +21,15 @@ function Checklist() {
         </div>
         <div className="row">
             <div className="col">
-                <Button onClick={()=>{
+                <Button id="back-btn" onClick={()=>{
                     navigate('/view/trip/all');
                 }}>Back</Button>
             </div>
         </div>
+      </Container>
     </>
   );
+ }
 }
 
 export default Checklist;
