@@ -7,6 +7,11 @@
     background-repeat: no-repeat;
 }
 
+#home-card {
+    height: 100%;
+    opacity: 0.9;
+}
+
 .card-title {
     font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
