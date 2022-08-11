@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI } from '../../util/util.js';
-import { CardGroup, Card, Row, Col } from "react-bootstrap";
+import { CardGroup, Card, Row, Col, Container } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 
 const TripsComponent = () => {
@@ -25,8 +25,9 @@ const TripsComponent = () => {
             setDisplay(trips.map((cur)=>{
                 return (
                 <>
-                    <CardGroup>
-                        <Card>
+                    <Container className="trips-container">
+                      <CardGroup>
+                        <Card className="trips-card">
                             <Row>
                                 <Col>{cur.fields.name}</Col>
                                 <Col>{cur.fields.start_date}</Col>
@@ -36,7 +37,8 @@ const TripsComponent = () => {
                                 }}>View</Button></Col>
                             </Row>
                         </Card>
-                    </CardGroup>
+                      </CardGroup>
+                    </Container>
                 </>);
             }));
         }
