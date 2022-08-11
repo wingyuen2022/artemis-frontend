@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Button, Container, Form, FormLabel, Col } from 'react-bootstrap';
+import { setTitle } from "../../actions";
 import "./Trip.css";
 
 const TripComponent = () => {
     const navigate = useNavigate();
-      
+    const dispatch = useDispatch();
+    dispatch(setTitle("Checklist"));
     const renderHTML = () => {
     return (
         <>

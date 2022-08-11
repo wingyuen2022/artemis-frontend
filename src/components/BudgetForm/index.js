@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 

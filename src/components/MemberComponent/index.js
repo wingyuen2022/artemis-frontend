@@ -1,31 +1,27 @@
-import React, { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { wait } from '../../util/util.js';
-import { setTrip, setChat } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import Button from 'react-bootstrap/Button';
+import "./MemberComponent.css";
+import { Container } from 'react-bootstrap';
 
 const MemberComponent = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const trip = useSelector(state => state.tripReducer);
-    const chat = useSelector(state => state.chatReducer);
-
-    useEffect(()=>{
-
-    }, []);
-
+    dispatch(setTitle("Trip Members"));
+    
     const renderHTML = () => {
     return (
         <>
-            <div className="row">
+            <Container className="member-comp-container">
+            <div className="row member-form">
                 <div className="col">
                     <b>Name</b>
                 </div>
                 <div className="col">
                     <b>Action</b>
                 </div>
-            </div>
+            
             <div className="row">
                 <div className="col">
                     Wing
@@ -83,6 +79,8 @@ const MemberComponent = () => {
                     }}>New Member</Button>
                 </div>
             </div>
+            </div>
+            </Container>
         </>
         );
     };
