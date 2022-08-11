@@ -20,7 +20,7 @@ function Navbar() {
             <Link to='#' className='menu-bars'>
               <FaBars onClick={showSidebar} />
             </Link>
-            <h1><a id="navbrand" href="/">Artemis Camping | </a></h1>
+            <h1><a id="navbrand" href="/">Artemis Camping</a></h1>
 
             <h3 className='menu-title'>{title}</h3>
 

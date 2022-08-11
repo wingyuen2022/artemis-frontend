@@ -116,8 +116,8 @@ const MemberComponent = () => {
                 <Card>
                     <Row>
                         <Col>
-                            <Dropdown onSelect={(cur)=>{
-                                allMembers.map((curM)=>{
+                            <Dropdown onSelect={(cur) => {
+                                allMembers.map((curM) => {
                                     if (curM.pk === Number(cur)) {
                                         setSelected(curM);
                                     }
