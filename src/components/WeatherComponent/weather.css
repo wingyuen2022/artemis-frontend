@@ -74,20 +74,15 @@
     height: 35px;
 }
 
-.forecast-container {
-    min-width: 100%;
-    height: 100%;
-}
-
 .forecast{
     background-color:#2090a4;
     border-radius: 10px;
     min-width: 100%;
     color: whitesmoke;
+    justify-items: space-between;
     padding: 10px;
-    margin: 10px auto;
+    margin: 0 10px 0 0;
     font-size: 24px;
-    list-style-type: none;
 }
 
 #forecast-heading {
@@ -107,7 +102,7 @@
 
 .card {
     height: 200px;
-    background: #9ab4a9;
+    background: transparent;
     margin: auto;
     width: 100%;
 }
@@ -117,6 +112,7 @@
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth;
+    margin-right: 5px;
 }
 
 .flex-forecast{
