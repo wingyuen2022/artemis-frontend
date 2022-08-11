@@ -25,6 +25,9 @@ const TripForm = ({id}) => {
                 }
             }).catch((err)=>{
             });
+        } else {
+            dispatch(setOrigin(null));
+            dispatch(setDestination(null));
         }
     }, []);
 
