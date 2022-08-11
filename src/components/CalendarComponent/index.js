@@ -15,7 +15,12 @@ import {
   Resize,
   DragAndDrop,
 } from "@syncfusion/ej2-react-schedule";
+
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
+import { setOrigin, setDestination } from "../../actions";
+import { Container, Form, FormLabel, Row } from "react-bootstrap";
+import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
+import { useNavigate } from "react-router-dom";
 
 const scheduleData = [
   {
@@ -212,10 +217,30 @@ const scheduleData = [
   },
 ];
 
-const CalendarComponent = () => {
-  //   const dispatch = useDispatch();
-  //   const trip = useSelector((state) => state.tripReducer);
-  //   const chat = useSelector((state) => state.chatReducer);
+
+
+const CalendarComponent = ({id}) => {
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const route = useSelector(state => state.routeReducer);
+  // const [trip, setTrip] = useState(null);
+
+  //   useEffect(()=>{
+  //       if (id !== undefined && id !== null) {
+  //           const path = 'trip/' + id;
+  //           getMethodBackendAPI(path).then((ret)=>{
+  //               if (ret.ok) {
+  //                   ret.json().then((res)=>{
+  //                       setTrip(res[0]);
+  //                       console.log(res)
+  //                   });
+  //               }
+  //           }).catch((err)=>{
+  //           });
+  //       }
+  //   }, []);
+
+
 
   const [scheduleObj, setScheduleObj] = useState();
 

@@ -1,0 +1,17 @@
+#member-btn, #budget-btn, #checklist-btn, #edit-btn {
+    background-color: #008037;
+    border: none;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: block;
+    height: auto;
+    text-align: center;
+    margin: 5px auto;
+}
+
+#trip {
+    display: inline-block;
+    text-align: center;
+    color: #008037;
+}
