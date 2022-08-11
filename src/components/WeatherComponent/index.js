@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import Container from "react-bootstrap/container";
+import { Container } from "react-bootstrap";
 import { openWeatherAPI } from '../../util/util.js';
 import './weather.css';
 

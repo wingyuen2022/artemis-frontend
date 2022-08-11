@@ -1,11 +1,11 @@
-import { FaMapMarkedAlt, FaCheckCircle } from "react-icons/fa";
+import { FaMapMarkedAlt, FaCheckCircle,  BsCalendar3Fill } from "react-icons/fa";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { AiFillHome, AiFillSetting } from "react-icons/ai";
+import { AiFillHome, AiFillSetting, AiFillCalendar} from "react-icons/ai";
 
 export const SidebarData = [
     {
         title: 'Home',
-        path: '/view/Home',
+        path: '/view/home',
         icon: <AiFillHome />,
         cName: 'nav-text'
     },
@@ -17,7 +17,7 @@ export const SidebarData = [
     },
     {
         title: 'Checklist',
-        path: '/view/Checklist',
+        path: '/view/checklist',
         icon: <FaCheckCircle />,
         cName: 'nav-text'
     },
@@ -28,9 +28,9 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Activities',
-        path: '/activities',
-        icon: <AiFillSetting />,
+        title: 'Calendar',
+        path: '/view/duration',
+        icon: <AiFillCalendar />,
         cName: 'nav-text'
     },
     {

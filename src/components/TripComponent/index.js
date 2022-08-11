@@ -81,7 +81,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="member-btn" onClick={()=>{
                                     navigate('/view/member');
-                                }}>View Member</Button>
+                                }}>View</Button>
                             </Col>
                         </Row>
                     </Card>
@@ -93,7 +93,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="budget-btn" onClick={()=>{
                                     navigate('/view/budget');
-                                }}>View Budget</Button>
+                                }}>View</Button>
                             </Col>
                         </Row>
                     </Card>
@@ -105,7 +105,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="checklist-btn" onClick={()=>{
                                     navigate('/view/checklist');
-                                }}>View Checklist</Button>
+                                }}>View</Button>
                             </Col>
                         </Row>
                     </Card>

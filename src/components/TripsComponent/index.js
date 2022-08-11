@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI } from '../../util/util.js';
-import { CardGroup, Card, Row, Col } from "react-bootstrap";
+import { CardGroup, Card, Row, Col, Container } from "react-bootstrap";
+import { setOrigin, setDestination } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 
 const TripsComponent = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [trips, setTrips] = useState(null);
     const [display, setDisplay] = useState(null);
 
@@ -25,18 +28,31 @@ const TripsComponent = () => {
             setDisplay(trips.map((cur)=>{
                 return (
                 <>
-                    <CardGroup>
-                        <Card>
+                    <Container className="trips-container">
+                      <CardGroup>
+                        <Card className="trips-card">
                             <Row>
-                                <Col>{cur.fields.name}</Col>
+                                <Col><b>{cur.fields.name}</b></Col>
+                            </Row>
+                            <Row>
                                 <Col>{cur.fields.start_date}</Col>
-                                <Col>{cur.fields.destination.substring(0, 20)}...</Col>
+                            </Row>
+                            <Row>
+                                <Col>{cur.fields.destination}</Col>
+                            </Row>
+                            <Row>
+                                <Col><Button id="edit-btn" onClick={()=>{
+                                    dispatch(setOrigin(cur.fields.origin));
+                                    dispatch(setDestination(cur.fields.destination));
+                                    navigate('/view/map');
+                                }}>Map</Button></Col>
                                 <Col><Button id="edit-btn" onClick={()=>{
                                     navigate('/view/trip/' + cur.pk);
                                 }}>View</Button></Col>
                             </Row>
                         </Card>
-                    </CardGroup>
+                      </CardGroup>
+                    </Container>
                 </>);
             }));
         }
@@ -45,16 +61,6 @@ const TripsComponent = () => {
     const renderHTML = () => {
         return (
             <>
-                <CardGroup>
-                    <Card>
-                        <Row>
-                            <Col><b>Name</b></Col>
-                            <Col><b>Start Date</b></Col>
-                            <Col><b>Destination</b></Col>
-                            <Col><b>Action</b></Col>
-                        </Row>
-                    </Card>
-                </CardGroup>
                 { (trips !== null) ? (
                 <>
                     {display}
