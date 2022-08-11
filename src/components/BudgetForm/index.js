@@ -92,18 +92,24 @@ const BudgetForm = ({id}) => {
                             return;
                         }
                         const path = 'trip/' + trip.pk + '/budget/';
-                        const obj = {
-                            'item': item.value,
-                            'price': Number(price.value),
-                            'remark': remark.value
-                        };
                         if (id !== undefined && id !== null) {
+                            const obj = {
+                                'item_id': Number(id),
+                                'item': item.value,
+                                'price': Number(price.value),
+                                'remark': remark.value
+                            };
                             putMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
                                 navigate('/view/budget');
                             }).catch((err)=>{
                             });
                         } else {
+                            const obj = {
+                                'item': item.value,
+                                'price': Number(price.value),
+                                'remark': remark.value
+                            };
                             postMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
                                 navigate('/view/budget');
