@@ -34,17 +34,15 @@ div > .caravan {
 }
 
 #form-item-input {
-    font-family: 'Nanum Pen Script', cursive;
     text-align: center;
     text-transform: capitalize;
     color: #fff;
     margin-bottom: 10px;
 }
 
-.add-new-item {
+.add-item-btn {
     height: 30px;
     width: 30px;
-    
     font-size: 2rem;
     margin: auto;
     border: none;

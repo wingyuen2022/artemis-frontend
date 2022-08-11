@@ -1,10 +1,10 @@
 .weather-app {
-    background-image: url("../../assets/images/camping/weather.png");
+    background-image: url("../../assets/animations/32532-day-night.gif");
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    height: 100%;
     margin: auto;
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat-y;
-    height: auto;
     width: auto;
     border: 2px solid #2090a4;
     background-color: #2090a4;
@@ -13,9 +13,9 @@
 .weather-form {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 label {

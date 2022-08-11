@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from './data';
 import { logout } from '../../features/user';
@@ -11,7 +11,6 @@ import "./index.css";
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
-    const title = useSelector(state => state.titleReducer);
     const dispatch = useDispatch();
 
     return (
@@ -20,9 +19,7 @@ function Navbar() {
             <Link to='#' className='menu-bars'>
               <FaBars onClick={showSidebar} />
             </Link>
-            <h1><a id="navbrand" href="/">Artemis Camping</a></h1>
-
-            <h3 className='menu-title'>{title}</h3>
+            <h1 className="navbrand"><a id="navbrand" href="/">Artemis Camping</a></h1>
 
           </div>
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
