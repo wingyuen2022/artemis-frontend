@@ -1,6 +1,6 @@
-import { FaMapMarkedAlt, FaCheckCircle } from "react-icons/fa";
+import { FaMapMarkedAlt, FaCheckCircle,  BsCalendar3Fill } from "react-icons/fa";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import { AiFillHome, AiFillSetting } from "react-icons/ai";
+import { AiFillHome, AiFillSetting, AiFillCalendar} from "react-icons/ai";
 
 export const SidebarData = [
     {
@@ -25,6 +25,12 @@ export const SidebarData = [
         title: 'Weather',
         path: '/view/weather',
         icon: <TiWeatherPartlySunny />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Calendar',
+        path: '/view/duration',
+        icon: <AiFillCalendar />,
         cName: 'nav-text'
     }
 ]
