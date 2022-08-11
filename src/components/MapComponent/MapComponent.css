@@ -1,5 +1,6 @@
 .google-map-container {
     position: relative;
+    background-image: url("../../assets/animations/11426-travel-icons-compass.gif");
     display: flex;
     flex-direction: column;
     align-items: center;

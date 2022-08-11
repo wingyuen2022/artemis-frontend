@@ -1,0 +1,21 @@
+.calendar-container {
+    background-image: url("../../assets/animations/32532-day-night.gif");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: auto;
+}
+
+.calendar-schedule {
+    height: 100%;
+    background-color: #2090a4;
+}
+
+.calendar-table {
+    background-color: #2090a4;
+    border: 5px solid black;
+}

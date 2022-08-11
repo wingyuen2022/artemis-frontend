@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setTitle } from "../../actions";
+
 import Button from "react-bootstrap/Button";
 import CalendarComponent from "../../components/CalendarComponent";
 
@@ -10,8 +9,7 @@ const Duration = () => {
   //const [ curXXX, setCurXXX] = useState(null);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  dispatch(setTitle("Duration"));
+
 
   const handleBack = () => {
     navigate("-1");

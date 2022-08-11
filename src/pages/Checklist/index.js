@@ -6,6 +6,7 @@ import "./Checklist.css";
 
 function Checklist() {
   const navigate = useNavigate();
+
   const renderHTML = () => {
   return (
     <>
@@ -30,6 +31,7 @@ function Checklist() {
     </>
   );
  }
+ return renderHTML();
 }
 
 export default Checklist;

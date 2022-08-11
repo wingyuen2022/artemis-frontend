@@ -1,13 +1,10 @@
-import { Container, Image, Row } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { backpack, bicycle, binbags, boots, brush, caravan, compass, ducttape, firstaid, kayak, lantern, lighter, mallet, map, matches, picnicbasket, picnictable, pillows, rope, safety, sleepingbag, swiss, tent, tentrepair, torch, water } from "../../assets/images/camping/";
 import { Fox, Bunny, RedSquirrel, Deer, Hedgehog, Badger, Beaver, Racoon, Owl } from "../../assets/images/animals/";
-import { useDispatch } from "react-redux";
-import { setTitle } from "../../actions";
+
 import "./activities.css";
 
 export default function Activities() {
-    const dispatch = useDispatch();
-    dispatch(setTitle("Activities"));
     
     return(
         <>
