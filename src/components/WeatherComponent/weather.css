@@ -1,73 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+.weather-container, .forecast-container {
+    background-image: url("../../assets/animations/32532-day-night.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    height: 100%;
+}
 
 .main{
-    max-width: 400px;
-    border-radius: 20px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
     border: 2px solid #9ab4a9;
     background-color:#2090a4;
     opacity: 0.9;
-    height: 100%;
 }
 
 .top{
     height: 60px;
     background-color: #9ab4a9;
     color: #2090a4;
-    padding: 10px;
-    border-radius: 20px 20px 0 0;
-    font-family: 'Nanum Pen Script', cursive;
+    padding-top: -10px;
+    border-radius: 10px 10px 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .header{
     background-color: inherit;
-    color: whitesmoke;
+    color: #fff;
     margin: 10px 5px 0px 10px;
     font-size: 2rem;
-    border-radius: 20px 20px 0 0;
-    font-family: 'Nanum Pen Script', cursive;
+    border-radius: 10px 10px 0 0;
+    text-shadow: 1px 1px #000;
 }
 
 .day{
-    padding: 15px;
+    padding: 10px;
     color: whitesmoke;
-    font-family: 'Nanum Pen Script', cursive;
     font-size: 24px;
     font-weight: 600;
 }
 
 .temp{
-    padding: 15px;
+    padding: 10px;
     color: whitesmoke;
-    font-family: 'Nanum Pen Script', cursive;
     font-size: 24px;
     font-weight: 600;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-}
 .flex{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     margin: auto;
 }
 
 .sunrise-sunset{
-    padding: 15px;
+    padding: 10px;
     color: whitesmoke;
-    font-family: 'Nanum Pen Script', cursive;
     font-size: 24px;
 }
 
 .description{
-    padding: 15px;
+    padding: 10px;
     color: whitesmoke;
-    font-family: 'Nanum Pen Script', cursive;
     font-size: 24px;
     font-weight: 600;
 }
@@ -77,24 +74,53 @@
     height: 35px;
 }
 
-.forecast{
-    border-radius: 20px;
-    border: 2px solid #9ab4a9;
-    background-color:#2090a4;
-    opacity: 0.9;
+.forecast-container {
+    min-width: 100%;
     height: 100%;
-    color: whitesmoke;
-    padding: 10px;
-    margin: 10px;
-    font-family: 'Nanum Pen Script', cursive;
-    font-size: 24px;
 }
 
-.forecast-list {
+.forecast{
+    background-color:#2090a4;
+    border-radius: 10px;
+    min-width: 100%;
+    color: whitesmoke;
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 24px;
     list-style-type: none;
 }
 
-.flex-forecast{
+#forecast-heading {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    background-color: #9ab4a9;
+    justify-items: space-between;
+    color: #fff;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    margin-top: 10px;
+    font-size: 24px;
+    text-shadow: 1px 1px #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card {
+    height: 200px;
+    background: #9ab4a9;
+    margin: auto;
+    width: 100%;
+}
+
+.forecast-list {
+    height: 200px;
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+
+.flex-forecast{
+    display: block;
+    justify-content: space-evenly;
+    list-style-type: none;
 }
