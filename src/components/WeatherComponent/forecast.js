@@ -45,18 +45,15 @@ export default function Forecast({lat, long}) {
             <Container className="forecast-container">
             {(display !== null) ? (
                 <div aria-label="forecast data">
-                    
-                        <row key='-1' className="forecast"
-                        id="forecast-heading">
-                            <Col>Date</Col>
-                            <Col>Day</Col>
+                    <Card className="card">
+                        <Card.Header key='-1' id="forecast-heading">
+                            <Col>Date/Day</Col>
                             <Col>Hour</Col>
                             <Col>Weather</Col>
                             <Col>&deg;C</Col>
                             <Col>%</Col>
-                        </row>
-                    
-                    <Card className="card">
+                        </Card.Header>
+                   
                         <Card.Body className="forecast-list">{display}
                         </Card.Body>
                     </Card>

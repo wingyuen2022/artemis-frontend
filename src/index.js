@@ -7,12 +7,8 @@ import { legacy_createStore } from "redux";
 import allReducers from "./reducers";
 import { devToolsEnhancer } from "redux-devtools-extension";
 import { Provider } from "react-redux";
-import { ChakraProvider, theme } from "@chakra-ui/react";
+
 //import {store} from './store/store'
-
-// import { ChakraProvider, theme } from "@chakra-ui/react";
-
-
 
 const store = legacy_createStore(allReducers, devToolsEnhancer());
 

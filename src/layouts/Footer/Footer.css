@@ -3,25 +3,27 @@
     bottom: 0;
     width: 100%;
     background-color: #2090A4;
-    height: auto;
+    height: 60px;
     margin: auto;
     padding: 10px;
     align-items: space-evenly;
 }
 
 .footer-info {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
     margin: auto;
     color: #fff;
 }
 
 .github-links {
-    margin: auto;
-    padding: 10px;
+    margin: auto auto 5px auto;
 }
 
 .link-item {
     margin: 5px;
+    font-size: 16px;
     text-decoration: underline;
     color: #fff;
 }
