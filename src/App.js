@@ -9,6 +9,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Pages.Landing />} />
+                        <Route path='/view/register' element={<Pages.Register/>} />
                         <Route path="/view/home" element={<Pages.Home />} />
                         <Route path="/view/message" element={<Pages.Message />} />
                         <Route path="/view/settings" element={<Pages.Settings />} />
@@ -16,12 +17,11 @@ export default function App() {
                         <Route path="/new/budget" element={<Pages.BudgetCreate />} />
                         <Route path="/edit/budget/:id" element={<Pages.BudgetUpdate />} />
                         <Route path="/view/checklist" element={<Pages.Checklist />} />
-                        <Route path="/view/litnerary" element={<Pages.Itinerary />} />
-                        
+                        <Route path="/new/checklist" element={<Pages.ChecklistCreate />} />
+                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
+                        <Route path="/edit/checklist/:id" element={<Pages.ChecklistUpdate />} />
+                        <Route path="/view/litnerary" element={<Pages.Itinerary />} />                        
                         <Route path="/view/map" element={<Pages.Map />} />
-
-                        {/* <Route path="/new/map" element={<Pages.MapCreate />} /> */}
-                        {/* <Route path="/edit/map" element={<Pages.MapUpdate />} /> */}
                         <Route path="/view/member" element={<Pages.Member />} />
                         <Route path="/new/member" element={<Pages.MemberCreate />} />
                         <Route path="/edit/member/:id" element={<Pages.MemberUpdate />} />
@@ -34,6 +34,8 @@ export default function App() {
                         <Route path="*" element={<Pages.NotFound />} />
                     </Route>
                 </Routes>
+
+                {/* {isAuthenticated ? authLinks : guestLinks} */}
             </div>
         </>
     );

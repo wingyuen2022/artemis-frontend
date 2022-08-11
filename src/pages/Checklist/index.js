@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getMethodBackendAPI } from '../../util/util.js';
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
 import { Button, Container } from "react-bootstrap";
 import { caravan } from "../../assets/images/camping";
@@ -12,6 +13,11 @@ export default function Checklist(id) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   dispatch(setTitle("Checklist"));
+  const [inputValue, setInputValue] = useState("");
+  const [totalItemCount, setTotalItemCount] = useState(1);
+  const trip = useSelector(state => state.tripReducer);
+  const [checklists, setChecklists] = useState(null);
+  const [display, setDisplay] = useState(null);
   
   //Initial tasks
   const [items, setItems] = useState([
@@ -20,9 +26,19 @@ export default function Checklist(id) {
     { itemName: 'item 3', quantity: 2, isSelected: false },
   ]);
   
-  const [inputValue, setInputValue] = useState("");
-  const [totalItemCount, setTotalItemCount] = useState(1);
-
+  useEffect(()=>{
+    if (trip !== undefined && trip !== null) {
+      const path = 'trip/' + trip.pk + '/checklist/';
+        getMethodBackendAPI(path).then((ret)=>{
+          if (ret.ok) {
+            ret.json().then((res)=>{
+              setChecklists(res);
+            });
+          }
+        }).catch((err)=>{
+            });
+        }
+    }, [trip]);
     const handleAddButtonClick = () => {
       const newItem = {
         itemName: inputValue,
@@ -56,7 +72,6 @@ export default function Checklist(id) {
         calculateTotal();
       };
 
- 
       const toggleComplete = (index) => {
         const newItems = [...items];
     
@@ -73,19 +88,23 @@ export default function Checklist(id) {
         setTotalItemCount(totalItemCount);
       };
 
+      useEffect(() => {
+        if (checklists !== null) {
+            setDisplay(checklists.map((cur) => {
  
   return (
     <>
-    <Container className="camping-checklist">
-        <div className="checklist-heading">
+      <Container className="camping-checklist">
+        <div>
             <img className="caravan-icon" src={caravan} alt="caravan"></img>
             <h4>Make sure you have everything you need with this handy checklist!</h4>
         </div>
         <div className="checklist-add-item">
             <input value={inputValue} onChange={(event) => setInputValue(event.target.value)} className='add-item-input' placeholder='Add an item...' /><FontAwesomeIcon className="add-btn" icon={faPlus} onClick={() => handleAddButtonClick()} />
         </div>
+
         <div className="checklist-list">
-        {items.map((item, index) => (
+          {items.map((item, index) => (
 						<div className='item-container'>
 							<div className='item-name' onClick={() => toggleComplete(index)}>
 								{item.isSelected ? (
@@ -123,6 +142,11 @@ export default function Checklist(id) {
 					))}
           
           <div className='total'>Total: {totalItemCount}</div>
+        
+          { (checklists !== null) ? (
+            <>
+                {display}
+            </>) : (<></>) }
             <div className="btn-container">
                 <div className="btn-row">
                     <input id="id" type="number" name="id" hidden/><br />
@@ -131,20 +155,32 @@ export default function Checklist(id) {
                             navigate('-1');
                         }
                     }}>Back</Button>
+
                     <Button id="delete-btn" variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             alert('deleted');
                             navigate('/view/checklist');
                         }
                     }} hidden={id === null}>Delete</Button>
+
                     <Button id="save-btn" onClick={()=>{
                         alert('saved');
                         navigate('/view/checklist');
                     }}>Save</Button>
+
+                    <Button id="edit-btn" onClick={()=>{
+                        navigate('/edit/checklist/' + cur.pk);
+                    }}>Edit</Button>
+
+                    <Button onClick={()=>{
+                        navigate('/new/checklist/');
+                    }}>Add</Button>
                 </div>
               </div>
             </div>
-    </Container>
+      </Container>
     </>
-  );
+  ), [checklists];
+  }))
+ }})
 }

@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
-import Button from 'react-bootstrap/Button';
 import TripForm from '../../components/TripForm';
 
 const Trip = () => {
     const { id } = useParams();
-    //const [ curXXX, setCurXXX] = useState(null);
-
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     dispatch(setTitle("Edit Trip"));
 
     useEffect(()=>{
-        
     }, []);
 
     const renderHTML = () => {

@@ -37,7 +37,7 @@ const HomeCoponent = () => {
                     Peak District
                 </div>
                 <div className="col">
-                    <Button onClick={()=>{
+                    <Button role="view" onClick={()=>{
                         navigate('/view/trip/1');
                     }}>View</Button>
                 </div>

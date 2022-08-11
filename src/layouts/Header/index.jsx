@@ -1,15 +1,18 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from './data';
+import { logout } from '../../features/user';
+import { AiFillHome } from "react-icons/ai";
 import "./index.css";
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
     const title = useSelector(state => state.titleReducer);
+    const dispatch = useDispatch();
 
     return (
       <>
@@ -39,6 +42,11 @@ function Navbar() {
                   </li>
                 );
               })}
+
+              <li className='nav-text' onClick={() => dispatch(logout())}>
+              <AiFillHome />
+                signout
+              </li>
             </ul>
           </nav>
       </>

@@ -1,103 +1,124 @@
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Button, Container, Form, FormLabel, Col } from 'react-bootstrap';
-import { setTitle } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { setTrip } from "../../actions";
+import { getMethodBackendAPI } from '../../util/util.js';
+import { CardGroup, Card, Row, Col } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 import "./Trip.css";
 
-const TripComponent = () => {
+
+const TripComponent = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    dispatch(setTitle("Checklist"));
+
+    const trip = useSelector(state => state.tripReducer);
+    const [ curTrip, setCurTrip ] = useState(null);
+
+    useEffect(()=>{
+        const path = 'trip/' + id;
+        getMethodBackendAPI(path).then((ret)=>{
+            if (ret.ok) {
+                ret.json().then((res)=>{
+                    const trip = res[0];
+                    setCurTrip(trip);
+                    dispatch(setTrip(trip));
+                });
+            }
+        }).catch((err)=>{
+        });
+      }, [dispatch, id]);
+
     const renderHTML = () => {
     return (
         <>
-           <Container className="trip-form-container">
-            <Form className="new-trip-form">
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>Trip name:</b>
-                    </FormLabel>
-                    <p className="form-p">
-                        Peak District Trip
-                    </p>
-                </Col>
-                <hr />
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>Public or Private:</b>
-                    </FormLabel>
-                    <p className="form-p">
-                        Public
-                    </p>
-                </Col>
-                <hr />
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>Location:</b>
-                    </FormLabel>
-                    <p className="form-p">
-                        Peak district
-                    </p>
-                </Col>
-                <hr />
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>Start Date:</b>
-                    </FormLabel>
-                    <p className="form-p">
-                        2022-08-15
-                    </p>
-                </Col>
-                <hr />
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>End Date:</b>
-                    </FormLabel>
-                    <p className="form-p">
-                        2022-08-21
-                    </p>
-                </Col>
-                <hr />
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>Member:</b>
-                    </FormLabel>
+            { (curTrip !== null) ? (
+            <>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Trip name:</b></Col>
+                            <Col>{curTrip.fields.name}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Origin:</b></Col>
+                            <Col>{curTrip.fields.origin}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Destination:</b></Col>
+                            <Col>{curTrip.fields.destination}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Start Date:</b></Col>
+                            <Col>{curTrip.fields.start_date}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>End Date:</b></Col>
+                            <Col>{curTrip.fields.end_date}</Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Member:</b></Col>
+                            <Col>
+                                <Button onClick={()=>{
+                                    navigate('/view/member');
+                                }}>View Member</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Budget:</b></Col>
+                            <Col>
+                                <Button onClick={()=>{
+                                    navigate('/view/budget');
+                                }}>View Budget</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <CardGroup>
+                    <Card>
+                        <Row>
+                            <Col><b>Checklist:</b></Col>
+                            <Col>
+                                <Button onClick={()=>{
+                                    navigate('/view/checklist');
+                                }}>View Checklist</Button>
+                            </Col>
+                        </Row>
+                    </Card>
+                </CardGroup>
+                <div className="row">
                     <div className="col">
-                        <Button id="member-btn" onClick={()=>{
-                            navigate('/view/member');
-                        }}>View Member</Button>
+                        <Button onClick={()=>{
+                            navigate('/edit/trip/' + trip.pk);
+                        }}>Edit</Button>
                     </div>
-                </Col>
-                <hr />
-                <Col>
-                <FormLabel className="form-label">
-                    <b>Budget:</b>
-                </FormLabel>
-                <div className="col">
-                    <Button id="budget-btn" onClick={()=>{
-                        navigate('/view/budget');
-                    }}>View Budget</Button>
                 </div>
-                </Col>
-                <hr />
-                <Col>
-                    <FormLabel className="form-label">
-                        <b>Checklist:</b>
-                    </FormLabel>
-                    <div className="col">
-                        <Button id="checklist-btn" onClick={()=>{
-                            navigate('/view/checklist');
-                        }}>View Checklist</Button>
-                    </div>
-                </Col>
-                <hr />
-                <div className="col">
-                    <Button id="edit-btn" onClick={()=>{
-                        navigate('/edit/trip/1');
-                    }}>Edit</Button>
-                </div>
-            </Form>
-            </Container>
+            </>) : (<></>) }
+
         </>
         );
     };

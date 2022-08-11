@@ -28,7 +28,7 @@ const Budget = () => {
                 <div className="row">
                     <div className="col">
                         <Button onClick={()=>{
-                            navigate('/view/trip/1');
+                            navigate('/view/trip/all');
                         }}>Back</Button>
                     </div>
                 </div>
