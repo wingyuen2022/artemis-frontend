@@ -5,7 +5,7 @@ import { AiFillHome, AiFillSetting, AiFillCalendar} from "react-icons/ai";
 export const SidebarData = [
     {
         title: 'Home',
-        path: '/view/Home',
+        path: '/view/home',
         icon: <AiFillHome />,
         cName: 'nav-text'
     },
@@ -17,7 +17,7 @@ export const SidebarData = [
     },
     {
         title: 'Checklist',
-        path: '/view/Checklist',
+        path: '/view/checklist',
         icon: <FaCheckCircle />,
         cName: 'nav-text'
     },
