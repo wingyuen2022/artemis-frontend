@@ -1,0 +1,60 @@
+.camping-checklist {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-image: url("../../assets/images/dark-woods-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    padding: 10px 0;
+}
+
+div > .caravan {
+    max-height: 150px;
+    max-width: 200px;
+    align-content: center;
+    margin: auto;
+}
+
+.checklistform-container {
+    padding: 5px;
+    margin: auto;
+}
+
+.camping-icon {
+    height: 50px;
+    width: auto;
+}
+
+
+.checklist-table {
+    width: 20rem;
+}
+
+#form-item-input {
+    font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.add-new-item {
+    height: 30px;
+    width: 30px;
+    
+    font-size: 2rem;
+    margin: auto;
+    border: none;
+    background-color: #2090A4;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+
+/* #delete-item-btn {
+    background-color: red;
+} */
