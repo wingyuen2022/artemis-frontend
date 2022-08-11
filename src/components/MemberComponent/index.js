@@ -50,7 +50,6 @@ const MemberComponent = () => {
                         <CardGroup>
                             <Card>
                                 <Row>
-                                <Col>{cur.pk}</Col>
                                     <Col>{cur.fields.name}</Col>
                                     <Col>
                                         <Button variant="danger" onClick={()=>{
@@ -136,7 +135,7 @@ const MemberComponent = () => {
                                     let exist = false;
                                     if (members !== null) {
                                         members.map((cur) => {
-                                            if (cur.pk === selected.pk) {
+                                            if (cur.fields.member === selected.pk) {
                                                 exist = true;
                                             }
                                         });
