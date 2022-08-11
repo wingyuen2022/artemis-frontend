@@ -1,186 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getMethodBackendAPI } from '../../util/util.js';
-import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft, faCircle, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
-import { Button, Container } from "react-bootstrap";
-import { caravan } from "../../assets/images/camping";
-import "./Checklist.css";
+import Button from 'react-bootstrap/Button';
+import ChecklistComponent from '../../components/ChecklistComponent';
+//import { Container } from "react-bootstrap";
+//import CheckListItem from "../../components/ChecklistComponent/CheckListItem";
+//import ChecklistForm from "../../components/ChecklistComponent/ChecklistForm";
+//import {caravan} from "../../assets/images/camping";
+//import "./Checklist.css";
 
-export default function Checklist(id) {
+//Initial tasks
+/*const stuff = [
+  { name: "item 1", done: false },
+  { name: "item 2", done: false },
+  { name: "item 3", done: true }
+];*/
+
+function Checklist() {
+  //const [items, setItems] = useState(stuff);
+  //const [inputValue, setInputValue] = useState("");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  dispatch(setTitle("Checklist"));
-  const [inputValue, setInputValue] = useState("");
-  const [totalItemCount, setTotalItemCount] = useState(1);
-  const trip = useSelector(state => state.tripReducer);
-  const [checklists, setChecklists] = useState(null);
-  const [display, setDisplay] = useState(null);
-  
-  //Initial tasks
-  const [items, setItems] = useState([
-    { itemName: 'item 1', quantity: 1, isSelected: false },
-    { itemName: 'item 2', quantity: 3, isSelected: true },
-    { itemName: 'item 3', quantity: 2, isSelected: false },
-  ]);
-  
-  useEffect(()=>{
-    if (trip !== undefined && trip !== null) {
-      const path = 'trip/' + trip.pk + '/checklist/';
-        getMethodBackendAPI(path).then((ret)=>{
-          if (ret.ok) {
-            ret.json().then((res)=>{
-              setChecklists(res);
-            });
-          }
-        }).catch((err)=>{
-            });
-        }
-    }, [trip]);
-    const handleAddButtonClick = () => {
-      const newItem = {
-        itemName: inputValue,
-        quantity: 1,
-        isSelected: false,
-      };
-  
-      const newItems = [...items, newItem];
-  
-      setItems(newItems);
-      setInputValue('');
-      calculateTotal();
+    dispatch(setTitle("Check List"));
 
-    };
+    useEffect(()=>{
 
-      const handleQuantityIncrease = (index) => {
-        const newItems = [...items];
-    
-        newItems[index].quantity++;
-    
-        setItems(newItems);
-        calculateTotal();
-      };
+    }, []);
 
-      const handleQuantityDecrease = (index) => {
-        const newItems = [...items];
-    
-        newItems[index].quantity--;
-    
-        setItems(newItems);
-        calculateTotal();
-      };
+  /*useEffect(() => {
+    let count = 0;
+    items.map(item => (!item.done ? count++ : null));
+    document.title = `${count} task${count > 1 ? "s" : ""} item`;
+  });
 
-      const toggleComplete = (index) => {
-        const newItems = [...items];
-    
-        newItems[index].isSelected = !newItems[index].isSelected;
-    
-        setItems(newItems);
-      };
+  //
+  const _handleSubmit = e => {
+    e.preventDefault();
+    if (inputValue === "") return alert("Item name is required");
 
-      const calculateTotal = () => {
-        const totalItemCount = items.reduce((total, item) => {
-          return total + item.quantity;
-        }, 0);
-    
-        setTotalItemCount(totalItemCount);
-      };
+    const newArr = items.slice();
+    newArr.splice(0, 0, { name: inputValue, done: false });
+    setItems(newArr);
+    setInputValue("");
+  };
 
-      useEffect(() => {
-        if (checklists !== null) {
-            setDisplay(checklists.map((cur) => {
- 
+  //
+  const _handleBtnClick = ({ type, index }) => {
+    const newArr = items.slice();
+    if (type === "remove") newArr.splice(index, 1);
+    else if (type === "completed") newArr[index].done = true;
+
+    return setItems(newArr);
+  };*/
+
+  //
   return (
     <>
-      <Container className="camping-checklist">
+      <div className="row">
+            <div className="col">
+                <ChecklistComponent />
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+                <Button onClick={()=>{
+                    navigate('/view/trip/all');
+                }}>Back</Button>
+            </div>
+        </div>
+    </>
+  );
+}
+
+export default Checklist;
+
+/*
+<Container className="camping-checklist">
         <div>
             <img className="caravan-icon" src={caravan} alt="caravan"></img>
-            <h4>Make sure you have everything you need with this handy checklist!</h4>
-        </div>
-        <div className="checklist-add-item">
-            <input value={inputValue} onChange={(event) => setInputValue(event.target.value)} className='add-item-input' placeholder='Add an item...' /><FontAwesomeIcon className="add-btn" icon={faPlus} onClick={() => handleAddButtonClick()} />
-        </div>
-
-        <div className="checklist-list">
-          {items.map((item, index) => (
-						<div className='item-container'>
-							<div className='item-name' onClick={() => toggleComplete(index)}>
-								{item.isSelected ? (
-									<>
-										<FontAwesomeIcon icon={faCheckCircle} />
-										<span className='completed'>{item.itemName}</span>
-									</>
-								) : (
-									<>
-										<FontAwesomeIcon icon={faCircle} />
-										<span>{item.itemName}</span>
-									</>
-								)}
-							</div>
-							<div className='quantity'>
-								<button>
-									<FontAwesomeIcon icon={faChevronLeft} onClick={() => handleQuantityDecrease(index)} />
-								</button>
-								<span> {item.quantity} </span>
-								<button>
-									<FontAwesomeIcon icon={faChevronRight} onClick={() => handleQuantityIncrease(index)} />
-								</button>
-							</div>
-              <div className="assignee">
-                  <select id="assignee" name="assignee">
-                      <option value="Anyone">Anyone</option>
-                      <option value="Edgar">Edgar</option>
-                      <option value="Nathan">Nathan</option>
-                      <option value="Sam">Sam</option>
-                      <option value="Summira">Summira</option>
-                      <option value="Wing">Wing</option>
-                  </select>
-              </div>
-						</div>
-					))}
-          
-          <div className='total'>Total: {totalItemCount}</div>
-        
-          { (checklists !== null) ? (
-            <>
-                {display}
-            </>) : (<></>) }
-            <div className="btn-container">
-                <div className="btn-row">
-                    <input id="id" type="number" name="id" hidden/><br />
-                    <Button id="back-btn" onClick={()=>{
-                        if (window.confirm("Confirm without saving?")) {
-                            navigate('-1');
-                        }
-                    }}>Back</Button>
-
-                    <Button id="delete-btn" variant="danger" onClick={()=>{
-                        if (window.confirm("Confirm to delete?")) {
-                            alert('deleted');
-                            navigate('/view/checklist');
-                        }
-                    }} hidden={id === null}>Delete</Button>
-
-                    <Button id="save-btn" onClick={()=>{
-                        alert('saved');
-                        navigate('/view/checklist');
-                    }}>Save</Button>
-
-                    <Button id="edit-btn" onClick={()=>{
-                        navigate('/edit/checklist/' + cur.pk);
-                    }}>Edit</Button>
-
-                    <Button onClick={()=>{
-                        navigate('/new/checklist/');
-                    }}>Add</Button>
-                </div>
-              </div>
-            </div>
-      </Container>
-    </>
-  ), [checklists];
-  }))
- }})
-}
+            <ChecklistForm  className="checklistform-input"
+                    onSubmit={_handleSubmit}
+                    value={inputValue}
+                    onChange={e => setInputValue(e.target.value)}
+            />
+      </div>
+      <ul>
+        {items.map((item, index) => (
+          <CheckListItem
+            key={index}
+            item={item}
+            remove={() => _handleBtnClick({ type: "remove", index })}
+            completed={() => _handleBtnClick({ type: "completed", index })}
+          />
+        ))}
+      </ul>
+    </Container>
+*/
