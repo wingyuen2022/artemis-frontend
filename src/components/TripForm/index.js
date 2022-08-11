@@ -100,7 +100,7 @@ const TripForm = ({id}) => {
                     <PlaceComponent id="destination" value={route.destination}/><br />
                 </div>
 
-                <Button onClick={()=>{
+                <Button id="route-btn" onClick={()=>{
                     const origin = document.getElementById("origin");
                     const destination = document.getElementById("destination");
                     if (origin !== undefined && 
