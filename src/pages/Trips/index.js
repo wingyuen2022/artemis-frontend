@@ -1,9 +1,14 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { setTitle } from "../../actions";
 import { Container } from "react-bootstrap";
 import TripsComponent from '../../components/TripsComponent';
 import "./Trips.css";
 
 const Trips = () => {
+  const dispatch = useDispatch();
+  dispatch(setTitle("Trips"));
+
     return(
         <>
           <Container className="trips-container">
