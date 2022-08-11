@@ -10,9 +10,9 @@ import "./Landing.css";
 export default function Landing2() {
     const dispatch = useDispatch();
     dispatch(setTitle("Artemis Camping"));
-    const { loading, isAuthenticated, registered } = useSelector(
+    /*const { loading, isAuthenticated, registered } = useSelector(
 		state => state.user
-	);
+	);*/
 
 	const [formData, setFormData] = useState({
 		email: '',
