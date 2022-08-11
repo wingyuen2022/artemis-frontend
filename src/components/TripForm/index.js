@@ -161,14 +161,14 @@ const TripForm = ({id}) => {
                             'end_date': endDate.value
                         };
                         if (id !== undefined && id !== null) {
-                            const path = id + '/';
+                            const path = 'trip/' + id + '/';
                             putMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
                                 navigate('/view/trip/all');
                             }).catch((err)=>{
                             });
                         } else {
-                            postMethodBackendAPI('', obj).then(()=>{
+                            postMethodBackendAPI('trip/', obj).then(()=>{
                                 alert('saved');
                                 navigate('/view/trip/all');
                             }).catch((err)=>{
