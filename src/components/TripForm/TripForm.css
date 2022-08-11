@@ -34,7 +34,7 @@
     font-size: 2rem;
 }
 
-#back-button, #save-button {
+#back-button, #save-button, #route-btn {
     background-color: #008037;
     border: none;
     font-family: 'Nanum Pen Script', cursive;

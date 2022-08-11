@@ -40,7 +40,7 @@ const TripsComponent = () => {
                 </>);
             }));
         }
-    }, [trips]);
+    }, [trips, navigate]);
 
     const renderHTML = () => {
         return (
