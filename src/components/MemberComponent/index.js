@@ -54,10 +54,11 @@ const MemberComponent = () => {
                                             if (window.confirm('Conform to remove?')) {
                                                 const path = 'trip/' + trip.pk + '/members/';
                                                 const obj = {
-                                                    'user_id': selected.pk
+                                                    'user_id': Number(cur.pk)
                                                 };
                                                 deleteMethodBackendAPI(path, obj).then((ret)=>{
                                                     if (ret.ok) {
+                                                        alert('deleted');
                                                         navigate('/view/trip/' + trip.pk);
                                                     }
                                                 }).catch((err)=>{
