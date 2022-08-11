@@ -39,3 +39,38 @@ export const setDestination = (destination) => {
         payload: destination
     }
 };
+
+export const setFormName = (name) => {
+    return {
+        type: "SET_FORM_NAME",
+        payload: name
+    }
+};
+
+export const setFormOrigin = (origin) => {
+    return {
+        type: "SET_FORM_ORIGIN",
+        payload: origin
+    }
+};
+
+export const setFormDestination = (destination) => {
+    return {
+        type: "SET_FORM_DESTINATION",
+        payload: destination
+    }
+};
+
+export const setFormStartDate = (startDate) => {
+    return {
+        type: "SET_FORM_START_DATE",
+        payload: startDate
+    }
+};
+
+export const setFormEndDate = (endDate) => {
+    return {
+        type: "SET_FORM_END_DATE",
+        payload: endDate
+    }
+};
