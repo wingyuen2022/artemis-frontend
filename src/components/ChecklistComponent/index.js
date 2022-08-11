@@ -34,13 +34,14 @@ const ChecklistComponent = () => {
 
     useEffect(()=>{
         if (checklists !== null) {
+            console.log(checklists)
             setDisplay(checklists.map((cur)=>{
                 return (
                     <>
                         <CardGroup>
                             <Card>
                                 <Row>
-                                    <Col>{cur.fields.user_in_charge}</Col>
+                                    <Col>{cur.fields.name}</Col>
                                     <Col>{cur.fields.item}</Col>
                                     <Col>{cur.fields.remark}</Col>
                                     <Col>
