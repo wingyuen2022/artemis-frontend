@@ -8,6 +8,8 @@ export {default as Checklist} from './Checklist';
 export {default as ChecklistCreate} from './ChecklistCreate';
 export {default as ChecklistUpdate} from './ChecklistUpdate';
 
+
+export {default as Duration} from './Duration'
 export {default as Home} from './Home';
 export {default as Itinerary} from './Itinerary';
 export {default as Landing} from './Landing';
