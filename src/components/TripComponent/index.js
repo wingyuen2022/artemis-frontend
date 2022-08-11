@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setTrip } from "../../actions";
 import { getMethodBackendAPI } from '../../util/util.js';
-import { CardGroup, Card, Row, Col } from "react-bootstrap";
+import { CardGroup, Card, Row, Col, Text } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import "./Trip.css";
 
@@ -81,7 +81,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="member-btn" onClick={()=>{
                                     navigate('/view/member');
-                                }}>View Member</Button>
+                                }}>View</Button>
                             </Col>
                         </Row>
                     </Card>
@@ -93,7 +93,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="budget-btn" onClick={()=>{
                                     navigate('/view/budget');
-                                }}>View Budget</Button>
+                                }}>View</Button>
                             </Col>
                         </Row>
                     </Card>
@@ -105,7 +105,7 @@ const TripComponent = ({id}) => {
                             <Col>
                                 <Button id="checklist-btn" onClick={()=>{
                                     navigate('/view/checklist');
-                                }}>View Checklist</Button>
+                                }}>View</Button>
                             </Col>
                         </Row>
                     </Card>

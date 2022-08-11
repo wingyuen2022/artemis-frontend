@@ -164,7 +164,7 @@ const TripForm = ({id}) => {
                             const path = 'trip/' + id + '/';
                             putMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
-                                navigate('/view/trip/all');
+                                navigate('/view/trip/' + id);
                             }).catch((err)=>{
                             });
                         } else {
