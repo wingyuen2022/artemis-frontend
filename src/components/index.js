@@ -20,4 +20,4 @@ export {default as Forecast} from './WeatherComponent';
 
 export {default as TripComponent} from './TripComponent';
 export {default as TripForm} from './TripForm';
-export {default as TripTable} from './TripTable';
+export {default as TripsComponent} from './TripsComponent';
