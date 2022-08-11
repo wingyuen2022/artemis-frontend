@@ -1,19 +1,21 @@
 .home-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-image: url("../../assets/animations/32532-day-night.gif");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin: auto;
 }
 
 #home-card {
-    height: 100%;
+    height: 300px;
     opacity: 0.9;
+    margin: 20px auto;
+    padding: 10px;
 }
 
 .card-title {
-    font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
 }
 
@@ -24,7 +26,6 @@
 }
 
 .card-body {
-    font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
 }
 
