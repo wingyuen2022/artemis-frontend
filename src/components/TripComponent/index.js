@@ -5,10 +5,13 @@ import { setTrip } from "../../actions";
 import { getMethodBackendAPI } from '../../util/util.js';
 import { CardGroup, Card, Row, Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
+import "./Trip.css";
+
 
 const TripComponent = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const trip = useSelector(state => state.tripReducer);
     const [ curTrip, setCurTrip ] = useState(null);
 
@@ -24,7 +27,7 @@ const TripComponent = ({id}) => {
             }
         }).catch((err)=>{
         });
-      }, []);
+      }, [dispatch, id]);
 
     const renderHTML = () => {
     return (
@@ -115,6 +118,7 @@ const TripComponent = ({id}) => {
                     </div>
                 </div>
             </>) : (<></>) }
+
         </>
         );
     };

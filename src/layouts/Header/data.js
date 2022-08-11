@@ -36,8 +36,8 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Settings',
-        path: '/view/settings',
+        title: 'Activities',
+        path: '/activities',
         icon: <AiFillSetting />,
         cName: 'nav-text'
     },

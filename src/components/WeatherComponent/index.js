@@ -14,7 +14,7 @@ export default function Weather({lat, long}) {
         }).catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, [lat, long]);
 
     return (
         <>
@@ -25,15 +25,15 @@ export default function Weather({lat, long}) {
                 </div>
                 <div className="flex">
                     <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
-                    <div className="flex">
-                        <img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" />
+                    <div className="row">
                         <p className="description">{weather.weather[0].main}</p>
+                        <img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" />
                     </div>
                 </div>
 
                 <div className="flex">
                     <p className="temp">Temperature: {weather.main.temp} &deg;C</p>
-                    <p className="temp">Humidity: {weather.main.humidity} %</p>
+                    <p className="temp">Humidity:                     {weather.main.humidity} %</p>
                 </div>
 
                 <div className="flex">

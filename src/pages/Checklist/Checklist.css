@@ -1,63 +1,98 @@
-.checklist-header {
-    text-transform: uppercase;
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 1px 1px black;
-    letter-spacing: 1.5px;
-    color: #a56953;
-    font-family: 'Nanum Pen Script', cursive;
-}
-
-.checklist-container {
+.camping-checklist {
     background-image: url("../../assets/images/dark-woods-bg.jpg");
     position: relative;
-    height: 100%;
-    opacity: 0.9;
+    height: 100vh;
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
 }
 
-.checklistform-input {
+.checklist-heading {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+}
+
+.add-item-input {
     padding: 5px;
     margin: 0 auto 10px;
+    color: #000;
 }
 
-div > .caravan {
-    max-height: 150px;
+.caravan-icon {
+    max-height: 200px;
     max-width: 200px;
     align-content: center;
     margin: auto;
 }
 
-.checklist-item {
+.checklist-add-item, .checklist-list {
+    background-color: #9ab4a9;
+    width: 100%;
+    position: relative;
+    display: inline-block;
     font-family: 'Nanum Pen Script', cursive;
-    text-align: start;
     text-transform: capitalize;
-    border-bottom: solid 2px #2090a4;
+    font-size: 2rem;
     color: #fff;
-    height: 30px;
+    padding: 10px;
 }
 
-#completed-item-btn {
-    font-family: 'Nanum Pen Script', cursive;
-    font-size: 24px;
+.add-btn {
+    margin-left: 10px;
+}
+
+.checklist-list {
     position: relative;
-    margin-right: 10px;
+    display: block;
+    font-size: 1.6rem;
+    color: #035326;
+    margin: auto;
+}
+
+.item-container {
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+}
+.item-name {
+    font-weight: bold;
+}
+
+.total {
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-evenly;
+    padding-bottom: 50px;
+}
+#save-btn, #back-btn, #delete-btn {
+    font-family: 'Nanum Pen Script', cursive;
     background-color: yellowgreen;
-    height: 30px;
     color: #000;
+    font-size: 1.6rem;
     font-weight: bold;
     text-transform: uppercase;
-    text-decoration-color: aqua;
+    letter-spacing: 1.5px;
     border: solid 2px #fff;
     border-radius: 50px;
-    margin-right: 10px;
-    float: right;
+    margin: 0 10px;
 }
-
-#remove-item-btn {
+#back-btn {
+    background-color:#008037;
+    color: #fff;
+}
+#delete-btn {
     background-color: red;
     color: #fff;
-    border: none;
-    border-radius: 50%;
-    margin-right: 10px;
-    float: right;
+    border: solid 2px #fff;
+    border-radius: 50px;  
 } 
