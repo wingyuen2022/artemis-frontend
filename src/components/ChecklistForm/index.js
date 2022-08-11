@@ -27,7 +27,7 @@ const ChecklistForm = ({id}) => {
             }).catch((err)=>{
             });
         }
-        const path2 = 'member/all/';
+        const path2 = 'user/all/';
         getMethodBackendAPI(path2).then((ret)=>{
             if (ret.ok) {
                 ret.json().then((res)=>{
@@ -61,7 +61,7 @@ const ChecklistForm = ({id}) => {
             setOptions(allMembers.map((cur)=>{
                 return (
                     <>
-                        <Dropdown.Item eventKey={cur.pk}>{cur.fields.name}</Dropdown.Item>
+                        <Dropdown.Item eventKey={cur.pk}>{cur.fields.username}</Dropdown.Item>
                     </>
                 );
             }));
@@ -81,7 +81,7 @@ const ChecklistForm = ({id}) => {
                         });
                         }}>
                         <Dropdown.Toggle variant="success" id="personInCharge">
-                            { (selected !== null) ? (<>{selected.fields.name}</>) : (<></>) }
+                            { (selected !== null) ? (<>{selected.fields.username}</>) : (<></>) }
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>

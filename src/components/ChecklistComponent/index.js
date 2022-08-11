@@ -28,13 +28,18 @@ const ChecklistComponent = () => {
 
     useEffect(()=>{
         if (checklists !== null) {
+            console.log(checklists)
             setDisplay(checklists.map((cur)=>{
                 return (
                     <>
                         <CardGroup>
                             <Card>
                                 <Row>
+
                                     <Col>{cur.fields.assignee}</Col>
+
+                                    <Col>{cur.fields.name}</Col>
+
                                     <Col>{cur.fields.item}</Col>
                                     <Col>{cur.fields.note}</Col>
                                     <Col>
@@ -94,28 +99,3 @@ const ChecklistComponent = () => {
 }
 
 export default ChecklistComponent;
-
-/*
-                     
-                <Fragment className="checklistform-container">
-                <ChecklistForm
-                    id="checklist-form"
-                    onSubmit={_handleSubmit}
-                    value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-                    />
-                    <Row className="check-list">
-                      <Col>
-                        {items.map((item, index) => (
-                        <CheckListItem
-                            key={index}
-                            item={item}
-                            completed={() => _handleBntClick({ type: "completed", index })}
-                            className="checklist-item"
-                            />
-                          ))}
-                        </Col>
-                    </Row>
-                </Fragment>
-            </Container>
-*/
