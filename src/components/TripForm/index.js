@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI } from '../../util/util.js';
+import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { setOrigin, setDestination } from "../../actions";
 import { Container, Form, FormLabel, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -118,8 +118,12 @@ const TripForm = ({id}) => {
                     }}>Go Back</Button>
                     <Button variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
-                            alert('deleted');
-                            navigate('/view/home');
+                            const path = id + '/';
+                            deleteMethodBackendAPI(path).then(()=>{
+                                alert('saved');
+                                navigate('/view/trip/all');
+                            }).catch((err)=>{
+                            });
                         }
                     }} hidden={id === null}>Delete</Button>
                     <Button id="save-button" onClick={()=>{
