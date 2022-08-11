@@ -22,7 +22,7 @@ function Navbar() {
             </Link>
             <h1><a id="navbrand" href="/">Artemis Camping | </a></h1>
 
-            <h3 className='menu-title'>{ title }</h3>
+            <h3 className='menu-title'>{title}</h3>
 
           </div>
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

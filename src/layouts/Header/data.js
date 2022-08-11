@@ -1,8 +1,6 @@
 import { FaMapMarkedAlt, FaCheckCircle } from "react-icons/fa";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { AiFillHome, AiFillSetting } from "react-icons/ai";
-import { RiMessage2Fill } from "react-icons/ri";
-
 
 export const SidebarData = [
     {
@@ -30,22 +28,9 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Message Centre',
-        path: '/view/message',
-        icon: <RiMessage2Fill />,
-        cName: 'nav-text'
-    },
-    {
         title: 'Activities',
         path: '/activities',
         icon: <AiFillSetting />,
         cName: 'nav-text'
-    },
-    // {
-    //     title: 'Signout',
-    //     path: '/SignOut',
-    //     icon: <AiFillHome />,
-    //     cName: 'nav-text'
-    // },
-
+    }
 ]
