@@ -1,27 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../../actions";
-import { Container } from "react-bootstrap";
-import CheckListItem from "../../components/ChecklistComponent/CheckListItem";
-import ChecklistForm from "../../components/ChecklistComponent/ChecklistForm";
-import {caravan} from "../../assets/images/camping";
-import "./Checklist.css";
+import Button from 'react-bootstrap/Button';
+import ChecklistComponent from '../../components/ChecklistComponent';
+//import { Container } from "react-bootstrap";
+//import CheckListItem from "../../components/ChecklistComponent/CheckListItem";
+//import ChecklistForm from "../../components/ChecklistComponent/ChecklistForm";
+//import {caravan} from "../../assets/images/camping";
+//import "./Checklist.css";
 
 //Initial tasks
-const stuff = [
+/*const stuff = [
   { name: "item 1", done: false },
   { name: "item 2", done: false },
   { name: "item 3", done: true }
-];
+];*/
 
 function Checklist() {
-  const [items, setItems] = useState(stuff);
-  const [inputValue, setInputValue] = useState("");
+  //const [items, setItems] = useState(stuff);
+  //const [inputValue, setInputValue] = useState("");
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
     dispatch(setTitle("Check List"));
 
-  useEffect(() => {
+    useEffect(()=>{
+
+    }, []);
+
+  /*useEffect(() => {
     let count = 0;
     items.map(item => (!item.done ? count++ : null));
     document.title = `${count} task${count > 1 ? "s" : ""} item`;
@@ -45,12 +53,31 @@ function Checklist() {
     else if (type === "completed") newArr[index].done = true;
 
     return setItems(newArr);
-  };
+  };*/
 
   //
   return (
     <>
-    <Container className="camping-checklist">
+      <div className="row">
+            <div className="col">
+                <ChecklistComponent />
+            </div>
+        </div>
+        <div className="row">
+            <div className="col">
+                <Button onClick={()=>{
+                    navigate('/view/trip/all');
+                }}>Back</Button>
+            </div>
+        </div>
+    </>
+  );
+}
+
+export default Checklist;
+
+/*
+<Container className="camping-checklist">
         <div>
             <img className="caravan-icon" src={caravan} alt="caravan"></img>
             <ChecklistForm  className="checklistform-input"
@@ -70,8 +97,4 @@ function Checklist() {
         ))}
       </ul>
     </Container>
-    </>
-  );
-}
-
-export default Checklist;
+*/

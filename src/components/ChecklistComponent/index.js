@@ -1,18 +1,64 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-import CheckListItem from './CheckListItem';
-import ChecklistForm from './ChecklistForm';
-import * as camp from "../../assets/images/camping";
-import "./Checklist.css";
+import { getMethodBackendAPI } from '../../util/util.js';
+import { useDispatch, useSelector } from "react-redux";
+import { Row, Col, CardGroup, Card } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+//import CheckListItem from './CheckListItem';
+//import ChecklistForm from './ChecklistForm';
+//import * as camp from "../../assets/images/camping";
+//import "./Checklist.css";
 
-
-const tasks = [{ name: "tent, tent pegs & mallet", done: false}]
+//const tasks = [{ name: "tent, tent pegs & mallet", done: false}]
 
 const ChecklistComponent = () => {
-    const [ items, setItems ] = useState(tasks);
-    const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const trip = useSelector(state => state.tripReducer);
+    const [checklists, setChecklists] = useState(null);
+    const [display, setDisplay] = useState(null);
+
+    useEffect(()=>{
+        if (trip !== undefined && trip !== null) {
+            const path = 'trip/' + trip.pk + '/checklist/';
+            getMethodBackendAPI(path).then((ret)=>{
+                if (ret.ok) {
+                    ret.json().then((res)=>{
+                        setChecklists(res);
+                    });
+                }
+            }).catch((err)=>{
+            });
+        }
+    }, []);
+
+    useEffect(()=>{
+        if (checklists !== null) {
+            setDisplay(checklists.map((cur)=>{
+                return (
+                    <>
+                        <CardGroup>
+                            <Card>
+                                <Row>
+                                    <Col>{cur.fields.user_in_charge}</Col>
+                                    <Col>{cur.fields.item}</Col>
+                                    <Col>{cur.fields.remark}</Col>
+                                    <Col>
+                                        <Button onClick={()=>{
+                                            navigate('/edit/checklist/' + cur.pk);
+                                        }}>Edit</Button>
+                                    </Col>
+                                </Row>
+                            </Card>
+                        </CardGroup>
+                    </>
+                );
+            }));
+        }
+    }, [checklists]);
+
+    /*const [ items, setItems ] = useState(tasks);
+    const [inputValue, setInputValue] = useState("");
 
     useEffect(() => {
     let count = 0;
@@ -36,12 +82,54 @@ const ChecklistComponent = () => {
     if (type === "completed") newArr[index].done = true;
 
     return setItems(newArr);
-  };
+  };*/
 
     const renderHTML = () => {
     return (
         <>
-            <Container className="camping-checklist">
+            <CardGroup>
+                <Card>
+                    <Row>
+                        <Col><h1>{ trip.fields.name }</h1></Col>
+                    </Row>
+                </Card>
+            </CardGroup>
+            <CardGroup>
+                <Card>
+                    <Row>
+                        <Col><b>In-charge</b></Col>
+                        <Col><b>Item</b></Col>
+                        <Col><b>Remark</b></Col>
+                        <Col><b>Action</b></Col>
+                    </Row>
+                </Card>
+            </CardGroup>
+            { (checklists !== null) ? (
+            <>
+                {display}
+            </>) : (<></>) }
+            <CardGroup>
+                <Card>
+                    <Row>
+                        <Col>
+                            <Button onClick={()=>{
+                                navigate('/new/checklist/');
+                            }}>Add</Button>
+                        </Col>
+                    </Row>
+                </Card>
+            </CardGroup>
+        </>
+        );
+    };
+
+    return renderHTML();
+}
+
+export default ChecklistComponent;
+
+/*
+<Container className="camping-checklist">
                 <img className="caravan" src={camp.caravan} alt="caravan"></img>
                
                        
@@ -66,49 +154,4 @@ const ChecklistComponent = () => {
                     </Row>
                 </Fragment>
             </Container>
-
-            <div className="row">
-                <div className="col">
-                    <b>Item</b>
-                </div>
-                <div className="col">
-                    <b>Remark</b>
-                </div>
-                <div className="col">
-                    <b>Person-in-charge</b>
-                </div>
-                <div className="col">
-                    <b>Action</b>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    Prepare and bring the tents
-                </div>
-                <div className="col">
-                    3 tents in total
-                </div>
-                <div className="col">
-                    Wing
-                </div>
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/edit/checklist/1');
-                    }}>Edit</Button>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Button onClick={()=>{
-                        navigate('/new/checklist');
-                    }}>New Checklist</Button>
-                </div>
-            </div>
-        </>
-        );
-    };
-
-    return renderHTML();
-}
-
-export default ChecklistComponent;
+*/
