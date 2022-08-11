@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #9ab4a9;
+  /* background-color: #9ab4a9; */
   font-family: 'Nanum Pen Script', cursive;
   font-size: 2rem;
 }
