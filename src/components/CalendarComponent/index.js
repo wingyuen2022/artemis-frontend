@@ -21,28 +21,29 @@ import { setOrigin, setDestination } from "../../actions";
 import { Container, Form, FormLabel, Row } from "react-bootstrap";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { useNavigate } from "react-router-dom";
+import './CalendarComponent.css';
 
 const scheduleData = [
   {
     Id: 1,
-    Subject: "Explosion of Betelgeuse Star",
-    Location: "Space Center USA",
+    Subject: "Lake District",
+    Location: "Windermere",
     StartTime: "2021-01-10T04:00:00.000Z",
     EndTime: "2021-01-10T05:30:00.000Z",
     CategoryColor: "#1aaa55",
   },
   {
     Id: 2,
-    Subject: "Thule Air Crash Report",
-    Location: "Newyork City",
+    Subject: "Peak District",
+    Location: "Sheffield",
     StartTime: "2021-01-11T06:30:00.000Z",
     EndTime: "2021-01-11T08:30:00.000Z",
     CategoryColor: "#357cd2",
   },
   {
     Id: 3,
-    Subject: "Blue Moon Eclipse",
-    Location: "Space Center USA",
+    Subject: "Thetford",
+    Location: "",
     StartTime: "2021-01-12T04:00:00.000Z",
     EndTime: "2021-01-12T05:30:00.000Z",
     CategoryColor: "#7fa900",
@@ -161,8 +162,8 @@ const scheduleData = [
   },
   {
     Id: 18,
-    Subject: "Space Galaxies and Planets",
-    Location: "Space Center USA",
+    Subject: "Lakeside Walk",
+    Location: "Lake Garda",
     StartTime: "2021-01-11T11:30:00.000Z",
     EndTime: "2021-01-11T13:00:00.000Z",
     CategoryColor: "#f57f17",
@@ -189,7 +190,7 @@ const scheduleData = [
     Location: "Space Center USA",
     StartTime: "2021-01-10T08:30:00.000Z",
     EndTime: "2021-01-10T10:30:00.000Z",
-    CategoryColor: "#ea7a57",
+    CategoryColor: "#13ad65",
   },
   {
     Id: 22,
@@ -197,7 +198,7 @@ const scheduleData = [
     Location: "Research Center of USA",
     StartTime: "2021-01-12T09:00:00.000Z",
     EndTime: "2021-01-12T10:30:00.000Z",
-    CategoryColor: "#00bdae",
+    CategoryColor: "#13ad65",
   },
   {
     Id: 23,
@@ -205,7 +206,7 @@ const scheduleData = [
     Location: "Greenland",
     StartTime: "2021-01-15T09:00:00.000Z",
     EndTime: "2021-01-15T10:30:00.000Z",
-    CategoryColor: "#ea7a57",
+    CategoryColor: "#13ad65",
   },
   {
     Id: 24,
@@ -213,7 +214,7 @@ const scheduleData = [
     Location: "California",
     StartTime: "2021-01-16T07:00:00.000Z",
     EndTime: "2021-01-16T09:00:00.000Z",
-    CategoryColor: "#7fa900",
+    CategoryColor: "#13ad65",
   },
 ];
 
@@ -265,12 +266,12 @@ const CalendarComponent = ({id}) => {
           role="schedule"
         >
           <ViewsDirective>
-            {["Day", "Week", "WorkWeek", "Month", "Agenda"].map((item) => (
+            {["Day", "Week", "Month", "Agenda"].map((item) => (
               <ViewDirective key={item} option={item} />
             ))}
           </ViewsDirective>
           <Inject
-            services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}
+            services={[Day, Week, Month, Agenda, Resize, DragAndDrop]}
           />
         </ScheduleComponent>
         <table style={{ width: "100%", background: "white" }}>
