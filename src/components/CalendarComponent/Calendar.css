@@ -13,9 +13,22 @@
 .calendar-schedule {
     height: 100%;
     background-color: #2090a4;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
 }
 
 .calendar-table {
+    
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+}
+
+.calendar-table-body {
     background-color: #2090a4;
     border: 5px solid black;
+}
+
+.calendar-views {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
 }

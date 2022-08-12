@@ -15,11 +15,9 @@ function Checklist() {
             <img className="caravan-icon" src={camp.caravan} alt="caravan"></img>
             <h4>Make sure you have everything you need with this handy checklist!</h4>
         </div>
-      <div className="row">
-            <div className="col">
-                <ChecklistComponent />
-            </div>
-        </div>
+      
+          <ChecklistComponent />
+            
         <div className="row">
             <div className="col">
                 <Button id="back-btn" onClick={()=>{
@@ -30,7 +28,7 @@ function Checklist() {
       </Container>
     </>
   );
- }
+ };
  return renderHTML();
 }
 

@@ -78,7 +78,7 @@ const CalendarComponent = ({id}) => {
     return (
       <>
       <Container className="calendar-container">
-      <div>
+      
         <ScheduleComponent
           className="calendar-schedule"
           ref={(schedule) => setScheduleObj(schedule)}
@@ -89,19 +89,19 @@ const CalendarComponent = ({id}) => {
         >
           <ViewsDirective>
             {["Day", "Week", "WorkWeek", "Month", "Agenda"].map((item) => (
-              <ViewDirective key={item} option={item} />
+              <ViewDirective  key={item} option={item} />
             ))}
           </ViewsDirective>
-          <Inject
+          <Inject 
             services={[Day, Week, WorkWeek, Month, Agenda, Resize, DragAndDrop]}
           />
         </ScheduleComponent>
 
-        <Table striped className="calendar-table">
-          <tbody>
+        <Table striped bordered >
+          <tbody className="calendar-table-body">
             <tr style={{ height: "50px" }}>
               <td style={{ width: "100%" }}>
-                <DatePickerComponent
+                <DatePickerComponent      className="calendar-table" 
                   value={new Date(12, 8, 2022)}
                   showClearButton={false}
                   placeholder="Current Date"
@@ -112,7 +112,7 @@ const CalendarComponent = ({id}) => {
             </tr>
           </tbody>
         </Table>
-      </div>
+     
       </Container>
       </>
     );
