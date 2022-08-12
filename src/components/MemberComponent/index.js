@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
-import { useDispatch, useSelector } from "react-redux";
-import { setTitle } from "../../actions";
+import { useSelector } from "react-redux";
 import { Container, Dropdown, Button, Row, Col, CardGroup, Card } from "react-bootstrap";
 
 import "./MemberComponent.css";
 
 const MemberComponent = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const trip = useSelector(state => state.tripReducer);
     const [members, setMembers] = useState(null);
     const [allMembers, setAllMembers] = useState(null);
     const [display, setDisplay] = useState(null);
     const [options, setOptions] = useState(null);
     const [selected, setSelected] = useState(null);
-
-    dispatch(setTitle("Trip Members"));
 
     useEffect(()=>{
         if (trip !== undefined && trip !== null) {
