@@ -31,7 +31,7 @@ export default function App() {
                         <Route path="/new/trip" element={<Pages.TripCreate />} />
                         <Route path="/edit/trip/:id" element={<Pages.TripUpdate />} />
                         <Route path="/view/weather" element={<Pages.Weather />} />
-                        <Route path='/view/activities' element={<Pages.Activities />} />
+                        {/* <Route path='/view/activities' element={<Pages.Activities />} /> */}
                         <Route path="*" element={<Pages.NotFound />} />
                     </Route>
                 </Routes>
