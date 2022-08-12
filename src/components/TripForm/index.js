@@ -109,9 +109,9 @@ const TripForm = ({id}) => {
                     }
                 }}>View route</Button>
 
-                <FormLabel className="form-label">
-                    <b>Trip name:</b>
-                </FormLabel>
+                <div id="form-label">
+                    Trip name:
+                </div>
                 <Col>
                     <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
                 </Col>
