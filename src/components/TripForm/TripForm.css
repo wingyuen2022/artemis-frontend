@@ -9,11 +9,12 @@
 }
 
 .new-trip-form {
+    display: inline-block;
     margin: auto;
     width: 100%;
     text-align: center;
-    background-color: #efddb7;
-    padding: 10px 10px 30px 10px;
+    background-color: #EFDDB7;
+    padding: 10px;
     border: 2px solid green;
     border-radius: 20px;
     opacity: 0.9;
