@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { setOrigin, setDestination } from "../../actions";
-import { Container, Form, FormLabel, Row } from "react-bootstrap";
+import { Button, Container, Form, FormLabel, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Button from 'react-bootstrap/Button';
 import PlaceComponent from '../PlaceComponent';
 import "./TripForm.css";
 
@@ -26,7 +25,7 @@ const TripForm = ({id}) => {
             }).catch((err)=>{
             });
         }
-    }, []);
+    }, [id]);
 
     useEffect(()=>{
         if (trip !== null) {
@@ -59,26 +58,26 @@ const TripForm = ({id}) => {
         <>
             <Container className="trip-form-container">
             <Form className="new-trip-form">
-                <FormLabel className="form-label">
-                    <b>Trip name:</b>
+                <FormLabel id="form-label">
+                    Trip name:
                 </FormLabel>
                 <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
                 <br />
-                <div className="form-label">
-                    <b>Origin:</b>
+                <div id="form-label">
+                    Origin:
                 </div>
                 <div className="col">
                     <PlaceComponent id="origin" value={route.origin}/><br />
                 </div>
 
-                <div className="form-label">
-                    <b>Destination:</b>
+                <div id="form-label">
+                    Destination:
                 </div>
                 <div className="col">
-                    <PlaceComponent id="destination" value={route.destination}/><br />
+                    <PlaceComponent id="destination" value={route.destination}/>
                 </div>
 
-                <Button onClick={()=>{
+                <Button id="route-btn" onClick={()=>{
                     const origin = document.getElementById("origin");
                     const destination = document.getElementById("destination");
                     if (origin !== undefined && 
@@ -96,15 +95,15 @@ const TripForm = ({id}) => {
                 }}>View route</Button>
             
             
-                <div className="form-label">
-                    <b>Start Date:</b>
+                <div id="form-label">
+                    Start Date:
                 </div>
                 <div className="col">
                     <input className="form-item-input" id="startDate" class="inputs" name="startDate" type="date" required />
                 </div>
             
-                <div className="form-label">
-                    <b>End Date:</b>
+                <div id="form-label">
+                    End Date:
                 </div>
                 <div className="col">
                     <input className="form-item-input" id="endDate" class="inputs" name="endDate" type="date" required />
