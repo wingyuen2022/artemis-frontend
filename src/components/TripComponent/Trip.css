@@ -1,12 +1,22 @@
 .trip-form-container {
     margin: auto auto 40px auto;
     padding: 20px;
-    background-image: url("../../assets/images/deer-bg.jpg");
+    background-image: url("../../assets/animations/trips.gif");
     height: 100%;
-    background-size: cover;
-    background-position: fixed;
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
 }
+
+#trip-card {
+    height: auto;
+    opacity: 0.9;
+    margin: 20px auto;
+    border: 2px solid green;
+    padding: 10px;
+    background-color: #efddb7;
+}
+
 
 .new-trip-form {
     display: inline-block;

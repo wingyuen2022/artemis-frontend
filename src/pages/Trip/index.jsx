@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import TripComponent from "../../components/TripComponent";
+import "./Trip.css";
 
 const Trip = () => {
   const { id } = useParams();

@@ -6,6 +6,7 @@
     text-transform: uppercase;
     display: block;
     height: auto;
+    width: 100%;
     text-align: center;
     margin: 5px auto;
 }

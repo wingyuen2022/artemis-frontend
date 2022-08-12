@@ -35,49 +35,49 @@ const TripComponent = ({id}) => {
             { (curTrip !== null) ? (
             <>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Trip name:</b></Col>
+                            <Col><b id="form-label">Trip name:</b></Col>
                             <Col>{curTrip.fields.name}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Origin:</b></Col>
+                            <Col><b id="form-label">Origin:</b></Col>
                             <Col>{curTrip.fields.origin}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Destination:</b></Col>
+                            <Col><b id="form-label">Destination:</b></Col>
                             <Col>{curTrip.fields.destination}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Start Date:</b></Col>
+                            <Col><b id="form-label">Start Date:</b></Col>
                             <Col>{curTrip.fields.start_date}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>End Date:</b></Col>
+                            <Col><b id="form-label">End Date:</b></Col>
                             <Col>{curTrip.fields.end_date}</Col>
                         </Row>
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Member:</b></Col>
+                            <Col><b id="form-label">Member:</b></Col>
                             <Col>
                                 <Button id="member-btn" onClick={()=>{
                                     navigate('/view/member');
@@ -87,9 +87,9 @@ const TripComponent = ({id}) => {
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Budget:</b></Col>
+                            <Col><b id="form-label">Budget:</b></Col>
                             <Col>
                                 <Button id="budget-btn" onClick={()=>{
                                     navigate('/view/budget');
@@ -99,9 +99,9 @@ const TripComponent = ({id}) => {
                     </Card>
                 </CardGroup>
                 <CardGroup>
-                    <Card>
+                    <Card id="trip-card">
                         <Row>
-                            <Col><b>Checklist:</b></Col>
+                            <Col><b id="form-label">Checklist:</b></Col>
                             <Col>
                                 <Button id="checklist-btn" onClick={()=>{
                                     navigate('/view/checklist');
