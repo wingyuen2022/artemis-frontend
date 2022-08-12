@@ -20,3 +20,6 @@ export {default as Forecast} from './WeatherComponent';
 export {default as TripComponent} from './TripComponent';
 export {default as TripForm} from './TripForm';
 export {default as TripsComponent} from './TripsComponent';
+
+export {default as ChecklistComponent} from './ChecklistComponent';
+export {default as ChecklistForm} from './ChecklistForm';
