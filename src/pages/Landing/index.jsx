@@ -5,46 +5,58 @@ import { Container, Form } from "react-bootstrap";
 import { resetRegistered, login } from '../../features/user';
 import { Bounce, Zoom } from 'react-reveal';
 import Logo from "../../assets/images/artemis-colour-cutout.png";
+import { useNavigate } from "react-router-dom";
 
 import "./Landing.css";
 
 export default function Landing() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
        
     const loading = false;
     /*const { loading, isAuthenticated, registered } = useSelector(
 		state => state.user
 	);*/
 
-	const [formData, setFormData] = useState({
-		email: '',
-		username: '',
-		password: '',
-	});
+	// const [formData, setFormData] = useState({
+	// 	email: '',
+	// 	username: '',
+	// 	password: '',
+	// });
 
-	/*useEffect(() => {
-		if (registered) dispatch(resetRegistered());
-	}, [registered]);*/
+	// /*useEffect(() => {
+	// 	if (registered) dispatch(resetRegistered());
+	// }, [registered]);*/
 
-	const { email, username, password } = formData;
+	// const { email, username, password } = formData;
 
-	const onChange = e => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
-	};
+	// const onChange = e => {
+	// 	setFormData({ ...formData, [e.target.name]: e.target.value });
+	// };
 
 	const onSubmit = e => {
 		e.preventDefault();
+        // <Navigate to='/view/register' />
 
-		dispatch(login({ email, username, password }));
+		// dispatch(login({ email, username, password }));
 	};
 
 	//if (isAuthenticated) return <Navigate to='/view/home' />;
 
-    const navigate = () => {
+    // const navigate = () => {
 
-        <Navigate to='/view/register' />
+    //     <Navigate to='/view/register' />
 
+    // }
+
+    const navigate = useNavigate();
+    const home = () => {
+        navigate("/view/home");
     }
+
+    // const navigateR = useNavigate();
+    // const register = () => {
+    //     navigateR("/view/register");
+    // }
      
     return (
         <>
@@ -57,7 +69,7 @@ export default function Landing() {
                         <p>DISCOVER UNWIND EXPLORE</p>
                     </Zoom>
                 </div>
-                <form onSubmit={onSubmit}>
+                <form >
 
                     <div className='form-group'>
                     {/* <label className='form-label' htmlFor='email'>
@@ -67,8 +79,8 @@ export default function Landing() {
                         className='form-control'
                         type='username'
                         name='username'
-                        onChange={onChange}
-                        value={username}
+                        // onChange={onChange}
+                        // value={username}
                         placeholder="Enter Username"
                         required
                     />
@@ -82,8 +94,8 @@ export default function Landing() {
                         className='form-control'
                         type='password'
                         name='password'
-                        onChange={onChange}
-                        value={password}
+                        // onChange={onChange}
+                        // value={password}
                         placeholder="Enter Password"
                         required
                     />
@@ -93,11 +105,11 @@ export default function Landing() {
                         <span className='visually-hidden'>Loading...</span>
                     </div>
                     ) : (
-                    <Form.Control className="auth-btn" id="login" type="submit" value="Login" />
+                    <Form.Control className="auth-btn" id="login" type="submit" value="Login" onClick={home}/>
                     )}
 
                         <p>OR</p>
-                        <input className="auth-btn" id="register" type="submit" value="Register" onClick={navigate}/>
+                        <input className="auth-btn" id="register" type="submit" value="Register" />
 
                     </form>
                   

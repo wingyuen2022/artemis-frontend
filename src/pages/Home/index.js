@@ -15,6 +15,7 @@ const Home = () => {
     const renderHTML = () => {
         return (
             <>  
+            <h1 className=""> WELCOME, NATHAN</h1>
                 <Container className="home-container">
                 {/* {loading || user === null ? (
 				<div className='spinner-border text-primary' role='status'>

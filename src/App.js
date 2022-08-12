@@ -37,7 +37,7 @@ export default function App() {
                     </Route>
                 </Routes>
 
-                {/* {isAuthenticated ? authLinks : guestLinks} */}
+            
             </div>
         </>
     );
