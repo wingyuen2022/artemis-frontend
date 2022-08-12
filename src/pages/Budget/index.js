@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import BudgetComponent from '../../components/BudgetComponent';
 
 const Budget = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
    
     const trip = useSelector(state => state.tripReducer);
 
