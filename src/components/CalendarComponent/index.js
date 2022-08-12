@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   ScheduleComponent,
   ViewsDirective,
@@ -15,10 +15,11 @@ import {
 } from "@syncfusion/ej2-react-schedule";
 
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
-// import { setOrigin, setDestination } from "../../actions";
+import { setOrigin, setDestination } from "../../actions";
 import { Container, Table } from "react-bootstrap";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
-// import { useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import "./Calendar.css";
 
 const scheduleData = [
@@ -38,6 +39,30 @@ const scheduleData = [
     EndTime: "13-08-2022T08:30:00.000Z",
     CategoryColor: "#2090a4",
   },
+  { 
+    Id: 3,
+    Subject: "Lake District",
+    Location: "Windermere",
+    StartTime: "2021-01-10T04:00:00.000Z",
+    EndTime: "2021-01-10T05:30:00.000Z",
+    CategoryColor: "#1aaa55",
+  },
+  {
+    Id: 2,
+    Subject: "Peak District",
+    Location: "Sheffield",
+    StartTime: "2021-01-11T06:30:00.000Z",
+    EndTime: "2021-01-11T08:30:00.000Z",
+    CategoryColor: "#357cd2",
+  },
+  {
+    Id: 4,
+    Subject: "Thetford",
+    Location: "",
+    StartTime: "2021-01-12T04:00:00.000Z",
+    EndTime: "2021-01-12T05:30:00.000Z",
+    CategoryColor: "#7fa900",
+  },  
 ];
 
 const CalendarComponent = ({id}) => {

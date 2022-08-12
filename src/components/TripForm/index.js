@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
-import { setOrigin, setDestination } from "../../actions";
 import { Button, Container, Form, FormLabel, Row } from "react-bootstrap";
+import { setOrigin, setDestination, setFormName, setFormOrigin, setFormDestination, setFormStartDate, setFormEndDate } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import PlaceComponent from '../PlaceComponent';
 import "./TripForm.css";
@@ -11,7 +11,8 @@ const TripForm = ({id}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const route = useSelector(state => state.routeReducer);
-    const [trip, setTrip] = useState(null);
+    const form = useSelector(state => state.formReducer);
+    const [ready, setReady] = useState(false);
 
     useEffect(()=>{
         if (id !== undefined && id !== null) {
@@ -19,7 +20,16 @@ const TripForm = ({id}) => {
             getMethodBackendAPI(path).then((ret)=>{
                 if (ret.ok) {
                     ret.json().then((res)=>{
-                        setTrip(res[0]);
+                        const trip = res[0];
+                        const obj = trip.fields;
+                        dispatch(setOrigin(obj.origin));
+                        dispatch(setDestination(obj.destination));
+                        dispatch(setFormName(obj.name));
+                        dispatch(setFormOrigin(obj.origin));
+                        dispatch(setFormDestination(obj.destination));
+                        dispatch(setFormStartDate(obj.start_date));
+                        dispatch(setFormEndDate(obj.end_date));
+                        setReady(true);
                     });
                 }
             }).catch((err)=>{
@@ -28,30 +38,37 @@ const TripForm = ({id}) => {
     }, [id]);
 
     useEffect(()=>{
-        if (trip !== null) {
-            const obj = trip.fields;
+        if (ready) {
             const name = document.getElementById("name");
             if (name !== undefined && name !== null) {
-                name.value = obj.name;
+                name.value = form.name;
             }
             const origin = document.getElementById("origin");
             if (origin !== undefined && origin !== null) {
-                origin.value = obj.origin;
+                origin.value = form.origin;
             }
             const destination = document.getElementById("destination");
             if (destination !== undefined && destination !== null) {
-                destination.value = obj.destination;
+                destination.value = form.destination;
             }
             const startDate = document.getElementById("startDate");
             if (startDate !== undefined && startDate !== null) {
-                startDate.value = obj.start_date;
+                startDate.value = form.startDate;
             }
             const endDate = document.getElementById("endDate");
             if (endDate !== undefined && endDate !== null) {
-                endDate.value = obj.end_date;
+                endDate.value = form.endDate;
             }
         }
-    }, [trip]);
+    }, [ready]);
+
+    const resetForm = () => {
+        dispatch(setFormName(null));
+        dispatch(setFormOrigin(null));
+        dispatch(setFormDestination(null));
+        dispatch(setFormStartDate(null));
+        dispatch(setFormEndDate(null));
+    };
 
     const renderHTML = () => {
     return (
@@ -66,18 +83,21 @@ const TripForm = ({id}) => {
                 <div id="form-label">
                     Origin:
                 </div>
-                <div className="col">
+                <Col>
                     <PlaceComponent id="origin" value={route.origin}/><br />
-                </div>
+                </Col>
 
                 <div id="form-label">
                     Destination:
                 </div>
+
                 <div className="col">
                     <PlaceComponent id="destination" value={route.destination}/>
                 </div>
 
                 <Button id="route-btn" onClick={()=>{
+
+               
                     const origin = document.getElementById("origin");
                     const destination = document.getElementById("destination");
                     if (origin !== undefined && 
@@ -93,26 +113,35 @@ const TripForm = ({id}) => {
                         alert('Make sure you have Origin and Destination');
                     }
                 }}>View route</Button>
-            
+
+                <FormLabel className="form-label">
+                    <b>Trip name:</b>
+                </FormLabel>
+                <Col>
+                    <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
+                </Col>
             
                 <div id="form-label">
                     Start Date:
                 </div>
-                <div className="col">
+                <Col>
                     <input className="form-item-input" id="startDate" class="inputs" name="startDate" type="date" required />
-                </div>
+                </Col>
             
                 <div id="form-label">
                     End Date:
                 </div>
-                <div className="col">
+                <Col>
                     <input className="form-item-input" id="endDate" class="inputs" name="endDate" type="date" required />
-                </div>
+                </Col>
             
-                <Row className="row">
+                <Row>
                     <input className="form-item-input" id="id" type="number" name="id" hidden/><br />
                     <Button id="back-button" onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
+                            dispatch(setOrigin(null));
+                            dispatch(setDestination(null));
+                            resetForm();
                             navigate('/view/home');
                         }
                     }}>Go Back</Button>
@@ -127,11 +156,6 @@ const TripForm = ({id}) => {
                         }
                     }} hidden={id === null}>Delete</Button>
                     <Button id="save-button" onClick={()=>{
-                        const name = document.getElementById("name");
-                        if (name === undefined || name === null || name.value === '') {
-                            alert('Enter name');
-                            return;
-                        }
                         const origin = document.getElementById("origin");
                         if (origin === undefined || origin === null || origin.value === "") {
                             alert('Enter origin');
@@ -140,6 +164,11 @@ const TripForm = ({id}) => {
                         const destination = document.getElementById("destination");
                         if (destination === undefined || destination === null || destination.value === "") {
                             alert('Enter destination');
+                            return;
+                        }
+                        const name = document.getElementById("name");
+                        if (name === undefined || name === null || name.value === '') {
+                            alert('Enter name');
                             return;
                         }
                         const startDate = document.getElementById("startDate");
@@ -163,12 +192,13 @@ const TripForm = ({id}) => {
                             const path = 'trip/' + id + '/';
                             putMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
-                                navigate('/view/trip/all');
+                                navigate('/view/trip/' + id);
                             }).catch((err)=>{
                             });
                         } else {
                             postMethodBackendAPI('trip/', obj).then(()=>{
                                 alert('saved');
+                                resetForm();
                                 navigate('/view/trip/all');
                             }).catch((err)=>{
                             });

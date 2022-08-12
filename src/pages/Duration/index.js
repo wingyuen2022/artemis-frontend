@@ -28,10 +28,6 @@ const Duration = () => {
           <div className="col">
             <CalendarComponent />
           </div>
-          <div className="col">
-            <Button onClick={handleBack}>Back</Button>
-            <Button onClick={handleEdit}>Edit</Button>
-          </div>
         </div>
       </>
     );

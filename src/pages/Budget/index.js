@@ -4,11 +4,9 @@ import Button from 'react-bootstrap/Button';
 import BudgetComponent from '../../components/BudgetComponent';
 
 const Budget = () => {
-    //const { xxx } = useParams();
-    //const [ curXXX, setCurXXX] = useState(null);
-    
     const navigate = useNavigate();
-  
+   
+    const trip = useSelector(state => state.tripReducer);
 
     const renderHTML = () => {
         return (
@@ -20,8 +18,8 @@ const Budget = () => {
                 </div>
                 <div className="row">
                     <div className="col">
-                        <Button onClick={()=>{
-                            navigate('/view/trip/all');
+                        <Button id="back-btn" onClick={()=>{
+                            navigate('/view/trip/' + trip.pk);
                         }}>Back</Button>
                     </div>
                 </div>
