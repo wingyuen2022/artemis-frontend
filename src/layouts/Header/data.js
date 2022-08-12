@@ -32,5 +32,11 @@ export const SidebarData = [
         path: '/view/duration',
         icon: <AiFillCalendar />,
         cName: 'nav-text'
+    },
+    {
+        title: 'Sign out',
+        path: '/signout',
+        icon: <AiFillHome />,
+        cName: 'nav-text'
     }
 ]
