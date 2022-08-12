@@ -11,8 +11,9 @@ function Layout() {
                 <main>
                     <Outlet />                    
                 </main>
-            <Footer />
         </>
     );
 }
 export default Layout;
+
+/*<Footer />*/
