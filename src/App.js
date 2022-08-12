@@ -7,8 +7,9 @@ export default function App() {
         <>
             <div className="App">
                 <Routes>
+                    <Route index element={<Pages.Landing />} />
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<Pages.Landing />} />
+                        
                         <Route path='/view/register' element={<Pages.Register/>} />
                         <Route path="/view/home" element={<Pages.Home />} />
                         <Route path="/view/message" element={<Pages.Message />} />
@@ -36,7 +37,7 @@ export default function App() {
                     </Route>
                 </Routes>
 
-                {/* {isAuthenticated ? authLinks : guestLinks} */}
+            
             </div>
         </>
     );
