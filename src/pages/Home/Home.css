@@ -12,6 +12,7 @@
     height: 300px;
     opacity: 0.9;
     margin: 20px auto;
+    border: 2px solid green;
     padding: 10px;
 }
 
@@ -34,9 +35,10 @@
     border: none;
     font-family: 'Nanum Pen Script', cursive;
     font-size: 2rem;
-    text-transform: uppercase;
-    display: flex;
-    height: auto;
     text-align: center;
-    margin: auto auto 20px auto;
+    text-transform: uppercase;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
 }

@@ -5,13 +5,6 @@ export const setChat = (chat) => {
     }
 };
 
-export const setTitle = (title) => {
-    return {
-        type: "SET_TITLE",
-        payload: title
-    }
-};
-
 export const setTrip = (trip) => {
     return {
         type: "SET_TRIP",

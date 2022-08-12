@@ -1,9 +1,8 @@
 #add-item-btn, #remove-item-btn, #edit-item-btn, #back-btn {
     font-family: 'Nanum Pen Script', cursive;
-    height: 30px;
+    height: 40px;
     border-radius: 50%;
     background-color: yellowgreen;
-    border: 2px solid #fff;
     font-size: 24px;
     color: #fff;
     margin-left: 10px;

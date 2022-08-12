@@ -35,9 +35,10 @@ const ChecklistComponent = () => {
                         <CardGroup>
                             <Card>
                                 <Row>
-                                    <Col>{cur.fields.name}</Col>
+                                    <Col>{cur.fields.assignee}</Col>
                                     <Col>{cur.fields.item}</Col>
-                                    <Col>{cur.fields.remark}</Col>
+                                    <Col>{cur.fields.comment}</Col>
+
                                     <Col>
                                         <Button id="edit-btn" onClick={()=>{
                                             navigate('/edit/checklist/' + cur.pk);
@@ -52,22 +53,15 @@ const ChecklistComponent = () => {
         }
     }, [checklists, navigate]);
 
-    const renderHTML = () => {
+ 
     return (
         <>
             <CardGroup>
                 <Card>
                     <Row>
-                        <Col><h1>{ trip.fields.name }</h1></Col>
-                    </Row>
-                </Card>
-            </CardGroup>
-            <CardGroup>
-                <Card>
-                    <Row>
                         <Col><b>Assignee</b></Col>
                         <Col><b>Item</b></Col>
-                        <Col><b>Note</b></Col>
+                        <Col><b>Comment</b></Col>
                         <Col><b>Action</b></Col>
                     </Row>
                 </Card>
@@ -90,8 +84,5 @@ const ChecklistComponent = () => {
         </>
         );
     };
-
-    return renderHTML();
-}
 
 export default ChecklistComponent;

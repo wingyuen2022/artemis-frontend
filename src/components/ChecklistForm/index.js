@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col } from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
+import { Button, Container, Dropdown, Row, Col } from "react-bootstrap";
+import "../ChecklistComponent/Checklist.css";
 
 const ChecklistForm = ({id}) => {
     const navigate = useNavigate();
@@ -36,22 +35,22 @@ const ChecklistForm = ({id}) => {
             }
         }).catch((err)=>{
         });
-    }, []);
+    }, [id, trip]);
 
     useEffect(()=>{
         if (checklist !== null) {
             const obj = checklist.fields;
-            /*const personInCharge = document.getElementById("personInCharge");
-            if (personInCharge !== undefined && personInCharge !== null) {
-                personInCharge.value = Number(obj.personInCharge);
-            }*/
+            const assignee = document.getElementById("assignee");
+            if (assignee !== undefined && assignee !== null) {
+                assignee.value = Number(obj.assignee);
+            }
             const item = document.getElementById("item");
             if (item !== undefined && item !== null) {
                 item.value = obj.item;
             }
-            const remark = document.getElementById("remark");
-            if (remark !== undefined && remark !== null) {
-                remark.value = obj.remark;
+            const comment = document.getElementById("comment");
+            if (comment !== undefined && comment !== null) {
+                comment.value = obj.comment;
             }
         }
     }, [checklist]);
@@ -71,35 +70,39 @@ const ChecklistForm = ({id}) => {
     const renderHTML = () => {
     return (
         <>
+        <Container className="new-item-container">
+            <h2>Add an Item:</h2>
             <Row>
                 <Col>
-                    <Dropdown onSelect={(cur)=>{
+                    <Dropdown  onSelect={(cur)=>{
                         allMembers.map((curM)=>{
                             if (curM.pk === Number(cur)) {
                                 setSelected(curM);
                             }
                         });
                         }}>
-                        <Dropdown.Toggle variant="success" id="personInCharge">
+                        <Dropdown.Toggle id="assignee">Assignee:
                             { (selected !== null) ? (<>{selected.fields.username}</>) : (<></>) }
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
+                        <Dropdown.Menu className="assignee-dropdown-container">
                             { (options !== null) ? (<>{options}</>) : (<></>) }
                         </Dropdown.Menu>
                     </Dropdown>
+                    <div className="new-item-form">
                     <b>Item:</b><input id="item" type="text" name="item" maxLength="20" placeholder="Item"/><br />
-                    <b>Remark:</b><input id="remark" type="text" name="remark" maxLength="1024" placeholder="Remark"/><br />
+                    <b>Comment:</b><input id="comment" type="message" name="comment" maxLength="1024" placeholder="comment"/>
+                    </div>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <Button role="back" onClick={()=>{
+                    <Button id="back-btn" role="back" onClick={()=>{
                         if (window.confirm("Confirm without saving?")) {
                             navigate('/view/checklist');
                         }
                     }}>Back</Button>
-                    <Button role="deleted" variant="danger" onClick={()=>{
+                    <Button id="delete-btn" role="deleted" variant="danger" onClick={()=>{
                         if (window.confirm("Confirm to delete?")) {
                             const path = 'trip/' + trip.pk + '/checklist/';
                             const obj = {
@@ -114,24 +117,24 @@ const ChecklistForm = ({id}) => {
                             });
                         }
                     }} hidden={id === null}>Delete</Button>
-                    <Button role="save" onClick={()=>{
+                    <Button id="save-btn" role="save" onClick={()=>{
                         const item = document.getElementById("item");
                         if (item === undefined || item === null || item.value === "") {
                             alert('Enter item');
                             return;
                         }
-                        const remark = document.getElementById("remark");
-                        if (remark === undefined || remark === null || remark.value === "") {
-                            alert('Enter remark');
+                        const comment = document.getElementById("comment");
+                        if (comment === undefined || comment === null || comment.value === "") {
+                            alert('Enter comment');
                             return;
                         }
                         const path = 'trip/' + trip.pk + '/checklist/';
                         if (id !== undefined && id !== null) {
                             const obj = {
                                 'item_id': Number(id),
-                                'person_in_charge': Number(selected.pk),
+                                'assignee': Number(selected.pk),
                                 'item': item.value,
-                                'remark': remark.value
+                                'comment': comment.value
                             };
                             putMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
@@ -140,9 +143,9 @@ const ChecklistForm = ({id}) => {
                             });
                         } else {
                             const obj = {
-                                'person_in_charge': Number(selected.pk),
+                                'assignee': Number(selected.pk),
                                 'item': item.value,
-                                'remark': remark.value
+                                'comment': comment.value
                             };
                             postMethodBackendAPI(path, obj).then(()=>{
                                 alert('saved');
@@ -153,6 +156,7 @@ const ChecklistForm = ({id}) => {
                     }}>Save</Button>
                 </Col>
             </Row>
+            </Container>
         </>
         );
     };
