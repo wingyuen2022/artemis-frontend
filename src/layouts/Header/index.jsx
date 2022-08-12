@@ -40,10 +40,7 @@ function Navbar() {
                 );
               })}
 
-              <li className='nav-text' onClick={() => dispatch(logout())}>
-              <AiFillHome />
-                signout
-              </li>
+              
             </ul>
           </nav>
       </>
