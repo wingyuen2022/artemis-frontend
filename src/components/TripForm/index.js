@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
 import { Button, Container, Col, Form, FormLabel, Row } from "react-bootstrap";
+
 import { setOrigin, setDestination, setFormName, setFormOrigin, setFormDestination, setFormStartDate, setFormEndDate } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import PlaceComponent from '../PlaceComponent';
@@ -75,11 +76,6 @@ const TripForm = ({id}) => {
         <>
             <Container className="trip-form-container">
             <Form className="new-trip-form">
-                <FormLabel id="form-label">
-                    Trip name:
-                </FormLabel>
-                <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
-                <br />
                 <div id="form-label">
                     Origin:
                 </div>
@@ -216,20 +212,3 @@ const TripForm = ({id}) => {
 
 export default TripForm;
 
-// <input className="form-item-input" id="location" type="text" name="location" maxLength="20" placeholder="Location"/>
-/*
-<FormLabel className="col">
-                    <b>Public or Private:</b>
-                </FormLabel>
-                <div className="col">
-                    <div className="row">
-                        <div className="col">
-                            <input className="form-item-input" type="radio" id="public" name="public" value="true" checked></input>
-                            <label className="form-label"  for="public">Public</label>
-                        </div>
-                        <div className="col">
-                            <input className="form-item-input" type="radio" id="private" name="public" value="false"></input><label className="form-label" for="private">Private</label>
-                        </div>
-                    </div>
-                </div>
-*/
