@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { getMethodBackendAPI, postMethodBackendAPI, putMethodBackendAPI, deleteMethodBackendAPI } from '../../util/util.js';
-import { Button, Container, Form, FormLabel, Row } from "react-bootstrap";
+import { Button, Container, Form, FormLabel, Row, Col } from "react-bootstrap";
 import { setOrigin, setDestination, setFormName, setFormOrigin, setFormDestination, setFormStartDate, setFormEndDate } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import PlaceComponent from '../PlaceComponent';

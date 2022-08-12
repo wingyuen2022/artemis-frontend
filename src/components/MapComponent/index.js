@@ -118,17 +118,14 @@ const MapComponent = () => {
           minW="container.md"
           zIndex="1">
           <Row>
-            <Col>{(weather !== null) ? (<><Text>{weather.name}</Text></>):(<></>)}</Col>
-            <Col>{(weather !== null) ? (<><img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" /></>):(<></>)}</Col>
-            <Col>{(weather !== null) ? (<><Text>{weather.weather[0].main}</Text></>):(<></>)}</Col>
-            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C</Text></>):(<></>)}</Col>
-            <Col>{(weather !== null) ? (<><Text>{weather.main.humidity} %</Text></>):(<></>)}</Col>
-          </Row>
-          <Row>
             <Col><Button onClick={()=>{
               navigate(-1);
             }}>Back</Button></Col>
-            <Col><Text>{distance}</Text></Col>
+          </Row>
+          <Row>
+            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C / {distance}</Text></>):(<></>)}</Col>
+          </Row>
+          <Row>
             <Col><Text>{duration}</Text></Col>
           </Row>
         </Box>
@@ -138,6 +135,14 @@ const MapComponent = () => {
 
 export default MapComponent;
 
+/*
+            <Col>{(weather !== null) ? (<><Text>{weather.name}</Text></>):(<></>)}</Col>
+            <Col>{(weather !== null) ? (<><img src ={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="wthr img" /></>):(<></>)}</Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.weather[0].main}</Text></>):(<></>)}</Col>
+*/
+/*
+<Col>{(weather !== null) ? (<><Text>{weather.main.humidity} %</Text></>):(<></>)}</Col>
+*/
 
 /*async function calculateRoute() {
     if (originRef.current.value === "" || destiantionRef.current.value === "") {
