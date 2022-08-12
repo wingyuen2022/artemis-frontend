@@ -75,11 +75,6 @@ const TripForm = ({id}) => {
         <>
             <Container className="trip-form-container">
             <Form className="new-trip-form">
-                <FormLabel id="form-label">
-                    Trip name:
-                </FormLabel>
-                <input className="form-item-input" id="name" type="text" name="name" maxLength="20" placeholder="Name"/>
-                <br />
                 <div id="form-label">
                     Origin:
                 </div>
