@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setTitle } from "../../actions";
 import WeatherComponent from '../../components/WeatherComponent';
 import ForecastComponent from '../../components/WeatherComponent/forecast';
 import Row from 'react-bootstrap/Row';
@@ -8,8 +6,6 @@ import Col from 'react-bootstrap/Col';
 import './weather.css';
 
 const Weather = () => {
-  const dispatch = useDispatch();
-  dispatch(setTitle("Weather"));
     
   const [lat, setLat] = useState([51.8156]);
   const [long, setLong] = useState([0.8084]);
