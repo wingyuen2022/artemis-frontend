@@ -48,20 +48,25 @@ const MapComponent = () => {
   useEffect(()=>{
     const org = route.origin;
     const des = route.destination;
-    const directionsService = new window.google.maps.DirectionsService();
-    directionsService.route({
-      origin: org,
-      destination: des,
-      // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.WALKING,
-    }).then((res)=>{
-      setDirectionsResponse(res);
-      setDistance(res.routes[0].legs[0].distance.text);
-      setDuration(res.routes[0].legs[0].duration.text);
-      const lat = res.routes[0].overview_path[0].lat();
-      const long = res.routes[0].overview_path[0].lng();
-      getWeather(lat, long);
-    });
+    const googleObj = window.google;
+    if (googleObj) {
+      const directionsService = new window.google.maps.DirectionsService();
+      directionsService.route({
+        origin: org,
+        destination: des,
+        // eslint-disable-next-line no-undef
+        travelMode: google.maps.TravelMode.WALKING,
+      }).then((res)=>{
+        setDirectionsResponse(res);
+        setDistance(res.routes[0].legs[0].distance.text);
+        setDuration(res.routes[0].legs[0].duration.text);
+        const lat = res.routes[0].overview_path[0].lat();
+        const long = res.routes[0].overview_path[0].lng();
+        getWeather(lat, long);
+      });
+    } else {
+      console.log('null');
+    }
   }, []);
 
   const getWeather = (lat, long) => {
@@ -110,23 +115,26 @@ const MapComponent = () => {
           </GoogleMap>
         </Box>
         <Box
-          p={4}
+          p={1}
           borderRadius="lg"
-          m={4}
-          bgColor="white"
+          m={1}
+          bgColor="#EFDDB7"
           shadow="base"
           minW="container.md"
           zIndex="1">
           <Row>
-            <Col><Button onClick={()=>{
+            <Col><Button id="back-btn" onClick={()=>{
               navigate(-1);
             }}>Back</Button></Col>
           </Row>
           <Row>
-            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C / {distance}</Text></>):(<></>)}</Col>
+            <Col><Text>{distance} ({duration})</Text></Col>
           </Row>
           <Row>
-            <Col><Text>{duration}</Text></Col>
+            <Col>{(weather !== null) ? (<><Text>{weather.main.temp} &deg;C ({weather.main.humidity}%)</Text></>):(<></>)}</Col>
+          </Row>
+          <Row>
+            <Col></Col>
           </Row>
         </Box>
       </Flex>
